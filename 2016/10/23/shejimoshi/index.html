@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>你应了解的4种JS设计模式 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="每个JS开发者都力求写出可维护、复用性和可读性高的代码。随着应用不断扩大，代码组织的合理性也越来越重要。设计模式为特定环境下的常见问题提供了一个组织结构，对于克服这些挑战起到至关重要的作用。
+JavaScript 网页开发者在创建应用时，频繁地跟设计模式打交道（甚至在不知情的情况下）。
+尽管特定环境下有各种各样的设计模式，JS 开发者还是倾向于使用一些习惯性的模式。
+在这篇文章中，我将讨论这些常见">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你应了解的4种JS设计模式">
+<meta property="og:url" content="http://yanwenxi.github.io/2016/10/23/shejimoshi/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="每个JS开发者都力求写出可维护、复用性和可读性高的代码。随着应用不断扩大，代码组织的合理性也越来越重要。设计模式为特定环境下的常见问题提供了一个组织结构，对于克服这些挑战起到至关重要的作用。
+JavaScript 网页开发者在创建应用时，频繁地跟设计模式打交道（甚至在不知情的情况下）。
+尽管特定环境下有各种各样的设计模式，JS 开发者还是倾向于使用一些习惯性的模式。
+在这篇文章中，我将讨论这些常见">
+<meta property="og:updated_time" content="2016-10-25T14:54:08.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你应了解的4种JS设计模式">
+<meta name="twitter:description" content="每个JS开发者都力求写出可维护、复用性和可读性高的代码。随着应用不断扩大，代码组织的合理性也越来越重要。设计模式为特定环境下的常见问题提供了一个组织结构，对于克服这些挑战起到至关重要的作用。
+JavaScript 网页开发者在创建应用时，频繁地跟设计模式打交道（甚至在不知情的情况下）。
+尽管特定环境下有各种各样的设计模式，JS 开发者还是倾向于使用一些习惯性的模式。
+在这篇文章中，我将讨论这些常见">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/">文章页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://yanwenxi.github.io/">githubpage</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/">文章页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-shejimoshi" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/23/shejimoshi/" class="article-date">
+      <time datetime="2016-10-23T14:49:07.000Z" itemprop="datePublished">2016-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      你应了解的4种JS设计模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS设计模式-设计模式/">JS设计模式 设计模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>每个JS开发者都力求写出可维护、复用性和可读性高的代码。随着应用不断扩大，代码组织的合理性也越来越重要。设计模式为特定环境下的常见问题提供了一个组织结构，对于克服这些挑战起到至关重要的作用。</p>
+<p>JavaScript 网页开发者在创建应用时，频繁地跟设计模式打交道（甚至在不知情的情况下）。</p>
+<p>尽管特定环境下有各种各样的设计模式，JS 开发者还是倾向于使用一些习惯性的模式。</p>
+<p>在这篇文章中，我将讨论这些常见的设计模式，展出优化代码库的方法，并深入解读JavaScript的内部构件。</p>
+<p>本文讨论的设计模式包括这几种:<br>模块设计模式<br>原型模式<br>观察者模式<br>单例模式</p>
+<p>尽管每种模式都包含很多属性，这里我强调以下几点：<br>上下文: 设计模式的使用场景<br>问题: 我们尝试解决的问题是什么?<br>解决方法: 使用设计模式如何解决我们提出的问题?<br>实施: 实施方案看起来怎样?</p>
+<h2 id="模块设计模式"><a href="#模块设计模式" class="headerlink" title="模块设计模式"></a>模块设计模式</h2><p>JS模块化是使用最普遍的设计模式，用于保持特殊的代码块与其它组件之间互相独立。为支持结构良好的代码提供了松耦合。</p>
+<p>对于熟悉面向对象的开发者来说，模块就是JS的 “类”。封装是“类”的众多优点之一，可以确保它本身的状态和行为不被其它的类访问到。模块设计模式有公有和私有两种访问级别（除此之外，还有比较少为人知的保护级别、特权级别）。</p>
+<p>考虑到私有的作用域，模块应该是一个立即调用函数（IIFE) ，也就是说，它是一个保护其私有变量和方法的闭包。（然而，它返回的却不是一个函数，而是一个对象）。</p>
+<p>我们在返回一个对象之前，先初始化一下私有的变量和方法。由于作用域不同，闭包外面的代码是无法访问到闭包内的私有变量的。一起来看下更具体的实现方法：</p>
+<p>请注意 callChangeHTML 是在返回的对象中绑定的，因此可以访问到 HTMLChanger 这个命名空间内的变量。然而，在模块外面，是不能访问到闭包里面的 contents 的。</p>
+<p>揭示性模块模式</p>
+<p>模块模式的另一种变体称为 揭示性模块模式，它主要是为了在保持封装性的同时，揭示在对象字面量中返回的特定的变量和方法。直接的实现方式类似这样：</p>
+<p>尽管这样看起来更加简洁，但它是有明显不足的 – 不能引用私有变量。这会给单元测试带来一定的挑战。类似地，公有行为也是不可重写的。</p>
+<p>原型设计模式</p>
+<p>JS开发者要么把 原型 和 原型继承 相互混淆，要么在他们的代码里面直接使用原型。原型设计模式依赖于JavaScript原型继承. 原型模式主要用于为高性能环境创建对象。</p>
+<p>被创建的对象是从传下来的原对象克隆（浅克隆）出来的。原型模式的一种使用场景，是执行一个扩展性的数据库操作来创建一个对象，把该对象用于应用的其他层面。如果其他流程需要用到这个对象，我们不需要大量地操作数据库，只要克隆一下之前创建的对象就可以了。与其实质性地操作数据库，不如从之前创建的对象克隆一个更具优势。</p>
+<p>要克隆一个对象，必须存在一个构造器来实例化第一个对象。接下来，通过使用 prototype 的变量和方法来绑定对象的结构。一起来看下基本的示例：</p>
+<p>构造器 TeslaModelS 允许创建一个简单的 TeslaModelS 对象。对于一个新创建的 TeslaModelS 对象，它将保持构造器初始化的状态。此外，它也很简单的持有 go 和 stop 这两个方法，因为这两个方法是在 prototype 声明的。在原型上拓展方法，还可以这样写：</p>
+<p>揭示性原型模式</p>
+<p>类似于模块模式，原型模式也有一个 揭示性模式。揭示性原型模式 通过返回一个对象字面量，对公有和私有的成员进行封装。</p>
+<p>由于我们返回的是一个对象，我们将在原型对象上添加 function 的前缀。通过对以上例子进行改写，我们可以选择在当前的 prototype 暴露哪些方法或变量，以此来保护它们的访问层级。</p>
+<p>请注意 stop 和 go 两个方法是被隔开的，因为他们在所返回的对象作用域之外。由于 JavaScript 本身支持原型继承，也就没必要重写基本的功能了。</p>
+<p>观察者设计模式</p>
+<p>很多时候，当应用的一部分改变了，另一部分也需要相应更新。在 AngularJs 里面，如果 $scope 被更新，就会触发一个事件去通知其他组件。结合观察这模式就是：如果一个对象改变了，它只要派发 broadcasts 事件通知依赖的对象它已经改变了则可。</p>
+<p>又一个典型的例子就是 model-view-controller (MVC) 架构了；当 model 改变时， 更新相应的 view。这样做有一个好处，就是从 model 上解耦出 view 来减少依赖。</p>
+<p>Wikipedia 观察者设计模式</p>
+<p>如 UML 图表所示，subject、observer, and concrete objects 是必不可少的。 subject 包含对每个具体观察者的引用，以便传递改动信息。观察者本身是一个抽象的类，使得具体的观察者可以执行通讯方法。</p>
+<p>一起来看下 AngularJS 的示例，在事件管理上应用了观察这模式。</p>
+<p>使用观察者模式，重要的一点就是要区分独立的对象或者 subject(主体)。</p>
+<p>在看到观察者模式众多优点的同时，我们必须注意到它的一个缺点：随着观察者数量的增加，应用的性能会大大降低。大家都比较熟悉的观察者就是 watchers 。 在AngularJS中，我们可以 watch 变量、方法和对象。$digest 循环更新，当一个作用域内对象被修改时，它就把新的值告诉每个监听者。</p>
+<p>我们可以在JS中创建自己的主体和观察者。一起来看下下面的代码是如何运行的：</p>
+<p>发布、订阅模式</p>
+<p>然而，发布、订阅模式是采用一个话题来绑定发布者和订阅者之间的关系，订阅者接收事件通知，发布者派发事件。该事件系统支持定义特殊应用的事件，可以传递包含订阅者本身需要的自定义参数。这样做主要是为了避免订阅者和发布者之间的依赖。</p>
+<p>这里有别于观察者模式的是，任何订阅者都可以通过恰当的事件处理器来注册并接受发布者广播的通知。</p>
+<p>很多开发者选择把 发布订阅模式 和 观察者模式 结合起来用，尽管他们最终的目标只有一个。发布订阅模式中的订阅者是通过一些通讯媒介被告知的，而观察者则是通过执行事件处理器来获得消息通知。</p>
+<p>在 AngularJs， 订阅者使用 $on(event、cbk) 来订阅一个事件，发布者则使用$emit(‘event’, args) 或者 $broadcast(‘event’, args) 来发布一个事件。</p>
+<p>单例模式</p>
+<p>单例模式只允许实例化一个对象，但是相同的对象，会用很多个实例。单例模式制约着客户端创建多个对象。第一个对象创建后，就返回实例本身。</p>
+<p>单例模式比较少用，很难找到实际开发的例子。使用一个办公室打印机的例子吧。假设办公室有10个人，他们都用到打印机，10台电脑共享一部打印机（一个实例）。通过分享一部打印机，他们共享相同的资源。</p>
+<p>create 这个方法是私有的，因为我们不希望它被外部人员访问到，然而，getInstance 方法是公有的。每个办公人员都可以实例化一个 printer，只需要这样调用一下：</p>
+<p>单例模式在 AngularJS 相当流行，最常见的是作为 services、factories、和 providers。它们维护状态，提供资源访问，创建两个实例摆脱一个共享的service/factory/provider。</p>
+<p>在多线程的应用中，当多个线程尝试去访问同个资源时，就会出现 竞争状态。单例模式会受到竞争状态的干扰，比如在没有初始化实例的情况下，两个线程会创建两个对象，而不是返回一个实例。这与单例模式的目的是相悖的。因此，开发者在多线程应用里面使用单例模式时，必须清楚同步性。</p>
+<p>总结</p>
+<p>设计模式经常用于比较大型的应用，想知道哪种模式更具优势，来实践吧。</p>
+<p>在构建任何应用之前，都应该全面地考虑每个角色，以及它们之间存在的关系。在回顾 模块模式、原型模式、观察者模式 和 单例模式 之后，你应该能够区分它们，并且在实际开发中使用它们了。</p>
+<p>–摘自前端导读课</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2016年10月23日 - 22时49分</p>
+        <p><span>最后更新:</span>2016年10月25日 - 22时54分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/23/shejimoshi/" title="你应了解的4种JS设计模式">http://yanwenxi.github.io/2016/10/23/shejimoshi/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/10/23/shejimoshi/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/10/23/index1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          node 中的一些坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/10/jigou/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6学习：变量的解构赋值用途</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块设计模式"><span class="toc-number">1.</span> <span class="toc-text">模块设计模式</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/10/23/shejimoshi/" data-title="你应了解的4种JS设计模式" data-url="http://yanwenxi.github.io/2016/10/23/shejimoshi/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/23/index1/" title="上一篇: node 中的一些坑">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/02/10/jigou/" title="下一篇: ES6学习：变量的解构赋值用途">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/27/index/">index</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/index1/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习：变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/mobile/">移动端遇到的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/jicheng/">js学习 6种继承方式</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
