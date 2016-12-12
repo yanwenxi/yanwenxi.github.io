@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a>
+                        <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a>
                     </div>
                 </section>
                 
@@ -218,11 +218,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-qianhouduanfenli" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-angular-html5" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/16/qianhouduanfenli/" class="article-date">
-      <time datetime="2016-12-16T04:41:23.000Z" itemprop="datePublished">2016-12-16</time>
+      <a href="/2016/12/12/angular-html5/" class="article-date">
+      <time datetime="2016-12-12T14:04:54.000Z" itemprop="datePublished">2016-12-12</time>
 </a>
     </div>
   
@@ -235,7 +235,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a>
+      <a class="article-title" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a>
     </h1>
   
 
@@ -245,52 +245,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="一、被误解的前后端分离"><a href="#一、被误解的前后端分离" class="headerlink" title="一、被误解的前后端分离"></a>一、被误解的前后端分离</h3><p>在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。</p>
-<p>虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在Web应用的开发期进行了前后端开发工作的分工就是前后端分离。</p>
-<p>其实并非如此，准确的说，前后端分离并不只是开发模式，而是Web应用的一种架构模式。在开发期，前后端工程师可以通过约定好交互接口，实现并行开发；在运行期，前后端分离模式需要对Web应用进行分离部署，前后端之间使用HTTP请求进行交互。然而作为应用的架构模式，前后端分离并不是通过这样一句话就能一概而谈的，我们可以从交互形式、代码组织方式、开发模式三个方面对前后端分离进行认识。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/2.png" alt=""><br>在前后端分离架构中，后端只需要负责按照约定的数据格式向前端提供可调用的API服务即可。前后端之间通过HTTP请求进行交互，前端获取到数据后，进行页面的装配和渲染。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/5.png" alt=""><br>在传统架构模式中，前后端代码存放于同一个代码库中，甚至是同一工程目录下。页面中还夹杂着后端代码。前后端工程师进行开发时，都必须把整个项目导入到开发工具中。</p>
-<p>而前后端分离模式在代码组织形式上有以下两种：</p>
-<h4 id="半分离"><a href="#半分离" class="headerlink" title="半分离"></a>半分离</h4><p>前后端共用一个代码库，但是代码分别存放在两个工程中。后端不关心或很少关心前端元素的输出情况，前端不能独立进行开发和测试，项目中缺乏前后端交互的测试用例。</p>
-<h4 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h4><p>前后端代码库分离，前端代码中有可以进行Mock测试（通过构造虚拟测试对象以简化测试环境的方法）的伪后端，能支持前端的独立开发和测试。而后端代码中除了功能实现外，还有着详细的测试用例，以保证API的可用性，降低集成风险。</p>
-<h4 id="3、开发模式"><a href="#3、开发模式" class="headerlink" title="3、开发模式"></a>3、开发模式</h4><p>传统的MVC架构开发，没有进行前后端分离，前端工程师负责编写HTML，完成前端页面设计，然后给后端工程师员套界面，使用模板技术将前端代码转换成JSP页面，同时内嵌java代码。应用运行期，将全部代码进行打包，部署到同一服务器上，或者进行简单的动静态分离部署。</p>
-<p>此时，应用的开发流程如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/11.png" alt=""><br>在前后端分离架构中，前端工程师只需要编写HTML、js、CSS等前端资源，然后通过HTTP请求调用后端提供的服务即可。除了开发期的分离，在运行期前后端资源也会进行分离部署。</p>
-<p>前后端分离之后，开发流程将如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/3.png" alt=""><br>通过上面的两幅流程图，不难发现，在开发模式上，前后端分离不仅仅只是工程师的分工开发，更重要的意义在于实现了前后端的并行开发，和简化了开发流程。</p>
-<h3 id="二、为什么要“离”：4个好处"><a href="#二、为什么要“离”：4个好处" class="headerlink" title="二、为什么要“离”：4个好处"></a>二、为什么要“离”：4个好处</h3><p>重新认识前后端分离之后，想必大家心里都会有疑问，前后端分离模式与之前的Web应用架构相比可谓是大相径庭，我们为什么要进行前后端分离呢？正如莎士比亚在《哈姆雷特》中的经典名句一样，分还是不分，这是个问题。</p>
-<p>从目前应用软件的发展趋势来看，一方面，用户越来越注重软件的体验感，随着互联网的蓬勃发展，应用开始走向多终端化；另一方面，大型应用的架构模式正纷纷向着云化、微服务化发展。</p>
-<p>虽然过去的应用架构暂时还能支撑起当下应用的开发，但是各种弊端已经开始浮出水面，几年前能带来开发便捷优势的前后端代码混合模式，在当下已经成为了拖慢我们前进步伐的泥沼，让我们屡屡吃痛。我们之所以开始尝试前后端分离，是为了能在未来获得更好的发展，期望通过前后端分离架构，来为我们带来以下4个方面的提升。</p>
-<p>为孵化优质产品打造精益团队</p>
-<p>正如康威定律所述，产品是组织沟通结构的缩影，软件开发团队想要孵化出优质的产品，必须先打造一个精益的开发团队。开发团队的组织划分是如何影响产品的孵化呢，我们通过下面的示例来进行说明。</p>
-<p>如果开发团队是按照业务边界进行划分的，开发出来的产品将可能会是微服务的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/6.png" alt=""><br>如果开发团队分为前端团队、后台服务团队和DBA团队，产品将会成长为下面的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/4.png" alt=""><br>应用不断迭代，功能日趋完善，开发团队也随之壮大。虽然现在有些人比较推崇全栈工程师，一位全栈工程师就能支持前后端的所有开发。但是试想一下，如果在开发团队中前后端开发分隔不清，职责边界模糊不明，代码均由相同的工程师完成，长此以往前后端代码的耦合程度可想而知。</p>
-<p>通过将开发团队前后端分离化，让前后端工程师只需要专注于前端或后端的开发工作，使得前后端工程师分别自治，培养其独特的技术特性，然后构建出一个全栈式的精益开发团队。这样的开发团队能够快速应对需求的变更以及市场的复杂多变，打造出架构清晰、前后端并重的优质产品。</p>
-<h4 id="提升开发效率"><a href="#提升开发效率" class="headerlink" title="提升开发效率"></a>提升开发效率</h4><p>传统开发模式中，前后端开发强依赖。需要前端工程师先完成静态页面的Demo，后端工程师才能将页面Demo翻译成VM模板，如果前端页面出现变动，又会需要前后端工程师再走一次开发流程，如此一来开发效率将会变得很低。</p>
-<p>前后端分离以后，可以实现前后端代码的解耦，只要前后端沟通约定好应用所需接口以及接口参数，便可以开始并行开发，无需等待对方的开发工作结束。与此同时，即使需求发生变更，只要接口与数据格式不变，后端开发人员就不需要修改代码，只要前端进行变动即可。如此一来整个应用的开发效率必然会有质的提升。</p>
-<h4 id="完美应对复杂多变的前端需求"><a href="#完美应对复杂多变的前端需求" class="headerlink" title="完美应对复杂多变的前端需求"></a>完美应对复杂多变的前端需求</h4><p>Web应用的用户体验关注度与日俱增，使得应用的前端界面需要有华丽酷炫的外观，简单易用的操作，变化多样的界面设计和个性化的自定义展示。这使得前端开始变重，逻辑复杂程度加大，渲染效果多样化加剧。</p>
-<p>移动终端的大范围普及，让应用向着多终端化发展，这就要求前端页面需要对不同终端的显示都能进行配适。</p>
-<p>传统开发模式中，前后端工程师开发职责不明确，面对复杂多变的前端需求，开发团队势必会变得捉襟见肘、不堪重负。</p>
-<p>如果开发团队能完成前后端分离的转型，打造优秀的前后端团队，开发独立化，让开发人员做到专注专精，开发能力必然会有所提升，能够完美应对各种复杂多变的前端需求。</p>
-<h4 id="增强代码可维护性"><a href="#增强代码可维护性" class="headerlink" title="增强代码可维护性"></a>增强代码可维护性</h4><p>前后端分离后，应用的代码不再是前后端混合，只有在运行期才会有调用依赖关系。应用代码将会变得整洁清晰，不论是代码阅读还是代码维护都会比以前轻松。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/7.png" alt=""></p>
-<h3 id="三、我要不要“离”：4种场景"><a href="#三、我要不要“离”：4种场景" class="headerlink" title="三、我要不要“离”：4种场景"></a>三、我要不要“离”：4种场景</h3><p>然而任何一项技术都不是银弹，前后端分离也是如此。虽然前后端分离架构能带来众多优势，但终究得建立在开发团队适合的基础之上。我们暂且以前端页面的渲染效果与逻辑复杂程度把Web应用大致分为轻前端、重前端、前后均衡三种类型，然后加上现在热门的微服务架构应用，一起探讨一下什么样的Web应用适合进行前后端分离。</p>
-<h4 id="轻前端"><a href="#轻前端" class="headerlink" title="轻前端"></a>轻前端</h4><p>页面布局简单，颜色、字体类型较少<br>对前端界面的渲染效果没有高要求，无动画效果<br>只有少量、简单的业务逻辑<br>只需要在不同终端上布局能适应</p>
-<p>对于这样对前端渲染要求不高，业务逻辑简单的轻前端应用来说，因为涉及到的前端技术并不复杂，所以没必要追求前后端分离。将前后端代码放到一起，反而更方便进行开发，但是在开发过程中需要做到关注点分离（Separate Concern）。</p>
-<h4 id="重前端"><a href="#重前端" class="headerlink" title="重前端"></a>重前端</h4><p>页面布局复杂，使用了多种颜色和字体<br>需要有较高的页面渲染效果，有大量动画<br>前端页面中包含有复杂业务逻辑<br>需要在不同终端和浏览器上保证布局适应和渲染效果</p>
-<p>对于重前端应用，建议采用前后端分离架构，如果开发团队中前端工程师不足，需要尽早完善前端团队的建设，确保前后端并重。</p>
-<h4 id="前后均衡"><a href="#前后均衡" class="headerlink" title="前后均衡"></a>前后均衡</h4><p>页面布局适中，使用的颜色和字体种类不多<br>页面中使用了少许动画效果<br>业务逻辑较为简单，可下沉到后端实现<br>只需要在不同终端上布局能适应</p>
-<p>对于前后端均衡应用，建议综合团队的人员结构和未来发展方向进行考虑。如果在团队中前端工程师的占比不高，后续也没有继续发展前端的计划，那么就不建议过于追求前后端分离。如果对未来有更高期望，即使在前端工程师占比不高的情况下，依然建议团队尝试前后端分离转型，开始着手培养合适的前端工程师。如果团队中已经有了相当规模的前端工程师，建议立即转向前后端分离，并且尽早做到前后端代码分离，为前端提供一个可以进行开发调试的伪后端。</p>
-<h4 id="微服务架构应用"><a href="#微服务架构应用" class="headerlink" title="微服务架构应用"></a>微服务架构应用</h4><p>微服务架构应用由大量微服务提供者构成，共同为用户提供服务。在微服务架构中，很多微服务提供者都是基于SpringBoot实现的，通过API Getway（API网关）进行微服务的整合，然后在一个统一的前端门户上为用户提供所需服务。</p>
-<p>微服务基于SpringBoot开发，要达到快速交付的目的，并且每个微服务的粒度都比较小，这必然需要微服务的前后端由不同的工程师分别实现，然后相互之间使用Restful进行通讯。如果还是沿用之前的开发模式，将会增大微服务架构应用的构建难度。而前后段分离模式正是解决这一难题的良药。</p>
-<h3 id="四、分离部署方案浅析"><a href="#四、分离部署方案浅析" class="headerlink" title="四、分离部署方案浅析"></a>四、分离部署方案浅析</h3><p>前后端开发分离之后，应用在部署时也需要进行前后端分离。在进行前后端分离方案选择的时候，需要结合项目的需求情况和用户群体来考虑。目前业内较为常用的前后端分离部署方案有如下几种。</p>
-<h4 id="1、Nginx-Server"><a href="#1、Nginx-Server" class="headerlink" title="1、Nginx+Server"></a>1、Nginx+Server</h4><p>将前端资源部署在Nginx上，后端服务部署在常规的服务器。当浏览器发起访问请求的时候，如果请求的是页面资源，Nginx直接把资源返回到前端；如果请求是调用后端服务，则经过Nginx转发到后端服务器，完成响应后经Nginx返回到浏览器。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/8.png" alt=""><br>这个方案比较简单，易于实现，而且能达到前后端解耦的目的。</p>
-<p>但是对于页面量比较大，需要有良好SEO的应用来说，此方案缺点也较为明显。因为Nginx只是向浏览器返回页面静态资源，而国内的搜索引擎爬虫只会抓取静态数据，不会解析页面中的js，这使得应用得不到良好的搜索引擎支持。同时因为Nginx不会进行页面的组装渲染，需要把静态页面返回到浏览器，然后完成渲染工作，这加重了浏览器的渲染负担。</p>
-<h4 id="2、Node-Server"><a href="#2、Node-Server" class="headerlink" title="2、Node+Server"></a>2、Node+Server</h4><p>这是淘宝所使用的前后端分离模式，在浏览器与后端服务器之间增加一个了Node Server作为中间层，将前端资源部署到Node Server中。Node Server中还包含了一层Model Proxy，负责与服务端进行通信。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/10.png" alt=""><br>浏览器发出的请求都被Node Server接收，然后通过Model Proxy调用后端服务器提供的服务。Node Server得到后端服务器反馈，接着在Node Server中完成页面的组装渲染，把最终页面返回给浏览器。</p>
-<p>如此一来不仅达到了前后端解耦的目的，还解决了浏览器渲染负担过重的问题，为SEO提供了比较好的支持。</p>
-<p>但在这样的模式中，浏览器所有发出的请求都需要经过Node Server进行中转，然后才能到达后端服务器。在实际的应用中，并不是所有的请求都需要页面渲染，只要在页面上直接调用后端服务器提供的服务即可。所以这个模式必然会对请求性能有所消耗</p>
-<h4 id="3、Nginx-Node-Server"><a href="#3、Nginx-Node-Server" class="headerlink" title="3、Nginx+Node+Server"></a>3、Nginx+Node+Server</h4><p>为了能解决方案2中请求性能损失的问题，我们可以考虑在其基础之上增加Nginx。浏览器发起的请求经过Nginx进行分发，URL请求统一分发到Node Server，在Node Server中进行页面组装渲染；API请求则直接发送到后端服务器，完成响应。</p>
-<p>目前在已经有一个名为Goku的Go语言框架提供了这样的前后端分离解决方案。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/1.png" alt=""><br>通过对三种前后端分离方案的对比可以看出：</p>
-<p>如果是企业级应用，不需要考虑对SEO的支持，浏览器渲染也可以忽略不计，Nginx+Server的模式无疑是最好的选择，实施成本相对来说比较低；</p>
-<p>如果是互联网应用，需要有良好的SEO支持，页面渲染工作量大，那应该选择Nginx+Node+Server的方案，各个方面都能得到比较好的兼顾。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/9.png" alt=""></p>
-<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p>前后端分离并非仅仅只是前后端开发的分工，而是在开发期进行代码存放分离、前后端开发职责分离，前后端能够独立进行开发测试；在运行期进行应用部署分离，前后端之间通过HTTP请求进行通讯。前后端分离的开发模式与传统模式相比，能为我们提升开发效率、增强代码可维护性，让我们有规划地打造一个前后端并重的精益开发团队，更好地应对越来越复杂多变的Web应用开发需求。</p>
-<p>传统的前后端混合开发模式，虽然久经考验，到现在依然还是能支撑起应用的开发。但是放眼未来，应用的云化、微服务化势不可挡。同社会分工精细化一样，前后端开发的精细化也是必然趋势。技术在持续进步，架构在不断演进，只有紧跟发展的脚步，不断调整项目管理方式，软件开发模式，才能在互联网浪潮中把握机会，乘风破浪。</p>
-<p>前后端分离，是为了让彼此更好。</p>
-<p>文章来源网络，版权归作者所有，作者：敖显奇@EAII企业架构创新研究院(eaworld)</p>
+        <p>　　AngularJS,是Google开源的一款JavaScript MVVM框架，弥补了HTML在构建应用方面的不足，其通过使用指令（directives）结构来扩展HTML标签，使开发者可以使用HTML来声明动态内容，从而使得Web开发和测试工作变得更加容易。</p>
+<p>　　在学习中无意间看到有人说自定义指令如果想符合HTML5规范，可以加上data-<em>或者x-</em>前缀，对指令本身不影响，我顺便也试了下默认指令，发现ng-app、ng-model、ng-bind这类默认指令也可以直接加上data-*的前缀，而且完全不用配置，不影响功能。</p>
+<p>　　所以，为了遵循HTML5规范，我们也可以使用data-ng-app、data-ng-model、data-ng-bind这样的属性来使用AngularJS的默认指令了。</p>
+<p>　　最后来验证一下：原程序里面是这样写的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var ngAttrPrefixes = [&apos;ng-&apos;, &apos;data-ng-&apos;, &apos;ng:&apos;, &apos;x-ng-&apos;];</div></pre></td></tr></table></figure></p>
+<p>　　所以说，ng-、data-ng-、ng:、x-ng-，都是可以生效的。</p>
 
       
     </div>
@@ -301,7 +260,7 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前后端分享/">前后端分享</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular、html5/">angular、html5</a></li></ul>
     </div>
 
       
@@ -632,6 +591,209 @@
 
 
   
+    <article id="post-react1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/12/react1/" class="article-date">
+      <time datetime="2016-08-12T14:10:58.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/react1/">react入门学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="1-什么是react"><a href="#1-什么是react" class="headerlink" title="1.什么是react"></a>1.什么是react</h2><p>React 是一个用于构建用户界面的JavaScript库</p>
+<h3 id="2-安装react"><a href="#2-安装react" class="headerlink" title="2.安装react"></a>2.安装react</h3><p><code>$ bower install react babel --save</code></p>
+<h2 id="3-直接在浏览器中使用React"><a href="#3-直接在浏览器中使用React" class="headerlink" title="3.直接在浏览器中使用React"></a>3.直接在浏览器中使用React</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;../bower_components/react/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;../bower_components/react/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script src=&quot;../bower_components/babel/browser.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>react.js 是 React 的核心库</li>
+<li>react-dom.js 是提供与DOM相关的功能,会在window下增加ReactDOM属性</li>
+<li>browser.js 的作用是将JSX语法转为JavaScript语法<br>script中的type属性为text/babel,因为React独有的JSX语法,跟JavaScript不兼容<h3 id="4-ReactDOM-render"><a href="#4-ReactDOM-render" class="headerlink" title="4.ReactDOM.render"></a>4.ReactDOM.render</h3>ReactDOM.render 是 React 的最基本方法,用于将标签模板转为HTML语言，并插入指定的DOM节点</li>
+<li>4.1.index.html<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot; src=&quot;js/1.react.js&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>4.2. js/1.react.js<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ReactDOM.render(</div><div class="line">&lt;h1&gt;ywx&lt;/h1&gt;,</div><div class="line">    document.getElementById(&apos;app&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面代码将一个h1标题，插入app元素内部</p>
+<h2 id="5-JSX-语法"><a href="#5-JSX-语法" class="headerlink" title="5.JSX 语法"></a>5.JSX 语法</h2><p> 它是一种JS和HTML混合的语法,将组件的结构、数据甚至样式都聚合在一起定义组件,会编译成普通的Javascript。</p>
+<ul>
+<li>遇到HTML标签(以 &lt; 开头)，就用HTML规则解析</li>
+<li>遇到代码块(以 { 开头)，就用JavaScript规则解析</li>
+<li>使用样式时可以让style等于一个样式对象</li>
+<li>使用样式类时只能使用className=类名,因为class是Javascript关键字<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var persons = [&apos;刘德华&apos;, &apos;范冰冰&apos;, &apos;郭跃&apos;];</div><div class="line">var style = &#123;color:&apos;red&apos;&#125;;</div><div class="line">ReactDOM.render(</div><div class="line">  &lt;div&gt;</div><div class="line">  &#123;</div><div class="line">    persons.map(function (person) &#123;</div><div class="line">      return &lt;div style=&#123;style&#125;&gt;Hello, &#123;person&#125;!&lt;/div&gt;</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  &lt;/div&gt;,</div><div class="line">  document.getElementById(&apos;app&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="6-定义组件"><a href="#6-定义组件" class="headerlink" title="6.定义组件"></a>6.定义组件</h3><p>我们可以很直观的将一个复杂的页面分割成若干个独立组件,每个组件包含自己的逻辑和样式 再将这些独立组件组合完成一个复杂的页面。 这样既减少了逻辑复杂度，又实现了代码的重用<br>•    可组合：一个组件可以和其他的组件一起使用或者可以直接嵌套在另一个组件内部<br>•    可重用：每个组件都是具有独立功能的，它可以被使用在多个场景中<br>•    可维护：每个小的组件仅仅包含自身的逻辑，更容易被理解和维护</p>
+<ul>
+<li><p>6.1 定义组件<br>React允许将代码封装成组件，然后像插入普通HTML标签一样，在网页中插入这个组件</p>
+<ul>
+<li>组件类的第一个字母必须大写</li>
+<li>组件类能且只能包含一个顶层标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var Message = React.createClass(&#123;</div><div class="line">    render: function() &#123;</div><div class="line">        return &lt;h1&gt;Hello&lt;/h1&gt;;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Message/&gt;,</div><div class="line">    document.getElementById(&apos;app&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>6.2 组件的属性</p>
+<ul>
+<li>每个组件可以有自己的属性,一般用来存放组件初始后不变的数据,比如人的性别，姓名等</li>
+<li>属性一般用作组件的数据源，一般由父组件传入,比如你的名字一般是由你父母取的</li>
+<li>属性可以通过this.props中取出</li>
+<li>propTypes可以用来定义传入组件属性的名称和类型</li>
+<li>getDefaultProps函数可以用来定会引起组件的默认属性<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">var Person = React.createClass(&#123;</div><div class="line">    //类似于约定了一个接口文档,用于这是验证传递给组件的属性，</div><div class="line">    propTypes: &#123;</div><div class="line">        //定义msg的属性类型为字符串，必须传入</div><div class="line">        name: React.PropTypes.string.isRequired,</div><div class="line">        gender: React.PropTypes.string.isRequired,</div><div class="line">        age:React.PropTypes.number.isRequired</div><div class="line">    &#125;,</div><div class="line">    getDefaultProps:function()&#123;</div><div class="line">        return &#123;name:&apos;无名氏&apos;&#125;</div><div class="line">    &#125;,</div><div class="line">    render: function() &#123;</div><div class="line">        //属性可以通过属性对象this.props中取出</div><div class="line">        return (&lt;h1&gt; &#123;this.props.name&#125;</div><div class="line">                     &#123;this.props.gender&#125;</div><div class="line">                     &#123;this.props.age&#125;</div><div class="line">                &lt;/h1&gt;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var props = &#123;</div><div class="line">    gender:&apos;男&apos;,</div><div class="line">    age:18</div><div class="line">&#125;</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">    &lt;Person &#123;...props&#125; /&gt;,//属性可以在使用组件时传入</div><div class="line">    document.getElementById(&apos;app&apos;)</div><div class="line">);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-qianhouduanfenli" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/16/qianhouduanfenli/" class="article-date">
+      <time datetime="2016-07-16T04:41:23.000Z" itemprop="datePublished">2016-07-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、被误解的前后端分离"><a href="#一、被误解的前后端分离" class="headerlink" title="一、被误解的前后端分离"></a>一、被误解的前后端分离</h3><p>在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。</p>
+<p>虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在Web应用的开发期进行了前后端开发工作的分工就是前后端分离。</p>
+<p>其实并非如此，准确的说，前后端分离并不只是开发模式，而是Web应用的一种架构模式。在开发期，前后端工程师可以通过约定好交互接口，实现并行开发；在运行期，前后端分离模式需要对Web应用进行分离部署，前后端之间使用HTTP请求进行交互。然而作为应用的架构模式，前后端分离并不是通过这样一句话就能一概而谈的，我们可以从交互形式、代码组织方式、开发模式三个方面对前后端分离进行认识。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/2.png" alt=""><br>在前后端分离架构中，后端只需要负责按照约定的数据格式向前端提供可调用的API服务即可。前后端之间通过HTTP请求进行交互，前端获取到数据后，进行页面的装配和渲染。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/5.png" alt=""><br>在传统架构模式中，前后端代码存放于同一个代码库中，甚至是同一工程目录下。页面中还夹杂着后端代码。前后端工程师进行开发时，都必须把整个项目导入到开发工具中。</p>
+<p>而前后端分离模式在代码组织形式上有以下两种：</p>
+<h4 id="半分离"><a href="#半分离" class="headerlink" title="半分离"></a>半分离</h4><p>前后端共用一个代码库，但是代码分别存放在两个工程中。后端不关心或很少关心前端元素的输出情况，前端不能独立进行开发和测试，项目中缺乏前后端交互的测试用例。</p>
+<h4 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h4><p>前后端代码库分离，前端代码中有可以进行Mock测试（通过构造虚拟测试对象以简化测试环境的方法）的伪后端，能支持前端的独立开发和测试。而后端代码中除了功能实现外，还有着详细的测试用例，以保证API的可用性，降低集成风险。</p>
+<h4 id="3、开发模式"><a href="#3、开发模式" class="headerlink" title="3、开发模式"></a>3、开发模式</h4><p>传统的MVC架构开发，没有进行前后端分离，前端工程师负责编写HTML，完成前端页面设计，然后给后端工程师员套界面，使用模板技术将前端代码转换成JSP页面，同时内嵌java代码。应用运行期，将全部代码进行打包，部署到同一服务器上，或者进行简单的动静态分离部署。</p>
+<p>此时，应用的开发流程如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/11.png" alt=""><br>在前后端分离架构中，前端工程师只需要编写HTML、js、CSS等前端资源，然后通过HTTP请求调用后端提供的服务即可。除了开发期的分离，在运行期前后端资源也会进行分离部署。</p>
+<p>前后端分离之后，开发流程将如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/3.png" alt=""><br>通过上面的两幅流程图，不难发现，在开发模式上，前后端分离不仅仅只是工程师的分工开发，更重要的意义在于实现了前后端的并行开发，和简化了开发流程。</p>
+<h3 id="二、为什么要“离”：4个好处"><a href="#二、为什么要“离”：4个好处" class="headerlink" title="二、为什么要“离”：4个好处"></a>二、为什么要“离”：4个好处</h3><p>重新认识前后端分离之后，想必大家心里都会有疑问，前后端分离模式与之前的Web应用架构相比可谓是大相径庭，我们为什么要进行前后端分离呢？正如莎士比亚在《哈姆雷特》中的经典名句一样，分还是不分，这是个问题。</p>
+<p>从目前应用软件的发展趋势来看，一方面，用户越来越注重软件的体验感，随着互联网的蓬勃发展，应用开始走向多终端化；另一方面，大型应用的架构模式正纷纷向着云化、微服务化发展。</p>
+<p>虽然过去的应用架构暂时还能支撑起当下应用的开发，但是各种弊端已经开始浮出水面，几年前能带来开发便捷优势的前后端代码混合模式，在当下已经成为了拖慢我们前进步伐的泥沼，让我们屡屡吃痛。我们之所以开始尝试前后端分离，是为了能在未来获得更好的发展，期望通过前后端分离架构，来为我们带来以下4个方面的提升。</p>
+<p>为孵化优质产品打造精益团队</p>
+<p>正如康威定律所述，产品是组织沟通结构的缩影，软件开发团队想要孵化出优质的产品，必须先打造一个精益的开发团队。开发团队的组织划分是如何影响产品的孵化呢，我们通过下面的示例来进行说明。</p>
+<p>如果开发团队是按照业务边界进行划分的，开发出来的产品将可能会是微服务的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/6.png" alt=""><br>如果开发团队分为前端团队、后台服务团队和DBA团队，产品将会成长为下面的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/4.png" alt=""><br>应用不断迭代，功能日趋完善，开发团队也随之壮大。虽然现在有些人比较推崇全栈工程师，一位全栈工程师就能支持前后端的所有开发。但是试想一下，如果在开发团队中前后端开发分隔不清，职责边界模糊不明，代码均由相同的工程师完成，长此以往前后端代码的耦合程度可想而知。</p>
+<p>通过将开发团队前后端分离化，让前后端工程师只需要专注于前端或后端的开发工作，使得前后端工程师分别自治，培养其独特的技术特性，然后构建出一个全栈式的精益开发团队。这样的开发团队能够快速应对需求的变更以及市场的复杂多变，打造出架构清晰、前后端并重的优质产品。</p>
+<h4 id="提升开发效率"><a href="#提升开发效率" class="headerlink" title="提升开发效率"></a>提升开发效率</h4><p>传统开发模式中，前后端开发强依赖。需要前端工程师先完成静态页面的Demo，后端工程师才能将页面Demo翻译成VM模板，如果前端页面出现变动，又会需要前后端工程师再走一次开发流程，如此一来开发效率将会变得很低。</p>
+<p>前后端分离以后，可以实现前后端代码的解耦，只要前后端沟通约定好应用所需接口以及接口参数，便可以开始并行开发，无需等待对方的开发工作结束。与此同时，即使需求发生变更，只要接口与数据格式不变，后端开发人员就不需要修改代码，只要前端进行变动即可。如此一来整个应用的开发效率必然会有质的提升。</p>
+<h4 id="完美应对复杂多变的前端需求"><a href="#完美应对复杂多变的前端需求" class="headerlink" title="完美应对复杂多变的前端需求"></a>完美应对复杂多变的前端需求</h4><p>Web应用的用户体验关注度与日俱增，使得应用的前端界面需要有华丽酷炫的外观，简单易用的操作，变化多样的界面设计和个性化的自定义展示。这使得前端开始变重，逻辑复杂程度加大，渲染效果多样化加剧。</p>
+<p>移动终端的大范围普及，让应用向着多终端化发展，这就要求前端页面需要对不同终端的显示都能进行配适。</p>
+<p>传统开发模式中，前后端工程师开发职责不明确，面对复杂多变的前端需求，开发团队势必会变得捉襟见肘、不堪重负。</p>
+<p>如果开发团队能完成前后端分离的转型，打造优秀的前后端团队，开发独立化，让开发人员做到专注专精，开发能力必然会有所提升，能够完美应对各种复杂多变的前端需求。</p>
+<h4 id="增强代码可维护性"><a href="#增强代码可维护性" class="headerlink" title="增强代码可维护性"></a>增强代码可维护性</h4><p>前后端分离后，应用的代码不再是前后端混合，只有在运行期才会有调用依赖关系。应用代码将会变得整洁清晰，不论是代码阅读还是代码维护都会比以前轻松。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/7.png" alt=""></p>
+<h3 id="三、我要不要“离”：4种场景"><a href="#三、我要不要“离”：4种场景" class="headerlink" title="三、我要不要“离”：4种场景"></a>三、我要不要“离”：4种场景</h3><p>然而任何一项技术都不是银弹，前后端分离也是如此。虽然前后端分离架构能带来众多优势，但终究得建立在开发团队适合的基础之上。我们暂且以前端页面的渲染效果与逻辑复杂程度把Web应用大致分为轻前端、重前端、前后均衡三种类型，然后加上现在热门的微服务架构应用，一起探讨一下什么样的Web应用适合进行前后端分离。</p>
+<h4 id="轻前端"><a href="#轻前端" class="headerlink" title="轻前端"></a>轻前端</h4><p>页面布局简单，颜色、字体类型较少<br>对前端界面的渲染效果没有高要求，无动画效果<br>只有少量、简单的业务逻辑<br>只需要在不同终端上布局能适应</p>
+<p>对于这样对前端渲染要求不高，业务逻辑简单的轻前端应用来说，因为涉及到的前端技术并不复杂，所以没必要追求前后端分离。将前后端代码放到一起，反而更方便进行开发，但是在开发过程中需要做到关注点分离（Separate Concern）。</p>
+<h4 id="重前端"><a href="#重前端" class="headerlink" title="重前端"></a>重前端</h4><p>页面布局复杂，使用了多种颜色和字体<br>需要有较高的页面渲染效果，有大量动画<br>前端页面中包含有复杂业务逻辑<br>需要在不同终端和浏览器上保证布局适应和渲染效果</p>
+<p>对于重前端应用，建议采用前后端分离架构，如果开发团队中前端工程师不足，需要尽早完善前端团队的建设，确保前后端并重。</p>
+<h4 id="前后均衡"><a href="#前后均衡" class="headerlink" title="前后均衡"></a>前后均衡</h4><p>页面布局适中，使用的颜色和字体种类不多<br>页面中使用了少许动画效果<br>业务逻辑较为简单，可下沉到后端实现<br>只需要在不同终端上布局能适应</p>
+<p>对于前后端均衡应用，建议综合团队的人员结构和未来发展方向进行考虑。如果在团队中前端工程师的占比不高，后续也没有继续发展前端的计划，那么就不建议过于追求前后端分离。如果对未来有更高期望，即使在前端工程师占比不高的情况下，依然建议团队尝试前后端分离转型，开始着手培养合适的前端工程师。如果团队中已经有了相当规模的前端工程师，建议立即转向前后端分离，并且尽早做到前后端代码分离，为前端提供一个可以进行开发调试的伪后端。</p>
+<h4 id="微服务架构应用"><a href="#微服务架构应用" class="headerlink" title="微服务架构应用"></a>微服务架构应用</h4><p>微服务架构应用由大量微服务提供者构成，共同为用户提供服务。在微服务架构中，很多微服务提供者都是基于SpringBoot实现的，通过API Getway（API网关）进行微服务的整合，然后在一个统一的前端门户上为用户提供所需服务。</p>
+<p>微服务基于SpringBoot开发，要达到快速交付的目的，并且每个微服务的粒度都比较小，这必然需要微服务的前后端由不同的工程师分别实现，然后相互之间使用Restful进行通讯。如果还是沿用之前的开发模式，将会增大微服务架构应用的构建难度。而前后段分离模式正是解决这一难题的良药。</p>
+<h3 id="四、分离部署方案浅析"><a href="#四、分离部署方案浅析" class="headerlink" title="四、分离部署方案浅析"></a>四、分离部署方案浅析</h3><p>前后端开发分离之后，应用在部署时也需要进行前后端分离。在进行前后端分离方案选择的时候，需要结合项目的需求情况和用户群体来考虑。目前业内较为常用的前后端分离部署方案有如下几种。</p>
+<h4 id="1、Nginx-Server"><a href="#1、Nginx-Server" class="headerlink" title="1、Nginx+Server"></a>1、Nginx+Server</h4><p>将前端资源部署在Nginx上，后端服务部署在常规的服务器。当浏览器发起访问请求的时候，如果请求的是页面资源，Nginx直接把资源返回到前端；如果请求是调用后端服务，则经过Nginx转发到后端服务器，完成响应后经Nginx返回到浏览器。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/8.png" alt=""><br>这个方案比较简单，易于实现，而且能达到前后端解耦的目的。</p>
+<p>但是对于页面量比较大，需要有良好SEO的应用来说，此方案缺点也较为明显。因为Nginx只是向浏览器返回页面静态资源，而国内的搜索引擎爬虫只会抓取静态数据，不会解析页面中的js，这使得应用得不到良好的搜索引擎支持。同时因为Nginx不会进行页面的组装渲染，需要把静态页面返回到浏览器，然后完成渲染工作，这加重了浏览器的渲染负担。</p>
+<h4 id="2、Node-Server"><a href="#2、Node-Server" class="headerlink" title="2、Node+Server"></a>2、Node+Server</h4><p>这是淘宝所使用的前后端分离模式，在浏览器与后端服务器之间增加一个了Node Server作为中间层，将前端资源部署到Node Server中。Node Server中还包含了一层Model Proxy，负责与服务端进行通信。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/10.png" alt=""><br>浏览器发出的请求都被Node Server接收，然后通过Model Proxy调用后端服务器提供的服务。Node Server得到后端服务器反馈，接着在Node Server中完成页面的组装渲染，把最终页面返回给浏览器。</p>
+<p>如此一来不仅达到了前后端解耦的目的，还解决了浏览器渲染负担过重的问题，为SEO提供了比较好的支持。</p>
+<p>但在这样的模式中，浏览器所有发出的请求都需要经过Node Server进行中转，然后才能到达后端服务器。在实际的应用中，并不是所有的请求都需要页面渲染，只要在页面上直接调用后端服务器提供的服务即可。所以这个模式必然会对请求性能有所消耗</p>
+<h4 id="3、Nginx-Node-Server"><a href="#3、Nginx-Node-Server" class="headerlink" title="3、Nginx+Node+Server"></a>3、Nginx+Node+Server</h4><p>为了能解决方案2中请求性能损失的问题，我们可以考虑在其基础之上增加Nginx。浏览器发起的请求经过Nginx进行分发，URL请求统一分发到Node Server，在Node Server中进行页面组装渲染；API请求则直接发送到后端服务器，完成响应。</p>
+<p>目前在已经有一个名为Goku的Go语言框架提供了这样的前后端分离解决方案。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/1.png" alt=""><br>通过对三种前后端分离方案的对比可以看出：</p>
+<p>如果是企业级应用，不需要考虑对SEO的支持，浏览器渲染也可以忽略不计，Nginx+Server的模式无疑是最好的选择，实施成本相对来说比较低；</p>
+<p>如果是互联网应用，需要有良好的SEO支持，页面渲染工作量大，那应该选择Nginx+Node+Server的方案，各个方面都能得到比较好的兼顾。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/9.png" alt=""></p>
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p>前后端分离并非仅仅只是前后端开发的分工，而是在开发期进行代码存放分离、前后端开发职责分离，前后端能够独立进行开发测试；在运行期进行应用部署分离，前后端之间通过HTTP请求进行通讯。前后端分离的开发模式与传统模式相比，能为我们提升开发效率、增强代码可维护性，让我们有规划地打造一个前后端并重的精益开发团队，更好地应对越来越复杂多变的Web应用开发需求。</p>
+<p>传统的前后端混合开发模式，虽然久经考验，到现在依然还是能支撑起应用的开发。但是放眼未来，应用的云化、微服务化势不可挡。同社会分工精细化一样，前后端开发的精细化也是必然趋势。技术在持续进步，架构在不断演进，只有紧跟发展的脚步，不断调整项目管理方式，软件开发模式，才能在互联网浪潮中把握机会，乘风破浪。</p>
+<p>前后端分离，是为了让彼此更好。</p>
+<p>文章来源网络，版权归作者所有，作者：敖显奇@EAII企业架构创新研究院(eaworld)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前后端分享/">前后端分享</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-gitsinglefile" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -828,138 +990,10 @@
 
 
   
-    <article id="post-js-seajs" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/12/12/js-seajs/" class="article-date">
-      <time datetime="2015-12-12T02:28:12.000Z" itemprop="datePublished">2015-12-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>js模块化开发能解决的问题：1.冲突2.性能 3.依赖<br>使用sea.js解决的步骤：</p>
-<ul>
-<li>1.引入sea.js的库</li>
-<li>2.如何变成模块-define</li>
-<li>3.如何调用模块-exports  -seajs.use</li>
-<li>4.如何依赖模块？-require<br>一、如何变成模块-define 例：test.js<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">define(function (require, exports, module) &#123;</div><div class="line">    //參數固定，写法不变</div><div class="line">    //exports:对外的接口</div><div class="line">    function abc() &#123;</div><div class="line">        alert(123);</div><div class="line">    &#125;</div><div class="line">    exports.abc=abc;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>二、如何调用模块-exports  -seajs.use<br>    seajs.use:例index页面去调用模块，第一个参数：模块的地址，第二个参数：模块加载成功后的回调函数。<br> 注：seajs模块的默认根目录是sea.js的目录。也就是说sea.js库在哪个文件夹下，seajs.use找模块的时候就在那个文件下开始找。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">seajs.use(&apos;sea/test.js&apos;,function (ex) &#123;</div><div class="line">    //回调的参数，就是模块中的exports.</div><div class="line">    ex.abc();//当加载成功后，会弹出123</div><div class="line">    abc();  //这样做就很好的避免了命名冲突。</div><div class="line">    function abc() &#123;</div><div class="line">        alert(456);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>三.如何依赖模块？-require<br>例：test1.js  var a=10; test2.js依賴于test1.js,在此即说明test2.js要用到test1.js里定义的变量。test2.js如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">define(function (require,exports,module) &#123;</div><div class="line">    require(&apos;./test1.js&apos;);//根据当前文件相对的路径来写，这句相当于 let a=10;</div><div class="line">    function abcd() &#123;</div><div class="line">        alert(a);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>如果test1.js是一个模块的化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">define(function (require,exports,module) &#123;</div><div class="line">    var a=10;</div><div class="line">    exports.a=a;</div><div class="line">&#125;);</div><div class="line">//test2.js依賴于test1.js</div><div class="line">define(function (require,exports,module) &#123;</div><div class="line">    //require(&apos;./test1.js&apos;);//如果地址是一个模块的话，那么返回值就是模块中的exports.</div><div class="line">    function abcd() &#123;</div><div class="line">        alert(require(&apos;./test1.js&apos;).a);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-sea-js-模块化/">js sea.js 模块化</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-6jicheng" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/15/6jicheng/" class="article-date">
-      <time datetime="2015-10-15T06:12:39.000Z" itemprop="datePublished">2015-10-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>js中常用的继承方式: 子类继承父类的方法：</p>
-<h3 id="1、原型继承"><a href="#1、原型继承" class="headerlink" title="1、原型继承"></a>1、原型继承</h3><p>子类的原型指向父类的一个实例  父类的私有和公有方法都是子类的公有方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function A()&#123;</div><div class="line">    this.x = 100;</div><div class="line">    this.y = 100;</div><div class="line">&#125;</div><div class="line">A.prototype.getX = function ()&#123;&#125;</div><div class="line"></div><div class="line">function B()&#123;</div><div class="line">    this.x = 100;</div><div class="line">&#125;</div><div class="line">B.prototype = new A(); //B的原型重新赋值A的实例==&gt;每个b实例都能通过自己的__proto__找到a上的所有的私有方法，并且还可以通过a.__proto__继续找到A.prototype上的所有属性 ==&gt; A这个类上的方法相对于B都是公有方法</div><div class="line">B.prototype.constructor = B; //由于重新修改了B的原型导致默认原型上的constructor丢失，我们需要自己添加上</div></pre></td></tr></table></figure></p>
-<h3 id="2、call继承"><a href="#2、call继承" class="headerlink" title="2、call继承"></a>2、call继承</h3><p>在子类构造函数中 父类.call(this)  父类的私有变成子类的私有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function C()&#123;</div><div class="line">    this.x = 100; //d.x = 100</div><div class="line">&#125;</div><div class="line">C.prototype.getX = function ()&#123;&#125;;</div><div class="line">function D()&#123;</div><div class="line">    C.call(this); //构造函数中的this就是当前实例  this ==&gt; d     C.call(d);  ==&gt; 把C中的this修改成d</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="3、冒充对象继承"><a href="#3、冒充对象继承" class="headerlink" title="3、冒充对象继承"></a>3、冒充对象继承</h3><p>循环遍历父类实例，然后父类实例的私有方法全部拿过来添加给子类实，如果不做hasOwnProperty判断那么就是把父类的公有的和私有的都拿过来当私有的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function E()&#123;</div><div class="line">    this.x = 100;</div><div class="line">    this.y = 200;</div><div class="line">&#125;</div><div class="line">E.prototype.getX = function ()&#123;&#125;</div><div class="line">function F()&#123;</div><div class="line">    var e = new E(); //e.x = 100;</div><div class="line">    for(var attr in e)&#123; //for in可以遍历到原型上的公有自定义属性</div><div class="line">        //attr = x</div><div class="line">        if(e.hasOwnProperty(attr))&#123; //如果这个判断不加，那么无论是公有的还是私有的都拿过来当私有的</div><div class="line">            this[attr] = e[attr];</div><div class="line">            //f[&apos;x&apos;] = e[&apos;x&apos;] ==&gt; f.x = 100;</div><div class="line">        &#125;</div><div class="line">        // e.propertyIsEnumerable() //可枚举属性  ==&gt; 简单理解：可以拿出来一一列举的属性</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="4-混合继承"><a href="#4-混合继承" class="headerlink" title="4 混合继承"></a>4 混合继承</h3><p>原型+call  ==&gt; 无论是私有的还是公有的都拿过来了 ==&gt; 子类的原型上的多了一套父类私有属但是不会产生问题。因为子类的私有属性也有一套相同的通过call继承拿过来的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function G()&#123;</div><div class="line">    this.x = 100;</div><div class="line">&#125;</div><div class="line">G.prototype.getX = function()&#123;&#125;;</div><div class="line">function H()&#123;</div><div class="line">    G.call(this);</div><div class="line">&#125;</div><div class="line">H.prototype = new G();</div><div class="line">H.prototype.constructor = H;</div></pre></td></tr></table></figure></p>
-<h3 id="5-中间件继承"><a href="#5-中间件继承" class="headerlink" title="5 中间件继承"></a>5 中间件继承</h3><p>M.prototype.<strong>proto</strong> = K.prototype;  把父类的公有的当作子类的公有的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function K()&#123;</div><div class="line">    this.x = 100;</div><div class="line">&#125;</div><div class="line">k.prototype.getX = function ()&#123;&#125;;</div><div class="line">function M()&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">M.prototype.__proto__ = K.prototype; //本来应该是直接指向Object.prototype。从K的原型上的__proto__也可以到Object.prototype==&gt; 在K.prototype上停留了下，K.prototype就是一个中间件  父类的公有当作子类的公有</div></pre></td></tr></table></figure></p>
-<h3 id="6-寄生组合式继承"><a href="#6-寄生组合式继承" class="headerlink" title="6 寄生组合式继承"></a>6 寄生组合式继承</h3><p> Object.create(xx.prototype)方法  ==&gt; 是把xx.prototype当作别人家的原型  不兼容，只能找到父类原型的方法。父类的私有属性访问不到。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Parent() &#123;</div><div class="line">    this.name = &quot;ywx&quot;;</div><div class="line">&#125;</div><div class="line">Parent.prototype.eat = function () &#123;</div><div class="line">    console.log(123);</div><div class="line">&#125;;</div><div class="line">function Child() &#123;&#125;</div><div class="line">//寄生组合式继承实现方式如下：</div><div class="line">Child.prototype = Object.create(Parent.prototype);</div><div class="line">var child=new Child();</div><div class="line">console.log(child.eat());//只有找到父类原型上的方法</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js继承/">js继承</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前后端分离，是为了彼此更好 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、被误解的前后端分离在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。
+虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端分离，是为了彼此更好">
+<meta property="og:url" content="http://yanwenxi.github.io/2016/07/16/qianhouduanfenli/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="一、被误解的前后端分离在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。
+虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/2.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/5.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/11.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/3.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/6.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/4.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/7.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/8.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/10.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/1.png">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/9.png">
+<meta property="og:updated_time" content="2016-12-12T14:21:26.469Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前后端分离，是为了彼此更好">
+<meta name="twitter:description" content="一、被误解的前后端分离在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。
+虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在">
+<meta name="twitter:image" content="http://oi28tswuq.bkt.clouddn.com/images/2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/">文章页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/">文章页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-qianhouduanfenli" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/16/qianhouduanfenli/" class="article-date">
+      <time datetime="2016-07-16T04:41:23.000Z" itemprop="datePublished">2016-07-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前后端分离，是为了彼此更好
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前后端分享/">前后端分享</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="一、被误解的前后端分离"><a href="#一、被误解的前后端分离" class="headerlink" title="一、被误解的前后端分离"></a>一、被误解的前后端分离</h3><p>在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。</p>
+<p>虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在Web应用的开发期进行了前后端开发工作的分工就是前后端分离。</p>
+<p>其实并非如此，准确的说，前后端分离并不只是开发模式，而是Web应用的一种架构模式。在开发期，前后端工程师可以通过约定好交互接口，实现并行开发；在运行期，前后端分离模式需要对Web应用进行分离部署，前后端之间使用HTTP请求进行交互。然而作为应用的架构模式，前后端分离并不是通过这样一句话就能一概而谈的，我们可以从交互形式、代码组织方式、开发模式三个方面对前后端分离进行认识。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/2.png" alt=""><br>在前后端分离架构中，后端只需要负责按照约定的数据格式向前端提供可调用的API服务即可。前后端之间通过HTTP请求进行交互，前端获取到数据后，进行页面的装配和渲染。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/5.png" alt=""><br>在传统架构模式中，前后端代码存放于同一个代码库中，甚至是同一工程目录下。页面中还夹杂着后端代码。前后端工程师进行开发时，都必须把整个项目导入到开发工具中。</p>
+<p>而前后端分离模式在代码组织形式上有以下两种：</p>
+<h4 id="半分离"><a href="#半分离" class="headerlink" title="半分离"></a>半分离</h4><p>前后端共用一个代码库，但是代码分别存放在两个工程中。后端不关心或很少关心前端元素的输出情况，前端不能独立进行开发和测试，项目中缺乏前后端交互的测试用例。</p>
+<h4 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h4><p>前后端代码库分离，前端代码中有可以进行Mock测试（通过构造虚拟测试对象以简化测试环境的方法）的伪后端，能支持前端的独立开发和测试。而后端代码中除了功能实现外，还有着详细的测试用例，以保证API的可用性，降低集成风险。</p>
+<h4 id="3、开发模式"><a href="#3、开发模式" class="headerlink" title="3、开发模式"></a>3、开发模式</h4><p>传统的MVC架构开发，没有进行前后端分离，前端工程师负责编写HTML，完成前端页面设计，然后给后端工程师员套界面，使用模板技术将前端代码转换成JSP页面，同时内嵌java代码。应用运行期，将全部代码进行打包，部署到同一服务器上，或者进行简单的动静态分离部署。</p>
+<p>此时，应用的开发流程如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/11.png" alt=""><br>在前后端分离架构中，前端工程师只需要编写HTML、js、CSS等前端资源，然后通过HTTP请求调用后端提供的服务即可。除了开发期的分离，在运行期前后端资源也会进行分离部署。</p>
+<p>前后端分离之后，开发流程将如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/3.png" alt=""><br>通过上面的两幅流程图，不难发现，在开发模式上，前后端分离不仅仅只是工程师的分工开发，更重要的意义在于实现了前后端的并行开发，和简化了开发流程。</p>
+<h3 id="二、为什么要“离”：4个好处"><a href="#二、为什么要“离”：4个好处" class="headerlink" title="二、为什么要“离”：4个好处"></a>二、为什么要“离”：4个好处</h3><p>重新认识前后端分离之后，想必大家心里都会有疑问，前后端分离模式与之前的Web应用架构相比可谓是大相径庭，我们为什么要进行前后端分离呢？正如莎士比亚在《哈姆雷特》中的经典名句一样，分还是不分，这是个问题。</p>
+<p>从目前应用软件的发展趋势来看，一方面，用户越来越注重软件的体验感，随着互联网的蓬勃发展，应用开始走向多终端化；另一方面，大型应用的架构模式正纷纷向着云化、微服务化发展。</p>
+<p>虽然过去的应用架构暂时还能支撑起当下应用的开发，但是各种弊端已经开始浮出水面，几年前能带来开发便捷优势的前后端代码混合模式，在当下已经成为了拖慢我们前进步伐的泥沼，让我们屡屡吃痛。我们之所以开始尝试前后端分离，是为了能在未来获得更好的发展，期望通过前后端分离架构，来为我们带来以下4个方面的提升。</p>
+<p>为孵化优质产品打造精益团队</p>
+<p>正如康威定律所述，产品是组织沟通结构的缩影，软件开发团队想要孵化出优质的产品，必须先打造一个精益的开发团队。开发团队的组织划分是如何影响产品的孵化呢，我们通过下面的示例来进行说明。</p>
+<p>如果开发团队是按照业务边界进行划分的，开发出来的产品将可能会是微服务的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/6.png" alt=""><br>如果开发团队分为前端团队、后台服务团队和DBA团队，产品将会成长为下面的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/4.png" alt=""><br>应用不断迭代，功能日趋完善，开发团队也随之壮大。虽然现在有些人比较推崇全栈工程师，一位全栈工程师就能支持前后端的所有开发。但是试想一下，如果在开发团队中前后端开发分隔不清，职责边界模糊不明，代码均由相同的工程师完成，长此以往前后端代码的耦合程度可想而知。</p>
+<p>通过将开发团队前后端分离化，让前后端工程师只需要专注于前端或后端的开发工作，使得前后端工程师分别自治，培养其独特的技术特性，然后构建出一个全栈式的精益开发团队。这样的开发团队能够快速应对需求的变更以及市场的复杂多变，打造出架构清晰、前后端并重的优质产品。</p>
+<h4 id="提升开发效率"><a href="#提升开发效率" class="headerlink" title="提升开发效率"></a>提升开发效率</h4><p>传统开发模式中，前后端开发强依赖。需要前端工程师先完成静态页面的Demo，后端工程师才能将页面Demo翻译成VM模板，如果前端页面出现变动，又会需要前后端工程师再走一次开发流程，如此一来开发效率将会变得很低。</p>
+<p>前后端分离以后，可以实现前后端代码的解耦，只要前后端沟通约定好应用所需接口以及接口参数，便可以开始并行开发，无需等待对方的开发工作结束。与此同时，即使需求发生变更，只要接口与数据格式不变，后端开发人员就不需要修改代码，只要前端进行变动即可。如此一来整个应用的开发效率必然会有质的提升。</p>
+<h4 id="完美应对复杂多变的前端需求"><a href="#完美应对复杂多变的前端需求" class="headerlink" title="完美应对复杂多变的前端需求"></a>完美应对复杂多变的前端需求</h4><p>Web应用的用户体验关注度与日俱增，使得应用的前端界面需要有华丽酷炫的外观，简单易用的操作，变化多样的界面设计和个性化的自定义展示。这使得前端开始变重，逻辑复杂程度加大，渲染效果多样化加剧。</p>
+<p>移动终端的大范围普及，让应用向着多终端化发展，这就要求前端页面需要对不同终端的显示都能进行配适。</p>
+<p>传统开发模式中，前后端工程师开发职责不明确，面对复杂多变的前端需求，开发团队势必会变得捉襟见肘、不堪重负。</p>
+<p>如果开发团队能完成前后端分离的转型，打造优秀的前后端团队，开发独立化，让开发人员做到专注专精，开发能力必然会有所提升，能够完美应对各种复杂多变的前端需求。</p>
+<h4 id="增强代码可维护性"><a href="#增强代码可维护性" class="headerlink" title="增强代码可维护性"></a>增强代码可维护性</h4><p>前后端分离后，应用的代码不再是前后端混合，只有在运行期才会有调用依赖关系。应用代码将会变得整洁清晰，不论是代码阅读还是代码维护都会比以前轻松。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/7.png" alt=""></p>
+<h3 id="三、我要不要“离”：4种场景"><a href="#三、我要不要“离”：4种场景" class="headerlink" title="三、我要不要“离”：4种场景"></a>三、我要不要“离”：4种场景</h3><p>然而任何一项技术都不是银弹，前后端分离也是如此。虽然前后端分离架构能带来众多优势，但终究得建立在开发团队适合的基础之上。我们暂且以前端页面的渲染效果与逻辑复杂程度把Web应用大致分为轻前端、重前端、前后均衡三种类型，然后加上现在热门的微服务架构应用，一起探讨一下什么样的Web应用适合进行前后端分离。</p>
+<h4 id="轻前端"><a href="#轻前端" class="headerlink" title="轻前端"></a>轻前端</h4><p>页面布局简单，颜色、字体类型较少<br>对前端界面的渲染效果没有高要求，无动画效果<br>只有少量、简单的业务逻辑<br>只需要在不同终端上布局能适应</p>
+<p>对于这样对前端渲染要求不高，业务逻辑简单的轻前端应用来说，因为涉及到的前端技术并不复杂，所以没必要追求前后端分离。将前后端代码放到一起，反而更方便进行开发，但是在开发过程中需要做到关注点分离（Separate Concern）。</p>
+<h4 id="重前端"><a href="#重前端" class="headerlink" title="重前端"></a>重前端</h4><p>页面布局复杂，使用了多种颜色和字体<br>需要有较高的页面渲染效果，有大量动画<br>前端页面中包含有复杂业务逻辑<br>需要在不同终端和浏览器上保证布局适应和渲染效果</p>
+<p>对于重前端应用，建议采用前后端分离架构，如果开发团队中前端工程师不足，需要尽早完善前端团队的建设，确保前后端并重。</p>
+<h4 id="前后均衡"><a href="#前后均衡" class="headerlink" title="前后均衡"></a>前后均衡</h4><p>页面布局适中，使用的颜色和字体种类不多<br>页面中使用了少许动画效果<br>业务逻辑较为简单，可下沉到后端实现<br>只需要在不同终端上布局能适应</p>
+<p>对于前后端均衡应用，建议综合团队的人员结构和未来发展方向进行考虑。如果在团队中前端工程师的占比不高，后续也没有继续发展前端的计划，那么就不建议过于追求前后端分离。如果对未来有更高期望，即使在前端工程师占比不高的情况下，依然建议团队尝试前后端分离转型，开始着手培养合适的前端工程师。如果团队中已经有了相当规模的前端工程师，建议立即转向前后端分离，并且尽早做到前后端代码分离，为前端提供一个可以进行开发调试的伪后端。</p>
+<h4 id="微服务架构应用"><a href="#微服务架构应用" class="headerlink" title="微服务架构应用"></a>微服务架构应用</h4><p>微服务架构应用由大量微服务提供者构成，共同为用户提供服务。在微服务架构中，很多微服务提供者都是基于SpringBoot实现的，通过API Getway（API网关）进行微服务的整合，然后在一个统一的前端门户上为用户提供所需服务。</p>
+<p>微服务基于SpringBoot开发，要达到快速交付的目的，并且每个微服务的粒度都比较小，这必然需要微服务的前后端由不同的工程师分别实现，然后相互之间使用Restful进行通讯。如果还是沿用之前的开发模式，将会增大微服务架构应用的构建难度。而前后段分离模式正是解决这一难题的良药。</p>
+<h3 id="四、分离部署方案浅析"><a href="#四、分离部署方案浅析" class="headerlink" title="四、分离部署方案浅析"></a>四、分离部署方案浅析</h3><p>前后端开发分离之后，应用在部署时也需要进行前后端分离。在进行前后端分离方案选择的时候，需要结合项目的需求情况和用户群体来考虑。目前业内较为常用的前后端分离部署方案有如下几种。</p>
+<h4 id="1、Nginx-Server"><a href="#1、Nginx-Server" class="headerlink" title="1、Nginx+Server"></a>1、Nginx+Server</h4><p>将前端资源部署在Nginx上，后端服务部署在常规的服务器。当浏览器发起访问请求的时候，如果请求的是页面资源，Nginx直接把资源返回到前端；如果请求是调用后端服务，则经过Nginx转发到后端服务器，完成响应后经Nginx返回到浏览器。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/8.png" alt=""><br>这个方案比较简单，易于实现，而且能达到前后端解耦的目的。</p>
+<p>但是对于页面量比较大，需要有良好SEO的应用来说，此方案缺点也较为明显。因为Nginx只是向浏览器返回页面静态资源，而国内的搜索引擎爬虫只会抓取静态数据，不会解析页面中的js，这使得应用得不到良好的搜索引擎支持。同时因为Nginx不会进行页面的组装渲染，需要把静态页面返回到浏览器，然后完成渲染工作，这加重了浏览器的渲染负担。</p>
+<h4 id="2、Node-Server"><a href="#2、Node-Server" class="headerlink" title="2、Node+Server"></a>2、Node+Server</h4><p>这是淘宝所使用的前后端分离模式，在浏览器与后端服务器之间增加一个了Node Server作为中间层，将前端资源部署到Node Server中。Node Server中还包含了一层Model Proxy，负责与服务端进行通信。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/10.png" alt=""><br>浏览器发出的请求都被Node Server接收，然后通过Model Proxy调用后端服务器提供的服务。Node Server得到后端服务器反馈，接着在Node Server中完成页面的组装渲染，把最终页面返回给浏览器。</p>
+<p>如此一来不仅达到了前后端解耦的目的，还解决了浏览器渲染负担过重的问题，为SEO提供了比较好的支持。</p>
+<p>但在这样的模式中，浏览器所有发出的请求都需要经过Node Server进行中转，然后才能到达后端服务器。在实际的应用中，并不是所有的请求都需要页面渲染，只要在页面上直接调用后端服务器提供的服务即可。所以这个模式必然会对请求性能有所消耗</p>
+<h4 id="3、Nginx-Node-Server"><a href="#3、Nginx-Node-Server" class="headerlink" title="3、Nginx+Node+Server"></a>3、Nginx+Node+Server</h4><p>为了能解决方案2中请求性能损失的问题，我们可以考虑在其基础之上增加Nginx。浏览器发起的请求经过Nginx进行分发，URL请求统一分发到Node Server，在Node Server中进行页面组装渲染；API请求则直接发送到后端服务器，完成响应。</p>
+<p>目前在已经有一个名为Goku的Go语言框架提供了这样的前后端分离解决方案。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/1.png" alt=""><br>通过对三种前后端分离方案的对比可以看出：</p>
+<p>如果是企业级应用，不需要考虑对SEO的支持，浏览器渲染也可以忽略不计，Nginx+Server的模式无疑是最好的选择，实施成本相对来说比较低；</p>
+<p>如果是互联网应用，需要有良好的SEO支持，页面渲染工作量大，那应该选择Nginx+Node+Server的方案，各个方面都能得到比较好的兼顾。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/9.png" alt=""></p>
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p>前后端分离并非仅仅只是前后端开发的分工，而是在开发期进行代码存放分离、前后端开发职责分离，前后端能够独立进行开发测试；在运行期进行应用部署分离，前后端之间通过HTTP请求进行通讯。前后端分离的开发模式与传统模式相比，能为我们提升开发效率、增强代码可维护性，让我们有规划地打造一个前后端并重的精益开发团队，更好地应对越来越复杂多变的Web应用开发需求。</p>
+<p>传统的前后端混合开发模式，虽然久经考验，到现在依然还是能支撑起应用的开发。但是放眼未来，应用的云化、微服务化势不可挡。同社会分工精细化一样，前后端开发的精细化也是必然趋势。技术在持续进步，架构在不断演进，只有紧跟发展的脚步，不断调整项目管理方式，软件开发模式，才能在互联网浪潮中把握机会，乘风破浪。</p>
+<p>前后端分离，是为了让彼此更好。</p>
+<p>文章来源网络，版权归作者所有，作者：敖显奇@EAII企业架构创新研究院(eaworld)</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2016年07月16日 - 12时41分</p>
+        <p><span>最后更新:</span>2016年12月12日 - 22时21分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/16/qianhouduanfenli/" title="前后端分离，是为了彼此更好">http://yanwenxi.github.io/2016/07/16/qianhouduanfenli/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/07/16/qianhouduanfenli/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/08/12/react1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          react入门学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/12/gitsinglefile/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何在github上下载单个文件夹？</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、被误解的前后端分离"><span class="toc-number">1.</span> <span class="toc-text">一、被误解的前后端分离</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#半分离"><span class="toc-number">1.1.</span> <span class="toc-text">半分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分离"><span class="toc-number">1.2.</span> <span class="toc-text">分离</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、开发模式"><span class="toc-number">1.3.</span> <span class="toc-text">3、开发模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、为什么要“离”：4个好处"><span class="toc-number">2.</span> <span class="toc-text">二、为什么要“离”：4个好处</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#提升开发效率"><span class="toc-number">2.1.</span> <span class="toc-text">提升开发效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完美应对复杂多变的前端需求"><span class="toc-number">2.2.</span> <span class="toc-text">完美应对复杂多变的前端需求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增强代码可维护性"><span class="toc-number">2.3.</span> <span class="toc-text">增强代码可维护性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、我要不要“离”：4种场景"><span class="toc-number">3.</span> <span class="toc-text">三、我要不要“离”：4种场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#轻前端"><span class="toc-number">3.1.</span> <span class="toc-text">轻前端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重前端"><span class="toc-number">3.2.</span> <span class="toc-text">重前端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#前后均衡"><span class="toc-number">3.3.</span> <span class="toc-text">前后均衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#微服务架构应用"><span class="toc-number">3.4.</span> <span class="toc-text">微服务架构应用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、分离部署方案浅析"><span class="toc-number">4.</span> <span class="toc-text">四、分离部署方案浅析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、Nginx-Server"><span class="toc-number">4.1.</span> <span class="toc-text">1、Nginx+Server</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、Node-Server"><span class="toc-number">4.2.</span> <span class="toc-text">2、Node+Server</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、Nginx-Node-Server"><span class="toc-number">4.3.</span> <span class="toc-text">3、Nginx+Node+Server</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、总结"><span class="toc-number">5.</span> <span class="toc-text">五、总结</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/07/16/qianhouduanfenli/" data-title="前后端分离，是为了彼此更好" data-url="http://yanwenxi.github.io/2016/07/16/qianhouduanfenli/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/08/12/react1/" title="上一篇: react入门学习">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/03/12/gitsinglefile/" title="下一篇: 如何在github上下载单个文件夹？">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
