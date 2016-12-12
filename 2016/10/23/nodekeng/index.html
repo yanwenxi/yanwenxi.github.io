@@ -3,39 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>非关系型数据库和关系型数据库比较 | 闫文喜的个人博客</title>
+  <title>node 中的一些坑 | 闫文喜的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关系型数据库的特点常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.Not Only SQL简称NoSQL，泛指非关系型的数据库。常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.
-Nosql数据库的分类：
-NoSQL的优点/缺点优点:
-高可扩展性
-分布式计算
-低成本
-架">
+  <meta name="description" content="核心模块require
+node中通过require引入模块的机制为将需要的模块对应的js文件引入后执行一遍，因此在自己写的依赖模块中尽量不要无故输出信息，否则会使控制台十分混乱。
+fsfs模块中的所有方法在指定路径时都必须为绝对路径或是完整的相对路径（即包含../、./、/的相对路径）。
+fs.mkdir/mkdirSync
+API1fs.mkdir(path, callback)
+创建文件夹操">
 <meta property="og:type" content="article">
-<meta property="og:title" content="非关系型数据库和关系型数据库比较">
-<meta property="og:url" content="http://yanwenxi.github.io/2016/12/10/data-compare/index.html">
+<meta property="og:title" content="node 中的一些坑">
+<meta property="og:url" content="http://yanwenxi.github.io/2016/10/23/nodekeng/index.html">
 <meta property="og:site_name" content="闫文喜的个人博客">
-<meta property="og:description" content="关系型数据库的特点常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.Not Only SQL简称NoSQL，泛指非关系型的数据库。常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.
-Nosql数据库的分类：
-NoSQL的优点/缺点优点:
-高可扩展性
-分布式计算
-低成本
-架">
-<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/relative.png">
-<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/Nosql.png">
-<meta property="og:updated_time" content="2016-12-12T07:13:55.848Z">
+<meta property="og:description" content="核心模块require
+node中通过require引入模块的机制为将需要的模块对应的js文件引入后执行一遍，因此在自己写的依赖模块中尽量不要无故输出信息，否则会使控制台十分混乱。
+fsfs模块中的所有方法在指定路径时都必须为绝对路径或是完整的相对路径（即包含../、./、/的相对路径）。
+fs.mkdir/mkdirSync
+API1fs.mkdir(path, callback)
+创建文件夹操">
+<meta property="og:updated_time" content="2016-12-12T08:44:45.640Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="非关系型数据库和关系型数据库比较">
-<meta name="twitter:description" content="关系型数据库的特点常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.Not Only SQL简称NoSQL，泛指非关系型的数据库。常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.
-Nosql数据库的分类：
-NoSQL的优点/缺点优点:
-高可扩展性
-分布式计算
-低成本
-架">
-<meta name="twitter:image" content="http://oi28tswuq.bkt.clouddn.com/images/relative.png">
+<meta name="twitter:title" content="node 中的一些坑">
+<meta name="twitter:description" content="核心模块require
+node中通过require引入模块的机制为将需要的模块对应的js文件引入后执行一遍，因此在自己写的依赖模块中尽量不要无故输出信息，否则会使控制台十分混乱。
+fsfs模块中的所有方法在指定路径时都必须为绝对路径或是完整的相对路径（即包含../、./、/的相对路径）。
+fs.mkdir/mkdirSync
+API1fs.mkdir(path, callback)
+创建文件夹操">
   
     <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
   
@@ -235,11 +229,11 @@ NoSQL的优点/缺点优点:
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-data-compare" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-nodekeng" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/10/data-compare/" class="article-date">
-      <time datetime="2016-12-10T03:22:45.000Z" itemprop="datePublished">2016-12-10</time>
+      <a href="/2016/10/23/nodekeng/" class="article-date">
+      <time datetime="2016-10-23T15:06:26.000Z" itemprop="datePublished">2016-10-23</time>
 </a>
     </div>
   
@@ -252,7 +246,7 @@ NoSQL的优点/缺点优点:
         
   
     <h1 class="article-title" itemprop="name">
-      非关系型数据库和关系型数据库比较
+      node 中的一些坑
     </h1>
   
 
@@ -263,7 +257,7 @@ NoSQL的优点/缺点优点:
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongoDB-数据库/">mongoDB 数据库</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -273,18 +267,35 @@ NoSQL的优点/缺点优点:
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h3><p><img src="http://oi28tswuq.bkt.clouddn.com/images/relative.png" alt="database-compare"><br>常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.<br>Not Only SQL简称NoSQL，泛指非关系型的数据库。<br>常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.</p>
-<h3 id="Nosql数据库的分类："><a href="#Nosql数据库的分类：" class="headerlink" title="Nosql数据库的分类："></a>Nosql数据库的分类：</h3><p><img src="http://oi28tswuq.bkt.clouddn.com/images/Nosql.png" alt="Nosql"></p>
-<h2 id="NoSQL的优点-缺点"><a href="#NoSQL的优点-缺点" class="headerlink" title="NoSQL的优点/缺点"></a>NoSQL的优点/缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><ul>
-<li>高可扩展性</li>
-<li>分布式计算</li>
-<li>低成本</li>
-<li>架构的灵活性，半结构化数据</li>
-<li>没有复杂的关系<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点:"></a>缺点:</h3></li>
-<li>没有标准化</li>
-<li>有限的查询功能（到目前为止）</li>
-<li>最终一致性是不直观的程序 </li>
+        <h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3><p>require</p>
+<p>node中通过require引入模块的机制为将需要的模块对应的js文件引入后执行一遍，因此在自己写的依赖模块中尽量不要无故输出信息，否则会使控制台十分混乱。</p>
+<h3 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h3><p>fs模块中的所有方法在指定路径时都必须为绝对路径或是完整的相对路径（即包含../、./、/的相对路径）。</p>
+<p>fs.mkdir/mkdirSync</p>
+<p>API<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.mkdir(path, callback)</div></pre></td></tr></table></figure></p>
+<p>创建文件夹操作，支持文件夹嵌套，例如fs.mkdir(‘./a/b/c’),回调函数中的参数为Error信息，只有发生错误的时候才会存在，创建成功则为null。</p>
+<p>mkdir操作的路径如果有文件夹嵌套，则当上级路径不存在时，不能直接创建。例如当前文件夹下没有a文件夹，则fs.mkdir(‘./a/b’)不能直接创建a和a/b文件夹。<br>为了减少代码的重复量，可使用下面的函数来对mkdir操作进行封装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let path = require(&apos;path&apos;),</div><div class="line">    fs = require(&apos;fs&apos;);</div><div class="line">function mkdir(p,fn)&#123;</div><div class="line">    fs.exists(p, function (flag) &#123; // 判断当前路径下的文件夹是否已经存在</div><div class="line">        if(flag)&#123; // 如果当前文件夹已经存在则执行回调函数</div><div class="line">            return fn();</div><div class="line">        &#125;</div><div class="line">        // 如果当前文件夹不存在，则将当前文件夹的上级目录作为新的参数p，创建当前文件夹的操作放入回调函数，递归调用mkdir函数</div><div class="line">        mkdir(path.dirname(p), function () &#123;</div><div class="line">            fs.mkdir(p,fn);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里用到了path模块的dirname方法，这个方法的作用是获取一个路径的上级路径。</p>
+<p>fs.readFile/readFileSync</p>
+<p>读取文件操作，在使用同步方法readFileSync时函数直接返回读到的数据，如果发生错误则返回错误的信息。</p>
+<p>但是异步方法readFile在callback中的参数却是error和data，即不管是否成功第一个参数都是error，第二个参数才是读到的数据。</p>
+<p>在node中应尽量用stream来代替文件的直接读写操作。</p>
+<h3 id="请求与响应"><a href="#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h3><h4 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a>跨域请求</h4><ul>
+<li>cors</li>
 </ul>
+<p>如果需要采用cors来支持跨域请求，则需要对响应头进行如下设置（完整版）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">res.writeHead(200, &#123;</div><div class="line">    &quot;Access-Control-Allow-Origin&quot;: &quot;*&quot;,</div><div class="line">    &quot;Access-Control-Allow-Methods&quot;: &quot;GET, POST, PUT, DELETE, OPTIONS&quot;,</div><div class="line">    &quot;Access-Control-Allow-Headers&quot;: &quot;Content-Type, accept&quot;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>另外，跨域时尽量对请求方法和请求路径都进行验证（RESTful），因为某些客户端框架（ionic）在发送跨域请求时，会先发送一个option方法的请求来尝试跨域请求是否成功，在成功之后才会发送原本的请求。</p>
+<ul>
+<li>cookie</li>
+</ul>
+<p>一般在node中设置cookies都会使用基于express的第三方包cookie-parser。不使用第三方包的原生写法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res.setHeader(&quot;Set-Cookie&quot;, [...cookies])</div></pre></td></tr></table></figure></p>
+<p>其中cookies的格式为key=value; option，注意;后的空格。</p>
+<p>option的参数中max-age=time表示cookie的过期时间，其中time的为number，单位是秒。</p>
+<p>获取客户端传递的cookies的方法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.headers.cookie</div></pre></td></tr></table></figure></p>
+<p>如果使用express和cookie-parser，则关于cookie的方法都会被集成在request和response上，设置cookie的方法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res.cookie(key, value, option)</div></pre></td></tr></table></figure></p>
+<p>注意这里的option中的max-age单位变为了毫秒，其他则没有变化。</p>
+<p>获取客户端传递的cookies的方法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.cookies</div></pre></td></tr></table></figure></p>
+<p>获取的cookies为对象形式。</p>
+<p>IDE没有提示功能或者提示功能不全的朋友请注意上文中的cookie和cookies并熟练记住。</p>
 
       
     </div>
@@ -293,13 +304,13 @@ NoSQL的优点/缺点优点:
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></p>
+        <p><span>本文标题:</span><a href="/2016/10/23/nodekeng/">node 中的一些坑</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
-        <p><span>发布时间:</span>2016年12月10日 - 11时22分</p>
-        <p><span>最后更新:</span>2016年12月12日 - 15时13分</p>
+        <p><span>发布时间:</span>2016年10月23日 - 23时06分</p>
+        <p><span>最后更新:</span>2016年12月12日 - 16时44分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/10/data-compare/" title="非关系型数据库和关系型数据库比较">http://yanwenxi.github.io/2016/12/10/data-compare/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/12/10/data-compare/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/23/nodekeng/" title="node 中的一些坑">http://yanwenxi.github.io/2016/10/23/nodekeng/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/10/23/nodekeng/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -312,18 +323,18 @@ NoSQL的优点/缺点优点:
 
 <nav id="article-nav">
   
-    <a href="/2016/12/16/qianhouduanfenli/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/04/docker/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          前后端分离，是为了彼此更好
+          使用Docker快速发布nodejs应用
         
       </div>
     </a>
   
   
-    <a href="/2016/12/04/docker/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用Docker快速发布nodejs应用</div>
+    <a href="/2016/10/23/shejimoshi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">你应了解的4种JS设计模式</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -334,7 +345,7 @@ NoSQL的优点/缺点优点:
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系型数据库的特点"><span class="toc-number">1.</span> <span class="toc-text">关系型数据库的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nosql数据库的分类："><span class="toc-number">2.</span> <span class="toc-text">Nosql数据库的分类：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NoSQL的优点-缺点"><span class="toc-number"></span> <span class="toc-text">NoSQL的优点/缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.</span> <span class="toc-text">优点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">2.</span> <span class="toc-text">缺点:</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心模块"><span class="toc-number">1.</span> <span class="toc-text">核心模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fs"><span class="toc-number">2.</span> <span class="toc-text">fs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#请求与响应"><span class="toc-number">3.</span> <span class="toc-text">请求与响应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跨域请求"><span class="toc-number">3.1.</span> <span class="toc-text">跨域请求</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -382,7 +393,7 @@ NoSQL的优点/缺点优点:
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/10/data-compare/" data-title="非关系型数据库和关系型数据库比较" data-url="http://yanwenxi.github.io/2016/12/10/data-compare/"></div>
+    <div class="ds-thread" data-thread-key="2016/10/23/nodekeng/" data-title="node 中的一些坑" data-url="http://yanwenxi.github.io/2016/10/23/nodekeng/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -405,13 +416,13 @@ NoSQL的优点/缺点优点:
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/16/qianhouduanfenli/" title="上一篇: 前后端分离，是为了彼此更好">
+            <a href="/2016/12/04/docker/" title="上一篇: 使用Docker快速发布nodejs应用">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/04/docker/" title="下一篇: 使用Docker快速发布nodejs应用">
+            <a href="/2016/10/23/shejimoshi/" title="下一篇: 你应了解的4种JS设计模式">
                 <i class="fa fa-angle-right"></i>
             </a>
         

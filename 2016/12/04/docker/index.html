@@ -3,39 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>非关系型数据库和关系型数据库比较 | 闫文喜的个人博客</title>
+  <title>使用Docker快速发布nodejs应用 | 闫文喜的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关系型数据库的特点常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.Not Only SQL简称NoSQL，泛指非关系型的数据库。常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.
-Nosql数据库的分类：
-NoSQL的优点/缺点优点:
-高可扩展性
-分布式计算
-低成本
-架">
+  <meta name="description" content="使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！对docker的理解：未完待更新。。。临时有事。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="非关系型数据库和关系型数据库比较">
-<meta property="og:url" content="http://yanwenxi.github.io/2016/12/10/data-compare/index.html">
+<meta property="og:title" content="使用Docker快速发布nodejs应用">
+<meta property="og:url" content="http://yanwenxi.github.io/2016/12/04/docker/index.html">
 <meta property="og:site_name" content="闫文喜的个人博客">
-<meta property="og:description" content="关系型数据库的特点常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.Not Only SQL简称NoSQL，泛指非关系型的数据库。常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.
-Nosql数据库的分类：
-NoSQL的优点/缺点优点:
-高可扩展性
-分布式计算
-低成本
-架">
-<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/relative.png">
-<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/Nosql.png">
-<meta property="og:updated_time" content="2016-12-12T07:13:55.848Z">
+<meta property="og:description" content="使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！对docker的理解：未完待更新。。。临时有事。。">
+<meta property="og:updated_time" content="2016-12-12T09:04:34.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="非关系型数据库和关系型数据库比较">
-<meta name="twitter:description" content="关系型数据库的特点常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.Not Only SQL简称NoSQL，泛指非关系型的数据库。常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.
-Nosql数据库的分类：
-NoSQL的优点/缺点优点:
-高可扩展性
-分布式计算
-低成本
-架">
-<meta name="twitter:image" content="http://oi28tswuq.bkt.clouddn.com/images/relative.png">
+<meta name="twitter:title" content="使用Docker快速发布nodejs应用">
+<meta name="twitter:description" content="使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！对docker的理解：未完待更新。。。临时有事。。">
   
     <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
   
@@ -235,11 +214,11 @@ NoSQL的优点/缺点优点:
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-data-compare" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/10/data-compare/" class="article-date">
-      <time datetime="2016-12-10T03:22:45.000Z" itemprop="datePublished">2016-12-10</time>
+      <a href="/2016/12/04/docker/" class="article-date">
+      <time datetime="2016-12-04T02:47:19.000Z" itemprop="datePublished">2016-12-04</time>
 </a>
     </div>
   
@@ -252,7 +231,7 @@ NoSQL的优点/缺点优点:
         
   
     <h1 class="article-title" itemprop="name">
-      非关系型数据库和关系型数据库比较
+      使用Docker快速发布nodejs应用
     </h1>
   
 
@@ -262,10 +241,6 @@ NoSQL的优点/缺点优点:
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongoDB-数据库/">mongoDB 数据库</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -273,18 +248,7 @@ NoSQL的优点/缺点优点:
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h3><p><img src="http://oi28tswuq.bkt.clouddn.com/images/relative.png" alt="database-compare"><br>常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.<br>Not Only SQL简称NoSQL，泛指非关系型的数据库。<br>常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.</p>
-<h3 id="Nosql数据库的分类："><a href="#Nosql数据库的分类：" class="headerlink" title="Nosql数据库的分类："></a>Nosql数据库的分类：</h3><p><img src="http://oi28tswuq.bkt.clouddn.com/images/Nosql.png" alt="Nosql"></p>
-<h2 id="NoSQL的优点-缺点"><a href="#NoSQL的优点-缺点" class="headerlink" title="NoSQL的优点/缺点"></a>NoSQL的优点/缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><ul>
-<li>高可扩展性</li>
-<li>分布式计算</li>
-<li>低成本</li>
-<li>架构的灵活性，半结构化数据</li>
-<li>没有复杂的关系<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点:"></a>缺点:</h3></li>
-<li>没有标准化</li>
-<li>有限的查询功能（到目前为止）</li>
-<li>最终一致性是不直观的程序 </li>
-</ul>
+        <p>使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！<br>对docker的理解：未完待更新。。。临时有事。。</p>
 
       
     </div>
@@ -293,13 +257,13 @@ NoSQL的优点/缺点优点:
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
-        <p><span>发布时间:</span>2016年12月10日 - 11时22分</p>
-        <p><span>最后更新:</span>2016年12月12日 - 15时13分</p>
+        <p><span>发布时间:</span>2016年12月04日 - 10时47分</p>
+        <p><span>最后更新:</span>2016年12月12日 - 17时04分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/10/data-compare/" title="非关系型数据库和关系型数据库比较">http://yanwenxi.github.io/2016/12/10/data-compare/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/12/10/data-compare/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/04/docker/" title="使用Docker快速发布nodejs应用">http://yanwenxi.github.io/2016/12/04/docker/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/12/04/docker/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -312,18 +276,18 @@ NoSQL的优点/缺点优点:
 
 <nav id="article-nav">
   
-    <a href="/2016/12/16/qianhouduanfenli/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/10/data-compare/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          前后端分离，是为了彼此更好
+          非关系型数据库和关系型数据库比较
         
       </div>
     </a>
   
   
-    <a href="/2016/12/04/docker/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用Docker快速发布nodejs应用</div>
+    <a href="/2016/10/23/nodekeng/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">node 中的一些坑</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -334,7 +298,7 @@ NoSQL的优点/缺点优点:
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系型数据库的特点"><span class="toc-number">1.</span> <span class="toc-text">关系型数据库的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nosql数据库的分类："><span class="toc-number">2.</span> <span class="toc-text">Nosql数据库的分类：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NoSQL的优点-缺点"><span class="toc-number"></span> <span class="toc-text">NoSQL的优点/缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.</span> <span class="toc-text">优点:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">2.</span> <span class="toc-text">缺点:</span></a></li></ol>
+    
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -382,7 +346,7 @@ NoSQL的优点/缺点优点:
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/10/data-compare/" data-title="非关系型数据库和关系型数据库比较" data-url="http://yanwenxi.github.io/2016/12/10/data-compare/"></div>
+    <div class="ds-thread" data-thread-key="2016/12/04/docker/" data-title="使用Docker快速发布nodejs应用" data-url="http://yanwenxi.github.io/2016/12/04/docker/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -405,13 +369,13 @@ NoSQL的优点/缺点优点:
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/16/qianhouduanfenli/" title="上一篇: 前后端分离，是为了彼此更好">
+            <a href="/2016/12/10/data-compare/" title="上一篇: 非关系型数据库和关系型数据库比较">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/04/docker/" title="下一篇: 使用Docker快速发布nodejs应用">
+            <a href="/2016/10/23/nodekeng/" title="下一篇: node 中的一些坑">
                 <i class="fa fa-angle-right"></i>
             </a>
         

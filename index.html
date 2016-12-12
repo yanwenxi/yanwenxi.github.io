@@ -142,7 +142,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a>
+                        <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a>
                     </div>
                 </section>
                 
@@ -218,11 +218,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-qianhouduanfenli" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/12/test/" class="article-date">
-      <time datetime="2016-12-12T03:13:07.387Z" itemprop="datePublished">2016-12-12</time>
+      <a href="/2016/12/16/qianhouduanfenli/" class="article-date">
+      <time datetime="2016-12-16T04:41:23.000Z" itemprop="datePublished">2016-12-16</time>
 </a>
     </div>
   
@@ -231,10 +231,66 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h2><p><a href="http://www.baidu.com" target="_blank" rel="external">百度</a> 我是超链接<br><img src="../img/test.png" alt="我是你"></p>
+        <h3 id="一、被误解的前后端分离"><a href="#一、被误解的前后端分离" class="headerlink" title="一、被误解的前后端分离"></a>一、被误解的前后端分离</h3><p>在Web应用开发过程中，业界对前后端的分界线似乎一直都没有确定的概念，不过大多数人以浏览器作为前后端的分界线。将浏览器中为用户进行页面展示的部分称为前端，而将运行于服务器，为前端提供业务逻辑和数据准备的所有代码统称为后端。</p>
+<p>虽然前后端分离在数年前就已经开始受到关注，但很多人对它却是只闻其声，未见其形，所以对它产生了一些误解，误以为前后段分离只是一种Web应用的开发模式，只要在Web应用的开发期进行了前后端开发工作的分工就是前后端分离。</p>
+<p>其实并非如此，准确的说，前后端分离并不只是开发模式，而是Web应用的一种架构模式。在开发期，前后端工程师可以通过约定好交互接口，实现并行开发；在运行期，前后端分离模式需要对Web应用进行分离部署，前后端之间使用HTTP请求进行交互。然而作为应用的架构模式，前后端分离并不是通过这样一句话就能一概而谈的，我们可以从交互形式、代码组织方式、开发模式三个方面对前后端分离进行认识。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/2.png" alt=""><br>在前后端分离架构中，后端只需要负责按照约定的数据格式向前端提供可调用的API服务即可。前后端之间通过HTTP请求进行交互，前端获取到数据后，进行页面的装配和渲染。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/5.png" alt=""><br>在传统架构模式中，前后端代码存放于同一个代码库中，甚至是同一工程目录下。页面中还夹杂着后端代码。前后端工程师进行开发时，都必须把整个项目导入到开发工具中。</p>
+<p>而前后端分离模式在代码组织形式上有以下两种：</p>
+<h4 id="半分离"><a href="#半分离" class="headerlink" title="半分离"></a>半分离</h4><p>前后端共用一个代码库，但是代码分别存放在两个工程中。后端不关心或很少关心前端元素的输出情况，前端不能独立进行开发和测试，项目中缺乏前后端交互的测试用例。</p>
+<h4 id="分离"><a href="#分离" class="headerlink" title="分离"></a>分离</h4><p>前后端代码库分离，前端代码中有可以进行Mock测试（通过构造虚拟测试对象以简化测试环境的方法）的伪后端，能支持前端的独立开发和测试。而后端代码中除了功能实现外，还有着详细的测试用例，以保证API的可用性，降低集成风险。</p>
+<h4 id="3、开发模式"><a href="#3、开发模式" class="headerlink" title="3、开发模式"></a>3、开发模式</h4><p>传统的MVC架构开发，没有进行前后端分离，前端工程师负责编写HTML，完成前端页面设计，然后给后端工程师员套界面，使用模板技术将前端代码转换成JSP页面，同时内嵌java代码。应用运行期，将全部代码进行打包，部署到同一服务器上，或者进行简单的动静态分离部署。</p>
+<p>此时，应用的开发流程如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/11.png" alt=""><br>在前后端分离架构中，前端工程师只需要编写HTML、js、CSS等前端资源，然后通过HTTP请求调用后端提供的服务即可。除了开发期的分离，在运行期前后端资源也会进行分离部署。</p>
+<p>前后端分离之后，开发流程将如下图所示。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/3.png" alt=""><br>通过上面的两幅流程图，不难发现，在开发模式上，前后端分离不仅仅只是工程师的分工开发，更重要的意义在于实现了前后端的并行开发，和简化了开发流程。</p>
+<h3 id="二、为什么要“离”：4个好处"><a href="#二、为什么要“离”：4个好处" class="headerlink" title="二、为什么要“离”：4个好处"></a>二、为什么要“离”：4个好处</h3><p>重新认识前后端分离之后，想必大家心里都会有疑问，前后端分离模式与之前的Web应用架构相比可谓是大相径庭，我们为什么要进行前后端分离呢？正如莎士比亚在《哈姆雷特》中的经典名句一样，分还是不分，这是个问题。</p>
+<p>从目前应用软件的发展趋势来看，一方面，用户越来越注重软件的体验感，随着互联网的蓬勃发展，应用开始走向多终端化；另一方面，大型应用的架构模式正纷纷向着云化、微服务化发展。</p>
+<p>虽然过去的应用架构暂时还能支撑起当下应用的开发，但是各种弊端已经开始浮出水面，几年前能带来开发便捷优势的前后端代码混合模式，在当下已经成为了拖慢我们前进步伐的泥沼，让我们屡屡吃痛。我们之所以开始尝试前后端分离，是为了能在未来获得更好的发展，期望通过前后端分离架构，来为我们带来以下4个方面的提升。</p>
+<p>为孵化优质产品打造精益团队</p>
+<p>正如康威定律所述，产品是组织沟通结构的缩影，软件开发团队想要孵化出优质的产品，必须先打造一个精益的开发团队。开发团队的组织划分是如何影响产品的孵化呢，我们通过下面的示例来进行说明。</p>
+<p>如果开发团队是按照业务边界进行划分的，开发出来的产品将可能会是微服务的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/6.png" alt=""><br>如果开发团队分为前端团队、后台服务团队和DBA团队，产品将会成长为下面的架构。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/4.png" alt=""><br>应用不断迭代，功能日趋完善，开发团队也随之壮大。虽然现在有些人比较推崇全栈工程师，一位全栈工程师就能支持前后端的所有开发。但是试想一下，如果在开发团队中前后端开发分隔不清，职责边界模糊不明，代码均由相同的工程师完成，长此以往前后端代码的耦合程度可想而知。</p>
+<p>通过将开发团队前后端分离化，让前后端工程师只需要专注于前端或后端的开发工作，使得前后端工程师分别自治，培养其独特的技术特性，然后构建出一个全栈式的精益开发团队。这样的开发团队能够快速应对需求的变更以及市场的复杂多变，打造出架构清晰、前后端并重的优质产品。</p>
+<h4 id="提升开发效率"><a href="#提升开发效率" class="headerlink" title="提升开发效率"></a>提升开发效率</h4><p>传统开发模式中，前后端开发强依赖。需要前端工程师先完成静态页面的Demo，后端工程师才能将页面Demo翻译成VM模板，如果前端页面出现变动，又会需要前后端工程师再走一次开发流程，如此一来开发效率将会变得很低。</p>
+<p>前后端分离以后，可以实现前后端代码的解耦，只要前后端沟通约定好应用所需接口以及接口参数，便可以开始并行开发，无需等待对方的开发工作结束。与此同时，即使需求发生变更，只要接口与数据格式不变，后端开发人员就不需要修改代码，只要前端进行变动即可。如此一来整个应用的开发效率必然会有质的提升。</p>
+<h4 id="完美应对复杂多变的前端需求"><a href="#完美应对复杂多变的前端需求" class="headerlink" title="完美应对复杂多变的前端需求"></a>完美应对复杂多变的前端需求</h4><p>Web应用的用户体验关注度与日俱增，使得应用的前端界面需要有华丽酷炫的外观，简单易用的操作，变化多样的界面设计和个性化的自定义展示。这使得前端开始变重，逻辑复杂程度加大，渲染效果多样化加剧。</p>
+<p>移动终端的大范围普及，让应用向着多终端化发展，这就要求前端页面需要对不同终端的显示都能进行配适。</p>
+<p>传统开发模式中，前后端工程师开发职责不明确，面对复杂多变的前端需求，开发团队势必会变得捉襟见肘、不堪重负。</p>
+<p>如果开发团队能完成前后端分离的转型，打造优秀的前后端团队，开发独立化，让开发人员做到专注专精，开发能力必然会有所提升，能够完美应对各种复杂多变的前端需求。</p>
+<h4 id="增强代码可维护性"><a href="#增强代码可维护性" class="headerlink" title="增强代码可维护性"></a>增强代码可维护性</h4><p>前后端分离后，应用的代码不再是前后端混合，只有在运行期才会有调用依赖关系。应用代码将会变得整洁清晰，不论是代码阅读还是代码维护都会比以前轻松。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/7.png" alt=""></p>
+<h3 id="三、我要不要“离”：4种场景"><a href="#三、我要不要“离”：4种场景" class="headerlink" title="三、我要不要“离”：4种场景"></a>三、我要不要“离”：4种场景</h3><p>然而任何一项技术都不是银弹，前后端分离也是如此。虽然前后端分离架构能带来众多优势，但终究得建立在开发团队适合的基础之上。我们暂且以前端页面的渲染效果与逻辑复杂程度把Web应用大致分为轻前端、重前端、前后均衡三种类型，然后加上现在热门的微服务架构应用，一起探讨一下什么样的Web应用适合进行前后端分离。</p>
+<h4 id="轻前端"><a href="#轻前端" class="headerlink" title="轻前端"></a>轻前端</h4><p>页面布局简单，颜色、字体类型较少<br>对前端界面的渲染效果没有高要求，无动画效果<br>只有少量、简单的业务逻辑<br>只需要在不同终端上布局能适应</p>
+<p>对于这样对前端渲染要求不高，业务逻辑简单的轻前端应用来说，因为涉及到的前端技术并不复杂，所以没必要追求前后端分离。将前后端代码放到一起，反而更方便进行开发，但是在开发过程中需要做到关注点分离（Separate Concern）。</p>
+<h4 id="重前端"><a href="#重前端" class="headerlink" title="重前端"></a>重前端</h4><p>页面布局复杂，使用了多种颜色和字体<br>需要有较高的页面渲染效果，有大量动画<br>前端页面中包含有复杂业务逻辑<br>需要在不同终端和浏览器上保证布局适应和渲染效果</p>
+<p>对于重前端应用，建议采用前后端分离架构，如果开发团队中前端工程师不足，需要尽早完善前端团队的建设，确保前后端并重。</p>
+<h4 id="前后均衡"><a href="#前后均衡" class="headerlink" title="前后均衡"></a>前后均衡</h4><p>页面布局适中，使用的颜色和字体种类不多<br>页面中使用了少许动画效果<br>业务逻辑较为简单，可下沉到后端实现<br>只需要在不同终端上布局能适应</p>
+<p>对于前后端均衡应用，建议综合团队的人员结构和未来发展方向进行考虑。如果在团队中前端工程师的占比不高，后续也没有继续发展前端的计划，那么就不建议过于追求前后端分离。如果对未来有更高期望，即使在前端工程师占比不高的情况下，依然建议团队尝试前后端分离转型，开始着手培养合适的前端工程师。如果团队中已经有了相当规模的前端工程师，建议立即转向前后端分离，并且尽早做到前后端代码分离，为前端提供一个可以进行开发调试的伪后端。</p>
+<h4 id="微服务架构应用"><a href="#微服务架构应用" class="headerlink" title="微服务架构应用"></a>微服务架构应用</h4><p>微服务架构应用由大量微服务提供者构成，共同为用户提供服务。在微服务架构中，很多微服务提供者都是基于SpringBoot实现的，通过API Getway（API网关）进行微服务的整合，然后在一个统一的前端门户上为用户提供所需服务。</p>
+<p>微服务基于SpringBoot开发，要达到快速交付的目的，并且每个微服务的粒度都比较小，这必然需要微服务的前后端由不同的工程师分别实现，然后相互之间使用Restful进行通讯。如果还是沿用之前的开发模式，将会增大微服务架构应用的构建难度。而前后段分离模式正是解决这一难题的良药。</p>
+<h3 id="四、分离部署方案浅析"><a href="#四、分离部署方案浅析" class="headerlink" title="四、分离部署方案浅析"></a>四、分离部署方案浅析</h3><p>前后端开发分离之后，应用在部署时也需要进行前后端分离。在进行前后端分离方案选择的时候，需要结合项目的需求情况和用户群体来考虑。目前业内较为常用的前后端分离部署方案有如下几种。</p>
+<h4 id="1、Nginx-Server"><a href="#1、Nginx-Server" class="headerlink" title="1、Nginx+Server"></a>1、Nginx+Server</h4><p>将前端资源部署在Nginx上，后端服务部署在常规的服务器。当浏览器发起访问请求的时候，如果请求的是页面资源，Nginx直接把资源返回到前端；如果请求是调用后端服务，则经过Nginx转发到后端服务器，完成响应后经Nginx返回到浏览器。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/8.png" alt=""><br>这个方案比较简单，易于实现，而且能达到前后端解耦的目的。</p>
+<p>但是对于页面量比较大，需要有良好SEO的应用来说，此方案缺点也较为明显。因为Nginx只是向浏览器返回页面静态资源，而国内的搜索引擎爬虫只会抓取静态数据，不会解析页面中的js，这使得应用得不到良好的搜索引擎支持。同时因为Nginx不会进行页面的组装渲染，需要把静态页面返回到浏览器，然后完成渲染工作，这加重了浏览器的渲染负担。</p>
+<h4 id="2、Node-Server"><a href="#2、Node-Server" class="headerlink" title="2、Node+Server"></a>2、Node+Server</h4><p>这是淘宝所使用的前后端分离模式，在浏览器与后端服务器之间增加一个了Node Server作为中间层，将前端资源部署到Node Server中。Node Server中还包含了一层Model Proxy，负责与服务端进行通信。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/10.png" alt=""><br>浏览器发出的请求都被Node Server接收，然后通过Model Proxy调用后端服务器提供的服务。Node Server得到后端服务器反馈，接着在Node Server中完成页面的组装渲染，把最终页面返回给浏览器。</p>
+<p>如此一来不仅达到了前后端解耦的目的，还解决了浏览器渲染负担过重的问题，为SEO提供了比较好的支持。</p>
+<p>但在这样的模式中，浏览器所有发出的请求都需要经过Node Server进行中转，然后才能到达后端服务器。在实际的应用中，并不是所有的请求都需要页面渲染，只要在页面上直接调用后端服务器提供的服务即可。所以这个模式必然会对请求性能有所消耗</p>
+<h4 id="3、Nginx-Node-Server"><a href="#3、Nginx-Node-Server" class="headerlink" title="3、Nginx+Node+Server"></a>3、Nginx+Node+Server</h4><p>为了能解决方案2中请求性能损失的问题，我们可以考虑在其基础之上增加Nginx。浏览器发起的请求经过Nginx进行分发，URL请求统一分发到Node Server，在Node Server中进行页面组装渲染；API请求则直接发送到后端服务器，完成响应。</p>
+<p>目前在已经有一个名为Goku的Go语言框架提供了这样的前后端分离解决方案。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/1.png" alt=""><br>通过对三种前后端分离方案的对比可以看出：</p>
+<p>如果是企业级应用，不需要考虑对SEO的支持，浏览器渲染也可以忽略不计，Nginx+Server的模式无疑是最好的选择，实施成本相对来说比较低；</p>
+<p>如果是互联网应用，需要有良好的SEO支持，页面渲染工作量大，那应该选择Nginx+Node+Server的方案，各个方面都能得到比较好的兼顾。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/9.png" alt=""></p>
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><p>前后端分离并非仅仅只是前后端开发的分工，而是在开发期进行代码存放分离、前后端开发职责分离，前后端能够独立进行开发测试；在运行期进行应用部署分离，前后端之间通过HTTP请求进行通讯。前后端分离的开发模式与传统模式相比，能为我们提升开发效率、增强代码可维护性，让我们有规划地打造一个前后端并重的精益开发团队，更好地应对越来越复杂多变的Web应用开发需求。</p>
+<p>传统的前后端混合开发模式，虽然久经考验，到现在依然还是能支撑起应用的开发。但是放眼未来，应用的云化、微服务化势不可挡。同社会分工精细化一样，前后端开发的精细化也是必然趋势。技术在持续进步，架构在不断演进，只有紧跟发展的脚步，不断调整项目管理方式，软件开发模式，才能在互联网浪潮中把握机会，乘风破浪。</p>
+<p>前后端分离，是为了让彼此更好。</p>
+<p>文章来源网络，版权归作者所有，作者：敖显奇@EAII企业架构创新研究院(eaworld)</p>
 
       
     </div>
@@ -244,6 +300,10 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前后端分享/">前后端分享</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -288,8 +348,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h3><p><img src="../img/relationdatabase.png" alt="database-compare"><br>常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.<br>Not Only SQL简称NoSQL，泛指非关系型的数据库。<br>常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.</p>
-<h3 id="Nosql数据库的分类："><a href="#Nosql数据库的分类：" class="headerlink" title="Nosql数据库的分类："></a>Nosql数据库的分类：</h3><p><img src="../img/Nosql.png" alt="Nosql"></p>
+        <h3 id="关系型数据库的特点"><a href="#关系型数据库的特点" class="headerlink" title="关系型数据库的特点"></a>关系型数据库的特点</h3><p><img src="http://oi28tswuq.bkt.clouddn.com/images/relative.png" alt="database-compare"><br>常见的关系型数据库:Microsoft SQLServer,   Oracle, MySQL，  Microsoft Access.<br>Not Only SQL简称NoSQL，泛指非关系型的数据库。<br>常见NoSQL有那些？MongoDB,Hbase（HadoopDatabase） ,Redis.</p>
+<h3 id="Nosql数据库的分类："><a href="#Nosql数据库的分类：" class="headerlink" title="Nosql数据库的分类："></a>Nosql数据库的分类：</h3><p><img src="http://oi28tswuq.bkt.clouddn.com/images/Nosql.png" alt="Nosql"></p>
 <h2 id="NoSQL的优点-缺点"><a href="#NoSQL的优点-缺点" class="headerlink" title="NoSQL的优点/缺点"></a>NoSQL的优点/缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><ul>
 <li>高可扩展性</li>
 <li>分布式计算</li>
@@ -330,10 +390,10 @@
 
 
   
-    <article id="post-node1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/04/node1/" class="article-date">
+      <a href="/2016/12/04/docker/" class="article-date">
       <time datetime="2016-12-04T02:47:19.000Z" itemprop="datePublished">2016-12-04</time>
 </a>
     </div>
@@ -347,7 +407,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/04/node1/">使用Docker快速发布nodejs应用</a>
+      <a class="article-title" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a>
     </h1>
   
 
@@ -357,7 +417,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="使用docker发布一个nginx-nodejs-express-koa-项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！"><a href="#使用docker发布一个nginx-nodejs-express-koa-项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！" class="headerlink" title="使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！"></a>使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！</h1><p>对docker的理解：</p>
+        <p>使用docker发布一个nginx+nodejs(express,koa)项目，然后使用jenkins进行简单地持续集成发布工作，nodejs配合docker和jenkins可以更加方便地管理我们的应用！<br>对docker的理解：未完待更新。。。临时有事。。</p>
 
       
     </div>
@@ -384,10 +444,10 @@
 
 
   
-    <article id="post-index1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nodekeng" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/10/23/index1/" class="article-date">
+      <a href="/2016/10/23/nodekeng/" class="article-date">
       <time datetime="2016-10-23T15:06:26.000Z" itemprop="datePublished">2016-10-23</time>
 </a>
     </div>
@@ -401,7 +461,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/23/index1/">node 中的一些坑</a>
+      <a class="article-title" href="/2016/10/23/nodekeng/">node 中的一些坑</a>
     </h1>
   
 
@@ -411,33 +471,35 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>核心模块</p>
-<p>require</p>
+        <h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3><p>require</p>
 <p>node中通过require引入模块的机制为将需要的模块对应的js文件引入后执行一遍，因此在自己写的依赖模块中尽量不要无故输出信息，否则会使控制台十分混乱。</p>
-<p>fs</p>
-<p>fs模块中的所有方法在指定路径时都必须为绝对路径或是完整的相对路径（即包含../、./、/的相对路径）。</p>
+<h3 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h3><p>fs模块中的所有方法在指定路径时都必须为绝对路径或是完整的相对路径（即包含../、./、/的相对路径）。</p>
 <p>fs.mkdir/mkdirSync</p>
-<p>API</p>
-<p>1<br>fs.mkdir(path, callback)<br>创建文件夹操作，支持文件夹嵌套，例如fs.mkdir(‘./a/b/c’),回调函数中的参数为Error信息，只有发生错误的时候才会存在，创建成功则为null。</p>
-<p>mkdir操作的路径如果有文件夹嵌套，则当上级路径不存在时，不能直接创建。例如当前文件夹下没有a文件夹，则fs.mkdir(‘./a/b’)不能直接创建a和a/b文件夹。</p>
+<p>API<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fs.mkdir(path, callback)</div></pre></td></tr></table></figure></p>
+<p>创建文件夹操作，支持文件夹嵌套，例如fs.mkdir(‘./a/b/c’),回调函数中的参数为Error信息，只有发生错误的时候才会存在，创建成功则为null。</p>
+<p>mkdir操作的路径如果有文件夹嵌套，则当上级路径不存在时，不能直接创建。例如当前文件夹下没有a文件夹，则fs.mkdir(‘./a/b’)不能直接创建a和a/b文件夹。<br>为了减少代码的重复量，可使用下面的函数来对mkdir操作进行封装。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let path = require(&apos;path&apos;),</div><div class="line">    fs = require(&apos;fs&apos;);</div><div class="line">function mkdir(p,fn)&#123;</div><div class="line">    fs.exists(p, function (flag) &#123; // 判断当前路径下的文件夹是否已经存在</div><div class="line">        if(flag)&#123; // 如果当前文件夹已经存在则执行回调函数</div><div class="line">            return fn();</div><div class="line">        &#125;</div><div class="line">        // 如果当前文件夹不存在，则将当前文件夹的上级目录作为新的参数p，创建当前文件夹的操作放入回调函数，递归调用mkdir函数</div><div class="line">        mkdir(path.dirname(p), function () &#123;</div><div class="line">            fs.mkdir(p,fn);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里用到了path模块的dirname方法，这个方法的作用是获取一个路径的上级路径。</p>
 <p>fs.readFile/readFileSync</p>
 <p>读取文件操作，在使用同步方法readFileSync时函数直接返回读到的数据，如果发生错误则返回错误的信息。</p>
 <p>但是异步方法readFile在callback中的参数却是error和data，即不管是否成功第一个参数都是error，第二个参数才是读到的数据。</p>
 <p>在node中应尽量用stream来代替文件的直接读写操作。</p>
-<p>请求与响应</p>
-<p>跨域请求</p>
-<p>cors</p>
-<p>如果需要采用cors来支持跨域请求，则需要对请求头进行如下设置（完整版）<br>res.writeHead(200, {<br>    “Access-Control-Allow-Origin”: “*”,<br>    “Access-Control-Allow-Methods”: “GET, POST, PUT, DELETE, OPTIONS”,<br>    “Access-Control-Allow-Headers”: “Content-Type, accept”<br>});<br>另外，跨域时尽量对请求方法和请求路径都进行验证（RESTful），因为某些客户端框架（ionic）在发送跨域请求时，会先发送一个option方法的请求来尝试跨域请求是否成功，在成功之后才会发送原本的请求。</p>
-<p>cookie</p>
-<p>一般在node中设置cookies都会使用基于express的第三方包cookie-parser。不使用第三方包的原生写法为</p>
-<p>1<br>res.setHeader(“Set-Cookie”, […cookies])<br>其中cookies的格式为key=value; option，注意;后的空格。</p>
+<h3 id="请求与响应"><a href="#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h3><h4 id="跨域请求"><a href="#跨域请求" class="headerlink" title="跨域请求"></a>跨域请求</h4><ul>
+<li>cors</li>
+</ul>
+<p>如果需要采用cors来支持跨域请求，则需要对响应头进行如下设置（完整版）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">res.writeHead(200, &#123;</div><div class="line">    &quot;Access-Control-Allow-Origin&quot;: &quot;*&quot;,</div><div class="line">    &quot;Access-Control-Allow-Methods&quot;: &quot;GET, POST, PUT, DELETE, OPTIONS&quot;,</div><div class="line">    &quot;Access-Control-Allow-Headers&quot;: &quot;Content-Type, accept&quot;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>另外，跨域时尽量对请求方法和请求路径都进行验证（RESTful），因为某些客户端框架（ionic）在发送跨域请求时，会先发送一个option方法的请求来尝试跨域请求是否成功，在成功之后才会发送原本的请求。</p>
+<ul>
+<li>cookie</li>
+</ul>
+<p>一般在node中设置cookies都会使用基于express的第三方包cookie-parser。不使用第三方包的原生写法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res.setHeader(&quot;Set-Cookie&quot;, [...cookies])</div></pre></td></tr></table></figure></p>
+<p>其中cookies的格式为key=value; option，注意;后的空格。</p>
 <p>option的参数中max-age=time表示cookie的过期时间，其中time的为number，单位是秒。</p>
-<p>获取客户端传递的cookies的方法为</p>
-<p>1<br>req.headers.cookie<br>如果使用express和cookie-parser，则关于cookie的方法都会被集成在request和response上，设置cookie的方法为</p>
-<p>1<br>res.cookie(key, value, option)<br>注意这里的option中的max-age单位变为了毫秒，其他则没有变化。</p>
-<p>获取客户端传递的cookies的方法为</p>
-<p>req.cookies<br>获取的cookies为对象形式。</p>
-<p>IDE没有提示功能或者提示功能不全的朋友请注意上文中的cookie和cookies并背诵熟练 :)。</p>
+<p>获取客户端传递的cookies的方法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.headers.cookie</div></pre></td></tr></table></figure></p>
+<p>如果使用express和cookie-parser，则关于cookie的方法都会被集成在request和response上，设置cookie的方法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">res.cookie(key, value, option)</div></pre></td></tr></table></figure></p>
+<p>注意这里的option中的max-age单位变为了毫秒，其他则没有变化。</p>
+<p>获取客户端传递的cookies的方法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">req.cookies</div></pre></td></tr></table></figure></p>
+<p>获取的cookies为对象形式。</p>
+<p>IDE没有提示功能或者提示功能不全的朋友请注意上文中的cookie和cookies并熟练记住。</p>
 
       
     </div>
@@ -499,49 +561,47 @@
 <p>JavaScript 网页开发者在创建应用时，频繁地跟设计模式打交道（甚至在不知情的情况下）。</p>
 <p>尽管特定环境下有各种各样的设计模式，JS 开发者还是倾向于使用一些习惯性的模式。</p>
 <p>在这篇文章中，我将讨论这些常见的设计模式，展出优化代码库的方法，并深入解读JavaScript的内部构件。</p>
-<p>本文讨论的设计模式包括这几种:<br>模块设计模式<br>原型模式<br>观察者模式<br>单例模式</p>
-<p>尽管每种模式都包含很多属性，这里我强调以下几点：<br>上下文: 设计模式的使用场景<br>问题: 我们尝试解决的问题是什么?<br>解决方法: 使用设计模式如何解决我们提出的问题?<br>实施: 实施方案看起来怎样?</p>
-<h2 id="模块设计模式"><a href="#模块设计模式" class="headerlink" title="模块设计模式"></a>模块设计模式</h2><p>JS模块化是使用最普遍的设计模式，用于保持特殊的代码块与其它组件之间互相独立。为支持结构良好的代码提供了松耦合。</p>
+<p>本文讨论的设计模式包括这几种:</p>
+<ul>
+<li>模块设计模式</li>
+<li>原型模式</li>
+<li>观察者模式</li>
+<li>单例模式</li>
+</ul>
+<p>尽管每种模式都包含很多属性，这里我强调以下几点：<br><em>上下文:</em> 设计模式的使用场景<br><em>问题:</em> 我们尝试解决的问题是什么?<br><em>解决方法:</em> 使用设计模式如何解决我们提出的问题?<br><em>实施:</em> 实施方案看起来怎样?</p>
+<h3 id="模块设计模式"><a href="#模块设计模式" class="headerlink" title="模块设计模式"></a>模块设计模式</h3><p>JS模块化是使用最普遍的设计模式，用于保持特殊的代码块与其它组件之间互相独立。为支持结构良好的代码提供了松耦合。</p>
 <p>对于熟悉面向对象的开发者来说，模块就是JS的 “类”。封装是“类”的众多优点之一，可以确保它本身的状态和行为不被其它的类访问到。模块设计模式有公有和私有两种访问级别（除此之外，还有比较少为人知的保护级别、特权级别）。</p>
-<p>考虑到私有的作用域，模块应该是一个立即调用函数（IIFE) ，也就是说，它是一个保护其私有变量和方法的闭包。（然而，它返回的却不是一个函数，而是一个对象）。</p>
-<p>我们在返回一个对象之前，先初始化一下私有的变量和方法。由于作用域不同，闭包外面的代码是无法访问到闭包内的私有变量的。一起来看下更具体的实现方法：</p>
+<p>考虑到私有的作用域，模块应该是一个立即调用函数（IIFE) ，也就是说，它是一个保护其私有变量和方法的闭包。（然而，它返回的却不是一个函数，而是一个对象）。它的写法就是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> (function() &#123;</div><div class="line"></div><div class="line">    // declare private variables and/or functions</div><div class="line"></div><div class="line">    return &#123;</div><div class="line">      // declare public variables and/or functions</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>我们在返回一个对象之前，先初始化一下私有的变量和方法。由于作用域不同，闭包外面的代码是无法访问到闭包内的私有变量的。一起来看下更具体的实现方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var HTMLChanger = (function() &#123;</div><div class="line">  var contents = &apos;contents&apos;</div><div class="line"></div><div class="line">  var changeHTML = function() &#123;</div><div class="line">    var element = document.getElementById(&apos;attribute-to-change&apos;);</div><div class="line">    element.innerHTML = contents;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">    callChangeHTML: function() &#123;</div><div class="line">      changeHTML();</div><div class="line">      console.log(contents);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">&#125;)();</div><div class="line"></div><div class="line">HTMLChanger.callChangeHTML();       // Outputs: &apos;contents&apos;</div><div class="line">console.log(HTMLChanger.contents);  // undefined</div></pre></td></tr></table></figure></p>
 <p>请注意 callChangeHTML 是在返回的对象中绑定的，因此可以访问到 HTMLChanger 这个命名空间内的变量。然而，在模块外面，是不能访问到闭包里面的 contents 的。</p>
-<p>揭示性模块模式</p>
-<p>模块模式的另一种变体称为 揭示性模块模式，它主要是为了在保持封装性的同时，揭示在对象字面量中返回的特定的变量和方法。直接的实现方式类似这样：</p>
+<h3 id="揭示性模块模式"><a href="#揭示性模块模式" class="headerlink" title="揭示性模块模式"></a>揭示性模块模式</h3><p>模块模式的另一种变体称为 揭示性模块模式，它主要是为了在保持封装性的同时，揭示在对象字面量中返回的特定的变量和方法。直接的实现方式类似这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var Exposer = (function() &#123;</div><div class="line">  var privateVariable = 10;</div><div class="line"></div><div class="line">  var privateMethod = function() &#123;</div><div class="line">    console.log(&apos;Inside a private method!&apos;);</div><div class="line">    privateVariable++;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  var methodToExpose = function() &#123;</div><div class="line">    console.log(&apos;This is a method I want to expose!&apos;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  var otherMethodIWantToExpose = function() &#123;</div><div class="line">    privateMethod();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">      first: methodToExpose,</div><div class="line">      second: otherMethodIWantToExpose</div><div class="line">  &#125;;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">Exposer.first();        // Output: This is a method I want to expose!</div><div class="line">Exposer.second();       // Output: Inside a private method!</div><div class="line">Exposer.methodToExpose; // undefined</div></pre></td></tr></table></figure></p>
 <p>尽管这样看起来更加简洁，但它是有明显不足的 – 不能引用私有变量。这会给单元测试带来一定的挑战。类似地，公有行为也是不可重写的。</p>
-<p>原型设计模式</p>
-<p>JS开发者要么把 原型 和 原型继承 相互混淆，要么在他们的代码里面直接使用原型。原型设计模式依赖于JavaScript原型继承. 原型模式主要用于为高性能环境创建对象。</p>
-<p>被创建的对象是从传下来的原对象克隆（浅克隆）出来的。原型模式的一种使用场景，是执行一个扩展性的数据库操作来创建一个对象，把该对象用于应用的其他层面。如果其他流程需要用到这个对象，我们不需要大量地操作数据库，只要克隆一下之前创建的对象就可以了。与其实质性地操作数据库，不如从之前创建的对象克隆一个更具优势。</p>
-<p>要克隆一个对象，必须存在一个构造器来实例化第一个对象。接下来，通过使用 prototype 的变量和方法来绑定对象的结构。一起来看下基本的示例：</p>
-<p>构造器 TeslaModelS 允许创建一个简单的 TeslaModelS 对象。对于一个新创建的 TeslaModelS 对象，它将保持构造器初始化的状态。此外，它也很简单的持有 go 和 stop 这两个方法，因为这两个方法是在 prototype 声明的。在原型上拓展方法，还可以这样写：</p>
-<p>揭示性原型模式</p>
-<p>类似于模块模式，原型模式也有一个 揭示性模式。揭示性原型模式 通过返回一个对象字面量，对公有和私有的成员进行封装。</p>
-<p>由于我们返回的是一个对象，我们将在原型对象上添加 function 的前缀。通过对以上例子进行改写，我们可以选择在当前的 prototype 暴露哪些方法或变量，以此来保护它们的访问层级。</p>
+<h3 id="原型设计模式"><a href="#原型设计模式" class="headerlink" title="原型设计模式"></a>原型设计模式</h3><p>JS开发者要么把 原型 和 原型继承 相互混淆，要么在他们的代码里面直接使用原型。原型设计模式依赖于JavaScript原型继承. 原型模式主要用于为高性能环境创建对象。</p>
+<p>被创建的对象是从传下来的原对象克隆（浅克隆）出来的。原型模式的一种使用场景，是执行一个扩展性的数据库操作来创建一个对象，把该对象用于应用的其他层面。如果其他流程需要用到这个对象，我们不需要大量地操作数据库，只要克隆一下之前创建的对象就可以了。与其实质性地操作数据库，不如从之前创建的对象克隆一个更具优势。<br><img src="http://oi28tswuq.bkt.clouddn.com/images/shejimoshi.png" alt=""><br>                            Wikipedia 原型设计模式图解</p>
+<p>UML 描述了原型交互是如何被用于克隆具体的代码实施方案的。<br>要克隆一个对象，必须存在一个构造器来实例化第一个对象。接下来，通过使用 prototype 的变量和方法来绑定对象的结构。一起来看下基本的示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var TeslaModelS = function() &#123;</div><div class="line">  this.numWheels    = 4;</div><div class="line">  this.manufacturer = &apos;Tesla&apos;;</div><div class="line">  this.make         = &apos;Model S&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype.go = function() &#123;</div><div class="line">  // Rotate wheels</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype.stop = function() &#123;</div><div class="line">  // Apply brake pads</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>构造器 TeslaModelS 允许创建一个简单的 TeslaModelS 对象。对于一个新创建的 TeslaModelS 对象，它将保持构造器初始化的状态。此外，它也很简单的持有 go 和 stop 这两个方法，因为这两个方法是在 prototype 声明的。在原型上拓展方法，还可以这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> var TeslaModelS = function() &#123;</div><div class="line">  this.numWheels    = 4;</div><div class="line">  this.manufacturer = &apos;Tesla&apos;;</div><div class="line">  this.make         = &apos;Model S&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype = &#123;</div><div class="line">  go: function() &#123;</div><div class="line">    // Rotate wheels</div><div class="line">  &#125;,</div><div class="line">  stop: function() &#123;</div><div class="line">    // Apply brake pads</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="揭示性原型模式"><a href="#揭示性原型模式" class="headerlink" title="揭示性原型模式"></a>揭示性原型模式</h3><p>类似于模块模式，原型模式也有一个 揭示性模式。揭示性原型模式 通过返回一个对象字面量，对公有和私有的成员进行封装。</p>
+<p>由于我们返回的是一个对象，我们将在原型对象上添加 function 的前缀。通过对以上例子进行改写，我们可以选择在当前的 prototype 暴露哪些方法或变量，以此来保护它们的访问层级。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> var TeslaModelS = function() &#123;</div><div class="line">  this.numWheels    = 4;</div><div class="line">  this.manufacturer = &apos;Tesla&apos;;</div><div class="line">  this.make         = &apos;Model S&apos;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">TeslaModelS.prototype = function() &#123;</div><div class="line"></div><div class="line">  var go = function() &#123;</div><div class="line">    // Rotate wheels</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var stop = function() &#123;</div><div class="line">    // Apply brake pads</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">    pressBrakePedal: stop,</div><div class="line">    pressGasPedal: go</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;();</div></pre></td></tr></table></figure></p>
 <p>请注意 stop 和 go 两个方法是被隔开的，因为他们在所返回的对象作用域之外。由于 JavaScript 本身支持原型继承，也就没必要重写基本的功能了。</p>
-<p>观察者设计模式</p>
-<p>很多时候，当应用的一部分改变了，另一部分也需要相应更新。在 AngularJs 里面，如果 $scope 被更新，就会触发一个事件去通知其他组件。结合观察这模式就是：如果一个对象改变了，它只要派发 broadcasts 事件通知依赖的对象它已经改变了则可。</p>
-<p>又一个典型的例子就是 model-view-controller (MVC) 架构了；当 model 改变时， 更新相应的 view。这样做有一个好处，就是从 model 上解耦出 view 来减少依赖。</p>
-<p>Wikipedia 观察者设计模式</p>
-<p>如 UML 图表所示，subject、observer, and concrete objects 是必不可少的。 subject 包含对每个具体观察者的引用，以便传递改动信息。观察者本身是一个抽象的类，使得具体的观察者可以执行通讯方法。</p>
-<p>一起来看下 AngularJS 的示例，在事件管理上应用了观察这模式。</p>
+<h3 id="观察者设计模式"><a href="#观察者设计模式" class="headerlink" title="观察者设计模式"></a>观察者设计模式</h3><p>很多时候，当应用的一部分改变了，另一部分也需要相应更新。在 AngularJs 里面，如果 $scope 被更新，就会触发一个事件去通知其他组件。结合观察这模式就是：如果一个对象改变了，它只要派发 broadcasts 事件通知依赖的对象它已经改变了则可。</p>
+<p>又一个典型的例子就是 model-view-controller (MVC) 架构了；当 model 改变时， 更新相应的 view。这样做有一个好处，就是从 model 上解耦出 view 来减少依赖。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">![观察这设计模式](&lt;html&gt;</div><div class="line">&lt;head&gt;&lt;title&gt;502 Bad Gateway&lt;/title&gt;&lt;/head&gt;</div><div class="line">&lt;body bgcolor=&quot;white&quot;&gt;</div><div class="line">&lt;center&gt;&lt;h1&gt;502 Bad Gateway&lt;/h1&gt;&lt;/center&gt;</div><div class="line"></div><div class="line">&lt;center&gt;nginx/1.9.15&lt;/center&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<h3 id="Wikipedia-观察者设计模式"><a href="#Wikipedia-观察者设计模式" class="headerlink" title="Wikipedia 观察者设计模式"></a>Wikipedia 观察者设计模式</h3><p>如 UML 图表所示，subject、observer, and concrete objects 是必不可少的。 subject 包含对每个具体观察者的引用，以便传递改动信息。观察者本身是一个抽象的类，使得具体的观察者可以执行通讯方法。</p>
+<p>一起来看下 AngularJS 的示例，在事件管理上应用了观察这模式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> // Controller 1</div><div class="line">$scope.$on(&apos;nameChanged&apos;, function(event, args) &#123;</div><div class="line">    $scope.name = args.name;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">// Controller 2</div><div class="line">$scope.userNameChanged = function(name) &#123;</div><div class="line">    $scope.$emit(&apos;nameChanged&apos;, &#123;name: name&#125;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>使用观察者模式，重要的一点就是要区分独立的对象或者 subject(主体)。</p>
 <p>在看到观察者模式众多优点的同时，我们必须注意到它的一个缺点：随着观察者数量的增加，应用的性能会大大降低。大家都比较熟悉的观察者就是 watchers 。 在AngularJS中，我们可以 watch 变量、方法和对象。$digest 循环更新，当一个作用域内对象被修改时，它就把新的值告诉每个监听者。</p>
-<p>我们可以在JS中创建自己的主体和观察者。一起来看下下面的代码是如何运行的：</p>
-<p>发布、订阅模式</p>
-<p>然而，发布、订阅模式是采用一个话题来绑定发布者和订阅者之间的关系，订阅者接收事件通知，发布者派发事件。该事件系统支持定义特殊应用的事件，可以传递包含订阅者本身需要的自定义参数。这样做主要是为了避免订阅者和发布者之间的依赖。</p>
+<p>我们可以在JS中创建自己的主体和观察者。一起来看下下面的代码是如何运行的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"> var Subject = function() &#123;</div><div class="line">  this.observers = [];</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">    subscribeObserver: function(observer) &#123;</div><div class="line">      this.observers.push(observer);</div><div class="line">    &#125;,</div><div class="line">    unsubscribeObserver: function(observer) &#123;</div><div class="line">      var index = this.observers.indexOf(observer);</div><div class="line">      if(index &gt; -1) &#123;</div><div class="line">        this.observers.splice(index, 1);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    notifyObserver: function(observer) &#123;</div><div class="line">      var index = this.observers.indexOf(observer);</div><div class="line">      if(index &gt; -1) &#123;</div><div class="line">        this.observers[index].notify(index);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    notifyAllObservers: function() &#123;</div><div class="line">      for(var i = 0; i &lt; this.observers.length; i++)&#123;</div><div class="line">        this.observers[i].notify(i);</div><div class="line">      &#125;;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var Observer = function() &#123;</div><div class="line">  return &#123;</div><div class="line">    notify: function(index) &#123;</div><div class="line">      console.log(&quot;Observer &quot; + index + &quot; is notified!&quot;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var subject = new Subject();</div><div class="line"></div><div class="line">var observer1 = new Observer();</div><div class="line">var observer2 = new Observer();</div><div class="line">var observer3 = new Observer();</div><div class="line">var observer4 = new Observer();</div><div class="line"></div><div class="line">subject.subscribeObserver(observer1);</div><div class="line">subject.subscribeObserver(observer2);</div><div class="line">subject.subscribeObserver(observer3);</div><div class="line">subject.subscribeObserver(observer4);</div><div class="line"></div><div class="line">subject.notifyObserver(observer2); // Observer 2 is notified!</div><div class="line"></div><div class="line">subject.notifyAllObservers();</div><div class="line">// Observer 1 is notified!</div><div class="line">// Observer 2 is notified!</div><div class="line">// Observer 3 is notified!</div><div class="line">// Observer 4 is notified!</div></pre></td></tr></table></figure></p>
+<h3 id="发布、订阅模式"><a href="#发布、订阅模式" class="headerlink" title="发布、订阅模式"></a>发布、订阅模式</h3><p>然而，发布、订阅模式是采用一个话题来绑定发布者和订阅者之间的关系，订阅者接收事件通知，发布者派发事件。该事件系统支持定义特殊应用的事件，可以传递包含订阅者本身需要的自定义参数。这样做主要是为了避免订阅者和发布者之间的依赖。</p>
 <p>这里有别于观察者模式的是，任何订阅者都可以通过恰当的事件处理器来注册并接受发布者广播的通知。</p>
 <p>很多开发者选择把 发布订阅模式 和 观察者模式 结合起来用，尽管他们最终的目标只有一个。发布订阅模式中的订阅者是通过一些通讯媒介被告知的，而观察者则是通过执行事件处理器来获得消息通知。</p>
 <p>在 AngularJs， 订阅者使用 $on(event、cbk) 来订阅一个事件，发布者则使用$emit(‘event’, args) 或者 $broadcast(‘event’, args) 来发布一个事件。</p>
-<p>单例模式</p>
-<p>单例模式只允许实例化一个对象，但是相同的对象，会用很多个实例。单例模式制约着客户端创建多个对象。第一个对象创建后，就返回实例本身。</p>
-<p>单例模式比较少用，很难找到实际开发的例子。使用一个办公室打印机的例子吧。假设办公室有10个人，他们都用到打印机，10台电脑共享一部打印机（一个实例）。通过分享一部打印机，他们共享相同的资源。</p>
-<p>create 这个方法是私有的，因为我们不希望它被外部人员访问到，然而，getInstance 方法是公有的。每个办公人员都可以实例化一个 printer，只需要这样调用一下：</p>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><p>单例模式只允许实例化一个对象，但是相同的对象，会用很多个实例。单例模式制约着客户端创建多个对象。第一个对象创建后，就返回实例本身。</p>
+<p>单例模式比较少用，很难找到实际开发的例子。使用一个办公室打印机的例子吧。假设办公室有10个人，他们都用到打印机，10台电脑共享一部打印机（一个实例）。通过分享一部打印机，他们共享相同的资源。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">var printer = (function () &#123;</div><div class="line"></div><div class="line">  var printerInstance;</div><div class="line"></div><div class="line">  function create () &#123;</div><div class="line"></div><div class="line">    function print() &#123;</div><div class="line">      // underlying printer mechanics</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function turnOn() &#123;</div><div class="line">      // warm up</div><div class="line">      // check for paper</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return &#123;</div><div class="line">      // public + private states and behaviors</div><div class="line">      print: print,</div><div class="line">      turnOn: turnOn</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  return &#123;</div><div class="line">    getInstance: function() &#123;</div><div class="line">      if(!printerInstance) &#123;</div><div class="line">        printerInstance = create();</div><div class="line">      &#125;</div><div class="line">      return printerInstance;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  function Singleton () &#123;</div><div class="line">    if(!printerInstance) &#123;</div><div class="line">      printerInstance = intialize();</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<p>create 这个方法是私有的，因为我们不希望它被外部人员访问到，然而，getInstance 方法是公有的。每个办公人员都可以实例化一个 printer，只需要这样调用一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var officePrinter = printer.getInstance();</div></pre></td></tr></table></figure></p>
 <p>单例模式在 AngularJS 相当流行，最常见的是作为 services、factories、和 providers。它们维护状态，提供资源访问，创建两个实例摆脱一个共享的service/factory/provider。</p>
 <p>在多线程的应用中，当多个线程尝试去访问同个资源时，就会出现 竞争状态。单例模式会受到竞争状态的干扰，比如在没有初始化实例的情况下，两个线程会创建两个对象，而不是返回一个实例。这与单例模式的目的是相悖的。因此，开发者在多线程应用里面使用单例模式时，必须清楚同步性。</p>
-<p>总结</p>
-<p>设计模式经常用于比较大型的应用，想知道哪种模式更具优势，来实践吧。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>设计模式经常用于比较大型的应用，想知道哪种模式更具优势，来实践吧。</p>
 <p>在构建任何应用之前，都应该全面地考虑每个角色，以及它们之间存在的关系。在回顾 模块模式、原型模式、观察者模式 和 单例模式 之后，你应该能够区分它们，并且在实际开发中使用它们了。</p>
-<p>–摘自前端导读课</p>
+<p>–文章参考来源网络，版权归作者所有。</p>
 
       
     </div>
@@ -553,6 +613,70 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS设计模式-设计模式/">JS设计模式 设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-gitsinglefile" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/12/gitsinglefile/" class="article-date">
+      <time datetime="2016-03-12T07:19:07.000Z" itemprop="datePublished">2016-03-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h3><p>Git1.7.0以后加入了Sparse Checkout模式，这使得Check Out指定文件或者文件夹成为可能。</p>
+<p>具体实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$mkdir project_folder</div><div class="line">$cd project_folder</div><div class="line">$git init</div><div class="line">$git remote add -f origin &lt;url&gt;   url要为https格式的。</div></pre></td></tr></table></figure></p>
+<p>上面的代码会帮助你创建一个空的本地仓库，同时将远程Git Server URL加入到Git Config文件中。</p>
+<p>接下来，我们在Config中允许使用Sparse Checkout模式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$git config core.sparsecheckout true</div></pre></td></tr></table></figure></p>
+<p>接下来你需要告诉Git哪些文件或者文件夹是你真正想Check Out的，你可以将它们作为一个列表保存在 .git/info/sparse-checkout 文件中。<br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$echo “libs” &gt;&gt; .git/info/sparse-checkout</div><div class="line">$echo “apps/register.go” &gt;&gt; .git/info/sparse-checkout</div><div class="line">$echo “resource/css” &gt;&gt; .git/info/sparse-checkout</div></pre></td></tr></table></figure></p>
+<p>最后，你只要以正常方式从你想要的分支中将你的项目拉下来就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$git pull origin master</div></pre></td></tr></table></figure></p>
+<h3 id="第二种方式："><a href="#第二种方式：" class="headerlink" title="第二种方式："></a>第二种方式：</h3><p>可以用谷歌的一款插件——Octotree,安装上此插件，当打开github页面时，页面的左上角会出现一个小箭头，即左侧的工具栏 , 它相当于一个文件浏览器 , 可以看到整个项目的文件目录 , 在鼠标移动到相应文件下还会出现下载按钮 , 也很方便下载文件。如下图<br><img src="http://oi28tswuq.bkt.clouddn.com/images/git-single.png" alt="github"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git-github/">git github</a></li></ul>
     </div>
 
       
@@ -589,7 +713,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/10/jigou/">ES6学习：变量的解构赋值用途</a>
+      <a class="article-title" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a>
     </h1>
   
 
@@ -599,8 +723,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>（1）交换变量的值<br>[x, y] = [y, x];<br>上面代码交换变量x和y的值，这样的写法不仅简洁，而且易读，语义非常清晰。<br>（2）从函数返回多个值<br>函数只能返回一个值，如果要返回多个值，只能将它们放在数组或对象里返回。有了解构赋值，取出这些值就非常方便。<br>// 返回一个数组<br>function example() {return [1, 2, 3];}var [a, b, c] = example();<br>// 返回一个对象<br>function example() {return {<br>    foo: 1,<br>    bar: 2};}var { foo, bar } = example();<br>（3）函数参数的定义<br>解构赋值可以方便地将一组参数与变量名对应起来。<br>// 参数是一组有次序的值<br>function f([x, y, z]) { … }f([1, 2, 3]);<br>// 参数是一组无次序的值<br>function f({x, y, z}) { … }f({z: 3, y: 2, x: 1});<br>（4）提取JSON数据<br>解构赋值对提取JSON对象中的数据，尤其有用。<br>var jsonData = {<br>  id: 42,<br>  status: “OK”,<br>  data: [867, 5309]};let { id, status, data: number } = jsonData;</p>
-<p>console.log(id, status, number);<br>// 42, “OK”, [867, 5309]<br>上面代码可以快速提取JSON数据的值。<br>（5）函数参数的默认值<br>jQuery.ajax = function (url, {<br>  async = true,<br>  beforeSend = function () {},<br>  cache = true,<br>  complete = function () {},<br>  crossDomain = false,<br>  global = true, // … more config<br>}) { // … do stuff<br>};<br>指定参数的默认值，就避免了在函数体内部再写var foo = config.foo || ‘default foo’;这样的语句。<br>（6）遍历Map结构<br>任何部署了Iterator接口的对象，都可以用for…of循环遍历。Map结构原生支持Iterator接口，配合变量的解构赋值，获取键名和键值就非常方便。<br>var map = new Map();<br>map.set(‘first’, ‘hello’);<br>map.set(‘second’, ‘world’);for (let [key, value] of map) {<br>  console.log(key + “ is “ + value);}<br>// first is hello<br>// second is world<br>如果只想获取键名，或者只想获取键值，可以写成下面这样。<br>// 获取键名<br>for (let [key] of map) { // …<br>}<br>// 获取键值<br>for (let [,value] of map) { // …<br>}<br>（7）输入模块的指定方法<br>加载模块时，往往需要指定输入那些方法。解构赋值使得输入语句非常清晰。<br>const { SourceMapConsumer, SourceNode } = require(“source-map”);</p>
+        <h3 id="（1）交换变量的值"><a href="#（1）交换变量的值" class="headerlink" title="（1）交换变量的值"></a>（1）交换变量的值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[x, y] = [y, x];</div></pre></td></tr></table></figure>
+<p>上面代码交换变量x和y的值，这样的写法不仅简洁，而且易读，语义非常清晰。</p>
+<h3 id="（2）从函数返回多个值"><a href="#（2）从函数返回多个值" class="headerlink" title="（2）从函数返回多个值"></a>（2）从函数返回多个值</h3><p>函数只能返回一个值，如果要返回多个值，只能将它们放在数组或对象里返回。有了解构赋值，取出这些值就非常方便。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 返回一个数组</div><div class="line">function example() &#123;return [1, 2, 3];&#125;var [a, b, c] = example();</div><div class="line">// 返回一个对象</div><div class="line">function example() &#123;return &#123;</div><div class="line">    foo: 1,</div><div class="line">    bar: 2&#125;;&#125;var &#123; foo, bar &#125; = example();</div><div class="line">```  </div><div class="line">### （3）函数参数的定义</div><div class="line">解构赋值可以方便地将一组参数与变量名对应起来。</div></pre></td></tr></table></figure></p>
+<p>// 参数是一组有次序的值<br>function f([x, y, z]) { … }f([1, 2, 3]);<br>// 参数是一组无次序的值<br>function f({x, y, z}) { … }f({z: 3, y: 2, x: 1});<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### （4）提取JSON数据</div><div class="line">解构赋值对提取JSON对象中的数据，尤其有用。</div></pre></td></tr></table></figure></p>
+<p>var jsonData = {<br>  id: 42,<br>  status: “OK”,<br>  data: [867, 5309]};let { id, status, data: number } = jsonData;</p>
+<p>console.log(id, status, number);<br>// 42, “OK”, [867, 5309]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">上面代码可以快速提取JSON数据的值。</div><div class="line">### （5）函数参数的默认值</div></pre></td></tr></table></figure></p>
+<p>jQuery.ajax = function (url, {<br>  async = true,<br>  beforeSend = function () {},<br>  cache = true,<br>  complete = function () {},<br>  crossDomain = false,<br>  global = true, // … more config<br>}) { // … do stuff<br>};<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">指定参数的默认值，就避免了在函数体内部再写var foo = config.foo || &apos;default foo&apos;;这样的语句。</div><div class="line">### （6）遍历Map结构</div><div class="line">任何部署了Iterator接口的对象，都可以用for...of循环遍历。Map结构原生支持Iterator接口，配合变量的解构赋值，获取键名和键值就非常方便。</div></pre></td></tr></table></figure></p>
+<p>var map = new Map();<br>map.set(‘first’, ‘hello’);<br>map.set(‘second’, ‘world’);for (let [key, value] of map) {<br>  console.log(key + “ is “ + value);}<br>// first is hello<br>// second is world<br>如果只想获取键名，或者只想获取键值，可以写成下面这样。<br>// 获取键名<br>for (let [key] of map) { // …<br>}<br>// 获取键值<br>for (let [,value] of map) { // …<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### （7）输入模块的指定方法</div><div class="line">加载模块时，往往需要指定输入那些方法。解构赋值使得输入语句非常清晰。</div></pre></td></tr></table></figure></p>
+<p>const { SourceMapConsumer, SourceNode } = require(“source-map”);<br>```</p>
 
       
     </div>
@@ -631,10 +762,10 @@
 
 
   
-    <article id="post-mobile" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-iscroll" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/16/mobile/" class="article-date">
+      <a href="/2015/12/16/iscroll/" class="article-date">
       <time datetime="2015-12-16T04:41:23.000Z" itemprop="datePublished">2015-12-16</time>
 </a>
     </div>
@@ -648,7 +779,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/16/mobile/">移动端遇到的坑</a>
+      <a class="article-title" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a>
     </h1>
   
 
@@ -658,16 +789,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="fixed不兼容，解决办法用iscroll-js"><a href="#fixed不兼容，解决办法用iscroll-js" class="headerlink" title="fixed不兼容，解决办法用iscroll.js"></a>fixed不兼容，解决办法用iscroll.js</h2><p>移动端大多数浏览器不兼容position:fixed，而pc端只有ie6不兼容position:fixed<br>在移动端开发中，使用position:fixed固定定位，很多手机支持不好，尤其是在定位的区域还需要输入内容调取虚拟键盘的时候会出现很多很多的问题<br>解决这个问题，就不能使用固定定位了，而是使用局部滚动处理（isScroll.js）<br>实现竖向局部滚动，需要把局部滚动的最外层容器的高度设定好。<br>实现横向局部滚动，需要把局部滚动的最外层容器的宽度设定好。<br>实现局部滚动：<br>var   实例=new IScroll（需要局部滚动的区域，{参数配置}）;<br>初始化成功后，只对当前容器中的第一个子元素实现了滚动操作。<br>为了让滚动条只显示在局部滚动的区域，需要给局部滚动的最外层容器加上position:relative;<br>var myscroll=new IScroll(要实现局部滚动区域的类名，{<br>    scrollbars:true，<br>    fadeScrollbars:true,//滚动时显示滚动条，否则滚动条隐藏。<br>    mouseWheel:true,<br>    bounce:false  //禁止运动到边界反弹。<br>    click:true //为了防止滑动过程中的误操作，默认把点击事件关闭了，想让点击时需要开启。<br>});</p>
+        <h3 id="fixed不兼容，解决办法用iscroll-js"><a href="#fixed不兼容，解决办法用iscroll-js" class="headerlink" title="fixed不兼容，解决办法用iscroll.js"></a>fixed不兼容，解决办法用iscroll.js</h3><p>移动端大多数浏览器不兼容position:fixed，而pc端只有ie6不兼容position:fixed<br>在移动端开发中，使用position:fixed固定定位，很多手机支持不好，尤其是在定位的区域还需要输入内容调取虚拟键盘的时候会出现很多很多的问题<br>解决这个问题，就不能使用固定定位了，而是使用局部滚动处理（isScroll.js）<br>实现竖向局部滚动，需要把局部滚动的最外层容器的高度设定好。<br>实现横向局部滚动，需要把局部滚动的最外层容器的宽度设定好。<br>实现局部滚动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var   实例=new IScroll（需要局部滚动的区域，&#123;参数配置&#125;）;</div></pre></td></tr></table></figure></p>
+<p>初始化成功后，只对当前容器中的第一个子元素实现了滚动操作。<br>为了让滚动条只显示在局部滚动的区域，需要给局部滚动的最外层容器加上position:relative;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var myscroll=new IScroll(要实现局部滚动区域的类名，&#123;</div><div class="line">    scrollbars:true，</div><div class="line">    fadeScrollbars:true,//滚动时显示滚动条，否则滚动条隐藏。</div><div class="line">    mouseWheel:true,</div><div class="line">    bounce:false  //禁止运动到边界反弹。</div><div class="line">    click:true //为了防止滑动过程中的误操作，默认把点击事件关闭了，想让点击时需要开启。</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <ul>
 <li>myScroll.refresh:当滚动区域的内容发生改变的时候,我们让当前的实例刷新一下,这样的话滚动区域的相关值都会跟着重新计算</li>
 <li>myScroll.scrollToElement([ele],[time]):用多长的时间滚动到具体的某一个元素位置</li>
-<li>myScroll.scrollTo(x,y,time):滚动到具体的坐标位置<br>以上常用 ，下面的可以学习下<br>options.useTransform     true<br>options.useTransition      true<br>options.HWCompositing  true</li>
+<li>myScroll.scrollTo(x,y,time):滚动到具体的坐标位置</li>
 </ul>
-<p>options.bounce  true<br>options.click  false<br>options.mouseWheel  false<br>options.scrollX、options.scrollY</p>
-<p>options.tap  element.addEventListener(‘tap’, doSomething, false); \ Native or tap: ‘myCustomTapEvent’</p>
-<p>scrollbars  flase<br>fadeScrollbars  false</p>
-<p>myScroll.destroy();<br>myScroll = null;</p>
+<p>以上常用 ，下面的可以看文档了解学习下，毕竟艺多不压人，哈哈！！！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">options.useTransform     true</div><div class="line">options.useTransition      true</div><div class="line">options.HWCompositing  true</div><div class="line"></div><div class="line">options.bounce  true</div><div class="line">options.click  false</div><div class="line">options.mouseWheel  false</div><div class="line">options.scrollX、options.scrollY</div><div class="line"></div><div class="line">options.tap  element.addEventListener(&apos;tap&apos;, doSomething, false); \\ Native or tap: &apos;myCustomTapEvent&apos;</div><div class="line"></div><div class="line">scrollbars  flase</div><div class="line">fadeScrollbars  false</div><div class="line"></div><div class="line">myScroll.destroy();</div><div class="line">myScroll = null;</div></pre></td></tr></table></figure></p>
 <p>beforeScrollStart，在用户触摸屏幕但还没有开始滚动时触发。<br>scrollCancel，滚动初始化完成，但没有执行。<br>scrollStart，开始滚动<br>scroll，内容滚动时触发，只有在scroll-probe.js版本中有效，请参考onScroll event。<br>scrollEnd，停止滚动时触发。<br>flick，用户打开左/右。<br>zoomStart，开始缩放。<br>zoomEnd，缩放结束。</p>
 
       
@@ -679,7 +808,7 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端、fixed/">移动端、fixed</a></li></ul>
     </div>
 
       
@@ -699,10 +828,78 @@
 
 
   
-    <article id="post-jicheng" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-js-seajs" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/10/15/jicheng/" class="article-date">
+      <a href="/2015/12/12/js-seajs/" class="article-date">
+      <time datetime="2015-12-12T02:28:12.000Z" itemprop="datePublished">2015-12-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>js模块化开发能解决的问题：1.冲突2.性能 3.依赖<br>使用sea.js解决的步骤：</p>
+<ul>
+<li>1.引入sea.js的库</li>
+<li>2.如何变成模块-define</li>
+<li>3.如何调用模块-exports  -seajs.use</li>
+<li>4.如何依赖模块？-require<br>一、如何变成模块-define 例：test.js<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">define(function (require, exports, module) &#123;</div><div class="line">    //參數固定，写法不变</div><div class="line">    //exports:对外的接口</div><div class="line">    function abc() &#123;</div><div class="line">        alert(123);</div><div class="line">    &#125;</div><div class="line">    exports.abc=abc;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>二、如何调用模块-exports  -seajs.use<br>    seajs.use:例index页面去调用模块，第一个参数：模块的地址，第二个参数：模块加载成功后的回调函数。<br> 注：seajs模块的默认根目录是sea.js的目录。也就是说sea.js库在哪个文件夹下，seajs.use找模块的时候就在那个文件下开始找。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">seajs.use(&apos;sea/test.js&apos;,function (ex) &#123;</div><div class="line">    //回调的参数，就是模块中的exports.</div><div class="line">    ex.abc();//当加载成功后，会弹出123</div><div class="line">    abc();  //这样做就很好的避免了命名冲突。</div><div class="line">    function abc() &#123;</div><div class="line">        alert(456);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>三.如何依赖模块？-require<br>例：test1.js  var a=10; test2.js依賴于test1.js,在此即说明test2.js要用到test1.js里定义的变量。test2.js如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">define(function (require,exports,module) &#123;</div><div class="line">    require(&apos;./test1.js&apos;);//根据当前文件相对的路径来写，这句相当于 let a=10;</div><div class="line">    function abcd() &#123;</div><div class="line">        alert(a);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>如果test1.js是一个模块的化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">define(function (require,exports,module) &#123;</div><div class="line">    var a=10;</div><div class="line">    exports.a=a;</div><div class="line">&#125;);</div><div class="line">//test2.js依賴于test1.js</div><div class="line">define(function (require,exports,module) &#123;</div><div class="line">    //require(&apos;./test1.js&apos;);//如果地址是一个模块的话，那么返回值就是模块中的exports.</div><div class="line">    function abcd() &#123;</div><div class="line">        alert(require(&apos;./test1.js&apos;).a);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-sea-js-模块化/">js sea.js 模块化</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-6jicheng" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/15/6jicheng/" class="article-date">
       <time datetime="2015-10-15T06:12:39.000Z" itemprop="datePublished">2015-10-15</time>
 </a>
     </div>
@@ -716,7 +913,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/15/jicheng/">js学习 6种继承方式</a>
+      <a class="article-title" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a>
     </h1>
   
 
@@ -726,9 +923,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>js中常用的继承方式: 子类继承父类的方法：<br>          1 原型继承  子类的原型指向父类的一个实例  父类的私有和公有方法都是子类的公有方法<br>//原型继承<br>function A(){<br>    this.x = 100;<br>    this.y = 100;<br>}<br>A.prototype.getX = function (){}</p>
-<p>function B(){<br>    this.x = 100;<br>}<br>B.prototype = new A(); //B的原型重新赋值A的实例==&gt;每个b实例都能通过自己的<strong>proto</strong>找到a上的所有的私有方法，并且还可以通过a.<strong>proto</strong>继续找到A.prototype上的所有属性 ==&gt; A这个类上的方法相对于B都是公有方法<br>B.prototype.constructor = B; //由于重新修改了B的原型导致默认原型上的constructor丢失，我们需要自己添加上<br>          2 call继承  在子类构造函数中 父类.call(this)  父类的私有变成子类的私有<br>// call继承<br>function C(){<br>    this.x = 100; //d.x = 100<br>}<br>C.prototype.getX = function (){};<br>function D(){<br>    C.call(this); //构造函数中的this就是当前实例  this ==&gt; d     C.call(d);  ==&gt; 把C中的this修改成d<br>}<br>          3 冒充对象继承 循环遍历父类实例，然后父类实例的私有方法全部拿过来添加给子类实，如果不做hasOwnProperty判断那么就是把父类的公有的和私有的都拿过来当私有的<br>//冒充对象继承<br>function E(){<br>    this.x = 100;<br>    this.y = 200;<br>}<br>E.prototype.getX = function (){}<br>function F(){<br>    var e = new E(); //e.x = 100;<br>    for(var attr in e){ //for in可以遍历到原型上的公有自定义属性<br>        //attr = x<br>        if(e.hasOwnProperty(attr)){ //如果这个判断不加，那么无论是公有的还是私有的都拿过来当私有的<br>            this[attr] = e[attr];//???  f[‘x’] = e[‘x’] ==&gt; f.x = 100;<br>        }<br>        // e.propertyIsEnumerable() //可枚举属性  ==&gt; 可以拿出来一一列举的属性<br>    }<br>}<br>          4 混合继承  原型+call  ==&gt; 无论是私有的还是公有的都拿过来了 ==&gt; 子类的原型上的多了一套父类私有属但是不会产生问题。因为子类的私有属性也有一套相同的通过call继承拿过来的<br>//混合继承<br>function G(){<br>    this.x = 100;<br>}<br>G.prototype.getX = function(){};<br>function H(){<br>    G.call(this);<br>}<br>H.prototype = new G();<br>H.prototype.constructor = H;<br>          5 中间件继承  M.prototype.<strong>proto</strong> = K.prototype;  把父类的公有的当作子类的公有的<br>// 中间件继承<br>function K(){<br>    this.x = 100;<br>}<br>k.prototype.getX = function (){};<br>function M(){</p>
-<p>}<br>M.prototype.<strong>proto</strong> = K.prototype; //本来应该是直接指向Object.prototype。从K的原型上的<strong>proto</strong>也可以到Object.prototype==&gt; 在K.prototype上停留了下，K.prototype就是一个中间件  父类的公有当作子类的公有<br>          6 寄生组合式继承  Object.create(xx.prototype)方法  ==&gt; 是把xx.prototype当作别人家的原型  不兼容，只能找到父类原型的方法。父类的私有属性访问不到。<br>function Parent() {<br>    this.name = “ywx”;<br>}<br>Parent.prototype.eat = function () {<br>    console.log(123);<br>};<br>function Child() {}<br>//寄生组合式继承实现方式如下：<br>Child.prototype = Object.create(Parent.prototype);<br>var child=new Child();<br>console.log(child.eat());//只有找到父类原型上的方法</p>
+        <p>js中常用的继承方式: 子类继承父类的方法：</p>
+<h3 id="1、原型继承"><a href="#1、原型继承" class="headerlink" title="1、原型继承"></a>1、原型继承</h3><p>子类的原型指向父类的一个实例  父类的私有和公有方法都是子类的公有方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function A()&#123;</div><div class="line">    this.x = 100;</div><div class="line">    this.y = 100;</div><div class="line">&#125;</div><div class="line">A.prototype.getX = function ()&#123;&#125;</div><div class="line"></div><div class="line">function B()&#123;</div><div class="line">    this.x = 100;</div><div class="line">&#125;</div><div class="line">B.prototype = new A(); //B的原型重新赋值A的实例==&gt;每个b实例都能通过自己的__proto__找到a上的所有的私有方法，并且还可以通过a.__proto__继续找到A.prototype上的所有属性 ==&gt; A这个类上的方法相对于B都是公有方法</div><div class="line">B.prototype.constructor = B; //由于重新修改了B的原型导致默认原型上的constructor丢失，我们需要自己添加上</div></pre></td></tr></table></figure></p>
+<h3 id="2、call继承"><a href="#2、call继承" class="headerlink" title="2、call继承"></a>2、call继承</h3><p>在子类构造函数中 父类.call(this)  父类的私有变成子类的私有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function C()&#123;</div><div class="line">    this.x = 100; //d.x = 100</div><div class="line">&#125;</div><div class="line">C.prototype.getX = function ()&#123;&#125;;</div><div class="line">function D()&#123;</div><div class="line">    C.call(this); //构造函数中的this就是当前实例  this ==&gt; d     C.call(d);  ==&gt; 把C中的this修改成d</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3、冒充对象继承"><a href="#3、冒充对象继承" class="headerlink" title="3、冒充对象继承"></a>3、冒充对象继承</h3><p>循环遍历父类实例，然后父类实例的私有方法全部拿过来添加给子类实，如果不做hasOwnProperty判断那么就是把父类的公有的和私有的都拿过来当私有的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function E()&#123;</div><div class="line">    this.x = 100;</div><div class="line">    this.y = 200;</div><div class="line">&#125;</div><div class="line">E.prototype.getX = function ()&#123;&#125;</div><div class="line">function F()&#123;</div><div class="line">    var e = new E(); //e.x = 100;</div><div class="line">    for(var attr in e)&#123; //for in可以遍历到原型上的公有自定义属性</div><div class="line">        //attr = x</div><div class="line">        if(e.hasOwnProperty(attr))&#123; //如果这个判断不加，那么无论是公有的还是私有的都拿过来当私有的</div><div class="line">            this[attr] = e[attr];</div><div class="line">            //f[&apos;x&apos;] = e[&apos;x&apos;] ==&gt; f.x = 100;</div><div class="line">        &#125;</div><div class="line">        // e.propertyIsEnumerable() //可枚举属性  ==&gt; 简单理解：可以拿出来一一列举的属性</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="4-混合继承"><a href="#4-混合继承" class="headerlink" title="4 混合继承"></a>4 混合继承</h3><p>原型+call  ==&gt; 无论是私有的还是公有的都拿过来了 ==&gt; 子类的原型上的多了一套父类私有属但是不会产生问题。因为子类的私有属性也有一套相同的通过call继承拿过来的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function G()&#123;</div><div class="line">    this.x = 100;</div><div class="line">&#125;</div><div class="line">G.prototype.getX = function()&#123;&#125;;</div><div class="line">function H()&#123;</div><div class="line">    G.call(this);</div><div class="line">&#125;</div><div class="line">H.prototype = new G();</div><div class="line">H.prototype.constructor = H;</div></pre></td></tr></table></figure></p>
+<h3 id="5-中间件继承"><a href="#5-中间件继承" class="headerlink" title="5 中间件继承"></a>5 中间件继承</h3><p>M.prototype.<strong>proto</strong> = K.prototype;  把父类的公有的当作子类的公有的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function K()&#123;</div><div class="line">    this.x = 100;</div><div class="line">&#125;</div><div class="line">k.prototype.getX = function ()&#123;&#125;;</div><div class="line">function M()&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">M.prototype.__proto__ = K.prototype; //本来应该是直接指向Object.prototype。从K的原型上的__proto__也可以到Object.prototype==&gt; 在K.prototype上停留了下，K.prototype就是一个中间件  父类的公有当作子类的公有</div></pre></td></tr></table></figure></p>
+<h3 id="6-寄生组合式继承"><a href="#6-寄生组合式继承" class="headerlink" title="6 寄生组合式继承"></a>6 寄生组合式继承</h3><p> Object.create(xx.prototype)方法  ==&gt; 是把xx.prototype当作别人家的原型  不兼容，只能找到父类原型的方法。父类的私有属性访问不到。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Parent() &#123;</div><div class="line">    this.name = &quot;ywx&quot;;</div><div class="line">&#125;</div><div class="line">Parent.prototype.eat = function () &#123;</div><div class="line">    console.log(123);</div><div class="line">&#125;;</div><div class="line">function Child() &#123;&#125;</div><div class="line">//寄生组合式继承实现方式如下：</div><div class="line">Child.prototype = Object.create(Parent.prototype);</div><div class="line">var child=new Child();</div><div class="line">console.log(child.eat());//只有找到父类原型上的方法</div></pre></td></tr></table></figure></p>
 
       
     </div>
