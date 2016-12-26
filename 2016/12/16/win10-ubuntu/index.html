@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>激活Win10内置版Linux （ubuntu） | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="微软自从14316版本后，win10就开始原生支持Linux Bash命令行。
+首先开始菜单——设置——更新和安全——针对开发人员——选择开发者模式。
+控制面板→程序和功能→启用或关闭Windows功能，勾选“适用于Linux的Windows子系统（Beta）
+安装后需要重启
+打开命令提示符，直接在管理员模式下输入Bash命令，提示需要从windows store下载，按y确认。 友情提醒：下载u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="激活Win10内置版Linux （ubuntu）">
+<meta property="og:url" content="http://yanwenxi.github.io/2016/12/16/win10-ubuntu/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="微软自从14316版本后，win10就开始原生支持Linux Bash命令行。
+首先开始菜单——设置——更新和安全——针对开发人员——选择开发者模式。
+控制面板→程序和功能→启用或关闭Windows功能，勾选“适用于Linux的Windows子系统（Beta）
+安装后需要重启
+打开命令提示符，直接在管理员模式下输入Bash命令，提示需要从windows store下载，按y确认。 友情提醒：下载u">
+<meta property="og:updated_time" content="2016-12-16T02:33:28.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="激活Win10内置版Linux （ubuntu）">
+<meta name="twitter:description" content="微软自从14316版本后，win10就开始原生支持Linux Bash命令行。
+首先开始菜单——设置——更新和安全——针对开发人员——选择开发者模式。
+控制面板→程序和功能→启用或关闭Windows功能，勾选“适用于Linux的Windows子系统（Beta）
+安装后需要重启
+打开命令提示符，直接在管理员模式下输入Bash命令，提示需要从windows store下载，按y确认。 友情提醒：下载u">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/">文章页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ES6、promise/" style="font-size: 10px;">ES6、promise</a> <a href="/tags/H5、bug/" style="font-size: 10px;">H5、bug</a> <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/Jenkins-CI/" style="font-size: 10px;">Jenkins CI</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/angular-http-q-promise/" style="font-size: 10px;">angular $http $q promise</a> <a href="/tags/angular-q-promise/" style="font-size: 10px;">angular $q promise</a> <a href="/tags/angular、-http/" style="font-size: 10px;">angular、$http</a> <a href="/tags/angular、Karma/" style="font-size: 10px;">angular、Karma</a> <a href="/tags/angular、directive/" style="font-size: 10px;">angular、directive</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/angular、module、controller/" style="font-size: 10px;">angular、module、controller</a> <a href="/tags/angular、promise、-q、deferred/" style="font-size: 10px;">angular、promise、$q、deferred</a> <a href="/tags/angular、router/" style="font-size: 10px;">angular、router</a> <a href="/tags/angular、ui-router/" style="font-size: 10px;">angular、ui-router</a> <a href="/tags/angular、表达式、filter/" style="font-size: 10px;">angular、表达式、filter</a> <a href="/tags/app-跨平台/" style="font-size: 10px;">app,跨平台</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/es5-js/" style="font-size: 10px;">es5 js</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/javascript、object-oriented、继承/" style="font-size: 10px;">javascript、object-oriented、继承</a> <a href="/tags/js-Array/" style="font-size: 10px;">js Array</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js、变态题/" style="font-size: 10px;">js、变态题</a> <a href="/tags/js、设计模式/" style="font-size: 10px;">js、设计模式</a> <a href="/tags/js、跨域、document-domain/" style="font-size: 10px;">js、跨域、document.domain</a> <a href="/tags/js模块化、AMD、CMD、CommonJs/" style="font-size: 10px;">js模块化、AMD、CMD、CommonJs</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/life、意念/" style="font-size: 10px;">life、意念</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/node/" style="font-size: 20px;">node</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-ant-design/" style="font-size: 10px;">react ant-design</a> <a href="/tags/web、前端/" style="font-size: 10px;">web、前端</a> <a href="/tags/web、性能优化/" style="font-size: 10px;">web、性能优化</a> <a href="/tags/win10、linux/" style="font-size: 10px;">win10、linux</a> <a href="/tags/window-history-html5/" style="font-size: 10px;">window.history html5</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/前端脚手架/" style="font-size: 10px;">前端脚手架</a> <a href="/tags/生活/" style="font-size: 20px;">生活</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a> <a href="/tags/跨域、postMessage、html5/" style="font-size: 10px;">跨域、postMessage、html5</a> <a href="/tags/路由-html5/" style="font-size: 10px;">路由 html5</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/">文章页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=278999494@qq.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-win10-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/16/win10-ubuntu/" class="article-date">
+      <time datetime="2016-12-16T02:13:44.000Z" itemprop="datePublished">2016-12-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      激活Win10内置版Linux （ubuntu）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/win10、linux/">win10、linux</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="微软自从14316版本后，win10就开始原生支持Linux-Bash命令行。"><a href="#微软自从14316版本后，win10就开始原生支持Linux-Bash命令行。" class="headerlink" title="微软自从14316版本后，win10就开始原生支持Linux Bash命令行。"></a>微软自从14316版本后，win10就开始原生支持Linux Bash命令行。</h3><ol>
+<li>首先开始菜单——设置——更新和安全——针对开发人员——选择开发者模式。</li>
+<li>控制面板→程序和功能→启用或关闭Windows功能，勾选“适用于Linux的Windows子系统（Beta）</li>
+<li>安装后需要重启</li>
+<li>打开命令提示符，直接在管理员模式下输入Bash命令，提示需要从windows store下载，按y确认。<br> 友情提醒：下载ubuntu会很慢，因为要在window 应用商店下，需要耐心等待，如果下载安装失败或者安装到最后突然跳出安装，可以在网络中心修改下的dns，这样为了使下载更快。不改dns一般在应用商店下载安装东西可以说是龟速！<br> 可以手动设置DNS，将DNS设置为“114.114.114.114”或“4.2.2.2“。</li>
+<li><p>安装成功就能使用bash了<br>载安装的过程中需要用户创建Unix账户，因此要设定账户密码，在输入密码的过程中，密码文字不可见，需要输入两遍。<br>等待漫长的下载过程完成后就会正式进入bash啦，输入lsb_release -a命令查看子系统版本。<br>功能命令可用bash –help来查询，在使用的话要在前面加上“bash”，例如：bash –debug<br>如果要运行Linux命令，可采用如下格式（注意 c 和前引号间的空格）：bash -c “linux命令”<br>例如：bash -c “echo Hello from IThome”。</p>
+<p>注：如果你的win10没找ubuntu，说明win10版本太低，升级下系统就可以了。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2016年12月16日 - 10时13分</p>
+        <p><span>最后更新:</span>2016年12月16日 - 10时33分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/16/win10-ubuntu/" title="激活Win10内置版Linux （ubuntu）">http://yanwenxi.github.io/2016/12/16/win10-ubuntu/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/12/16/win10-ubuntu/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/12/16/angular-router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Angular 路由实现原理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/16/mvp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">了解下框架模式 -MVP</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#微软自从14316版本后，win10就开始原生支持Linux-Bash命令行。"><span class="toc-number">1.</span> <span class="toc-text">微软自从14316版本后，win10就开始原生支持Linux Bash命令行。</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/12/16/win10-ubuntu/" data-title="激活Win10内置版Linux （ubuntu）" data-url="http://yanwenxi.github.io/2016/12/16/win10-ubuntu/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/16/angular-router/" title="上一篇: Angular 路由实现原理">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/12/16/mvp/" title="下一篇: 了解下框架模式 -MVP">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/wumai/">雾霾引起的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/angular-router/">Angular 路由实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/mvp/">了解下框架模式 -MVP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/bubaoyuan/">致穷逼：不抱怨，就是干！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/js-modules-compare/">JS模块规范对比：AMD，CMD，CommonJS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/cross-app/">跨平台APP的构建方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/postMessage/">跨域之HTML5 postMessage</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/document-domain/">js设置document.domain实现跨域的相关注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/biantaiti/">你js这么牛比，你知道++[[]][+[]]+[+[]]的结果么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/blockchain/">基于区块链的web前端开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/angular-promise-two/">通过$q,angular可以实现两种形式的promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/h5bug/">H5项目常见问题汇总及解决方案(摘抄学习)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/window-back-disabled/">使浏览器后退按钮失效及HTML5-window.history</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/arraydeapply/">js 数组中自定义属性的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/10/react-ant-design/">react入门篇 ant-design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/angular-q-promise-http/">AngularJS中的$http、$q服务和promise对象的联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/life-yinian/">意念如何影响我们的身体，不可思议！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/h5api-router/">前端路由的两种实现原理及相关api介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/node-tips/">node一些小知识点积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/angualr-19-Karma/">Angular中的测试-Karma</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-guide16-xhr实践/">Angular中的异步请求-xhr</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/angular-study/">AngularJS基本知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/angular-guide17-angular中的promise/">Angular中如何使用promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/dajianjiaoshoujia/">教你从零开始搭建一款前端脚手架工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/angular-guide8-9章/">Angular权威指南学习（第8到9章）指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/angular-guide6-7/">Angular权威指南学习(第6-7章)表达式和过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/angular-guide1-5章/">Angular权威指南学习（第1到5章）模块、控制器及一些基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/web-xingnengyouhua/">前端性能优化积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/ES6-promise/">ES6-promise学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/web-resource/">前端Web开发资源整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/angular-ui-router/">Angular路由之ui-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/Object.create/">一种新的对象创建方式——Object.create()</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/object-oriented-js/">面向对象的javascript及js中6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/02/test-makrdown/">markdown 语法入大门</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
