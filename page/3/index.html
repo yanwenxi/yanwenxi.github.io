@@ -799,6 +799,71 @@
 
 
   
+    <article id="post-guanchazhemoshi" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/12/guanchazhemoshi/" class="article-date">
+      <time datetime="2016-08-12T14:10:58.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="js设计模式——发布订阅模式"><a href="#js设计模式——发布订阅模式" class="headerlink" title="js设计模式——发布订阅模式"></a>js设计模式——发布订阅模式</h4><p>发布订阅模式又叫观察者模式，它定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有的依赖于它的对象都将得到通知。在js开发中，我们一般用事件模型来代替传统的发布-订阅模式。</p>
+<h5 id="现实中的发布—订阅模式"><a href="#现实中的发布—订阅模式" class="headerlink" title="现实中的发布—订阅模式"></a>现实中的发布—订阅模式</h5><p>1、烧水例子：只有等水烧开了，才能做后续的事件，比如洗脚，泡茶，泡面等一系列之前安排好的事情。<br>2、售楼例子：买房者在售楼处留下电话号码，等楼开售时，售楼处会依依通知预留手机号码的人。</p>
+<h5 id="发布-订阅模式的作用"><a href="#发布-订阅模式的作用" class="headerlink" title="发布-订阅模式的作用"></a>发布-订阅模式的作用</h5><p>一：发布-订阅模式可以广泛地应用在异步编程中，这是一种替代传递回调函数的方案。<br>二：可以取代对象之间硬编码的通知机制，一个对象不用再显式地调用另外一个对象的某个接口。<br>优点：一是时间上的解耦，二是对象之间的解耦;<br>缺点：创建订阅者本身要消耗一定的时间和内存，而且当你订阅一个消息后，也许此消息最后都未发生，但是这个订阅者会始终存在于内存中。另处，虽然发布-订阅模式可以弱化对象之间的联系，但是如果过度使用的话，对象和对象之间的必要联系也将被深埋在背后，会导致程序难以跟踪维护和理解。特别是有多个发布者和订阅者嵌套到一起的时候，要跟踪一个bug是很困难的。</p>
+<h4 id="dom事件"><a href="#dom事件" class="headerlink" title="dom事件"></a>dom事件</h4><p>实际上，只要我们曾经在dom节点上面绑过事件函数，那我们就曾经使用过发布-订阅模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">document.body.addEventListener(&apos;click&apos;,function () &#123;</div><div class="line">    alert(2);</div><div class="line">&#125;,false);</div><div class="line">document.body.click();//模拟用户点击</div><div class="line">//我们订阅document.body上的click事件，当body节点被点击的时候，body节点会向订阅者发布这个消息。</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//当然我们还可以随意增加或者删除订阅者，增加任何订阅者都不会影响发布者代码的编写：</div><div class="line">document.body.addEventListener(&apos;click&apos;,function () &#123;</div><div class="line">    alert(3);</div><div class="line">&#125;,false);</div><div class="line">document.body.click();</div></pre></td></tr></table></figure>
+<p>注：手动触发事件更好的做法是IE下用fireEvent,标准浏览器下用dispatchEvent实现。</p>
+<h5 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h5><p>除了dom事件，还可以实现一些自定义事件，这种靠自定义事件完成的发布-订阅模式可以用于任何js代码中。<br>如何实现发布-订阅模式？<br>1.首先要指定好谁充当发布者（如售楼处）<br>2.然后给发布者添加一个缓存列表，用于存放回调函数以便通知订阅者（如售楼处的花名册)。<br>3.最后发布消息的时候，发布者会遍历这个缓存列表，依次触发里面存放的订阅者回调函数（遍历花名册，挨个发短信）<br>另外，可以在回调函数里填入一些参数，订阅者可以接收这些参数。这是很有必要的，比如售楼处可以在发给订阅者的短信里面加上房子的一些信息，订阅者收到这些信息之后可以各自处理。</p>
+<h4 id="真实例子——网站登录"><a href="#真实例子——网站登录" class="headerlink" title="真实例子——网站登录"></a>真实例子——网站登录</h4><p>假如正在开发一个商城网站，网站里面有header头部，nav导航，消息列表，购物车等模块。这几个模块的渲染有一个共同的前提条件，就必须先用ajax异步请求获取用户的登录信息。比如用户的名字和头像要显示在header模块里，而这两个字段都来自用户登录后返回的信息。<br>至于ajax请求什么时候能成功返回用户信息，这点我们不能确定。<br>用发布-订阅模式来写，有关用户信息业务的模块将自行订阅登录成功的消息事件，当登录成功时，登录模块只需要发布登录成功的消息，而业务方接受到消息之后，就会开始各自的业务处理，登录模块并不关心业务方究竟要做什么，也不想去了解他们的内部细节。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js、设计模式/">js、设计模式</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-react1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -880,71 +945,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-guanchazhemoshi" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/12/guanchazhemoshi/" class="article-date">
-      <time datetime="2016-08-12T14:10:58.000Z" itemprop="datePublished">2016-08-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="js设计模式——发布订阅模式"><a href="#js设计模式——发布订阅模式" class="headerlink" title="js设计模式——发布订阅模式"></a>js设计模式——发布订阅模式</h4><p>发布订阅模式又叫观察者模式，它定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有的依赖于它的对象都将得到通知。在js开发中，我们一般用事件模型来代替传统的发布-订阅模式。</p>
-<h5 id="现实中的发布—订阅模式"><a href="#现实中的发布—订阅模式" class="headerlink" title="现实中的发布—订阅模式"></a>现实中的发布—订阅模式</h5><p>1、烧水例子：只有等水烧开了，才能做后续的事件，比如洗脚，泡茶，泡面等一系列之前安排好的事情。<br>2、售楼例子：买房者在售楼处留下电话号码，等楼开售时，售楼处会依依通知预留手机号码的人。</p>
-<h5 id="发布-订阅模式的作用"><a href="#发布-订阅模式的作用" class="headerlink" title="发布-订阅模式的作用"></a>发布-订阅模式的作用</h5><p>一：发布-订阅模式可以广泛地应用在异步编程中，这是一种替代传递回调函数的方案。<br>二：可以取代对象之间硬编码的通知机制，一个对象不用再显式地调用另外一个对象的某个接口。<br>优点：一是时间上的解耦，二是对象之间的解耦;<br>缺点：创建订阅者本身要消耗一定的时间和内存，而且当你订阅一个消息后，也许此消息最后都未发生，但是这个订阅者会始终存在于内存中。另处，虽然发布-订阅模式可以弱化对象之间的联系，但是如果过度使用的话，对象和对象之间的必要联系也将被深埋在背后，会导致程序难以跟踪维护和理解。特别是有多个发布者和订阅者嵌套到一起的时候，要跟踪一个bug是很困难的。</p>
-<h4 id="dom事件"><a href="#dom事件" class="headerlink" title="dom事件"></a>dom事件</h4><p>实际上，只要我们曾经在dom节点上面绑过事件函数，那我们就曾经使用过发布-订阅模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">document.body.addEventListener(&apos;click&apos;,function () &#123;</div><div class="line">    alert(2);</div><div class="line">&#125;,false);</div><div class="line">document.body.click();//模拟用户点击</div><div class="line">//我们订阅document.body上的click事件，当body节点被点击的时候，body节点会向订阅者发布这个消息。</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//当然我们还可以随意增加或者删除订阅者，增加任何订阅者都不会影响发布者代码的编写：</div><div class="line">document.body.addEventListener(&apos;click&apos;,function () &#123;</div><div class="line">    alert(3);</div><div class="line">&#125;,false);</div><div class="line">document.body.click();</div></pre></td></tr></table></figure>
-<p>注：手动触发事件更好的做法是IE下用fireEvent,标准浏览器下用dispatchEvent实现。</p>
-<h5 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h5><p>除了dom事件，还可以实现一些自定义事件，这种靠自定义事件完成的发布-订阅模式可以用于任何js代码中。<br>如何实现发布-订阅模式？<br>1.首先要指定好谁充当发布者（如售楼处）<br>2.然后给发布者添加一个缓存列表，用于存放回调函数以便通知订阅者（如售楼处的花名册)。<br>3.最后发布消息的时候，发布者会遍历这个缓存列表，依次触发里面存放的订阅者回调函数（遍历花名册，挨个发短信）<br>另外，可以在回调函数里填入一些参数，订阅者可以接收这些参数。这是很有必要的，比如售楼处可以在发给订阅者的短信里面加上房子的一些信息，订阅者收到这些信息之后可以各自处理。</p>
-<h4 id="真实例子——网站登录"><a href="#真实例子——网站登录" class="headerlink" title="真实例子——网站登录"></a>真实例子——网站登录</h4><p>假如正在开发一个商城网站，网站里面有header头部，nav导航，消息列表，购物车等模块。这几个模块的渲染有一个共同的前提条件，就必须先用ajax异步请求获取用户的登录信息。比如用户的名字和头像要显示在header模块里，而这两个字段都来自用户登录后返回的信息。<br>至于ajax请求什么时候能成功返回用户信息，这点我们不能确定。<br>用发布-订阅模式来写，有关用户信息业务的模块将自行订阅登录成功的消息事件，当登录成功时，登录模块只需要发布登录成功的消息，而业务方接受到消息之后，就会开始各自的业务处理，登录模块并不关心业务方究竟要做什么，也不想去了解他们的内部细节。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js、设计模式/">js、设计模式</a></li></ul>
     </div>
 
       
