@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>angular中的5种服务 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="5种创建自定义服务的方式1.Provider 2.Factory 3.Service 4.value 5.constant,其中只有provider可以配置，factory是项目中最常用的。服务的作用：提取公共内容，封装公有方法，并且服务是单例的。服务对应的是构造函数。服务名字的后面函数其实是一个服务的构造函数，单例相当于只能new一次创建一个实例，不能创建多个实例来使用。service层主查写逻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angular中的5种服务">
+<meta property="og:url" content="http://yanwenxi.github.io/2016/06/01/angular-fiveservice/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="5种创建自定义服务的方式1.Provider 2.Factory 3.Service 4.value 5.constant,其中只有provider可以配置，factory是项目中最常用的。服务的作用：提取公共内容，封装公有方法，并且服务是单例的。服务对应的是构造函数。服务名字的后面函数其实是一个服务的构造函数，单例相当于只能new一次创建一个实例，不能创建多个实例来使用。service层主查写逻">
+<meta property="og:updated_time" content="2016-12-26T07:56:52.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angular中的5种服务">
+<meta name="twitter:description" content="5种创建自定义服务的方式1.Provider 2.Factory 3.Service 4.value 5.constant,其中只有provider可以配置，factory是项目中最常用的。服务的作用：提取公共内容，封装公有方法，并且服务是单例的。服务对应的是构造函数。服务名字的后面函数其实是一个服务的构造函数，单例相当于只能new一次创建一个实例，不能创建多个实例来使用。service层主查写逻">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">博客首页</a></li>
+                        
+                            <li><a href="/">文章页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/ES6、promise/" style="font-size: 10px;">ES6、promise</a> <a href="/tags/H5、bug/" style="font-size: 10px;">H5、bug</a> <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/Jenkins-CI/" style="font-size: 10px;">Jenkins CI</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/angular-http-q-promise/" style="font-size: 10px;">angular $http $q promise</a> <a href="/tags/angular-q-promise/" style="font-size: 10px;">angular $q promise</a> <a href="/tags/angular-decorator/" style="font-size: 10px;">angular decorator</a> <a href="/tags/angular-filter/" style="font-size: 10px;">angular filter</a> <a href="/tags/angular-服务/" style="font-size: 10px;">angular 服务</a> <a href="/tags/angular、-http/" style="font-size: 10px;">angular、$http</a> <a href="/tags/angular、Karma/" style="font-size: 10px;">angular、Karma</a> <a href="/tags/angular、directive/" style="font-size: 10px;">angular、directive</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/angular、module、controller/" style="font-size: 10px;">angular、module、controller</a> <a href="/tags/angular、promise、-q、deferred/" style="font-size: 10px;">angular、promise、$q、deferred</a> <a href="/tags/angular、router/" style="font-size: 10px;">angular、router</a> <a href="/tags/angular、ui-router/" style="font-size: 10px;">angular、ui-router</a> <a href="/tags/angular、表达式、filter/" style="font-size: 10px;">angular、表达式、filter</a> <a href="/tags/app-跨平台/" style="font-size: 10px;">app,跨平台</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/es5-js/" style="font-size: 10px;">es5 js</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="/tags/javascript、object-oriented、继承/" style="font-size: 10px;">javascript、object-oriented、继承</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js-Array/" style="font-size: 10px;">js Array</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js、变态题/" style="font-size: 10px;">js、变态题</a> <a href="/tags/js、设计模式/" style="font-size: 10px;">js、设计模式</a> <a href="/tags/js、跨域、document-domain/" style="font-size: 10px;">js、跨域、document.domain</a> <a href="/tags/js模块化、AMD、CMD、CommonJs/" style="font-size: 10px;">js模块化、AMD、CMD、CommonJs</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/life、意念/" style="font-size: 10px;">life、意念</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/node/" style="font-size: 20px;">node</a> <a href="/tags/rap/" style="font-size: 20px;">rap</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-ant-design/" style="font-size: 10px;">react ant-design</a> <a href="/tags/web、前端/" style="font-size: 10px;">web、前端</a> <a href="/tags/web、性能优化/" style="font-size: 10px;">web、性能优化</a> <a href="/tags/win10、linux/" style="font-size: 10px;">win10、linux</a> <a href="/tags/window-history-html5/" style="font-size: 10px;">window.history html5</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/前端脚手架/" style="font-size: 10px;">前端脚手架</a> <a href="/tags/生活/" style="font-size: 20px;">生活</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a> <a href="/tags/跨域、postMessage、html5/" style="font-size: 10px;">跨域、postMessage、html5</a> <a href="/tags/路由-html5/" style="font-size: 10px;">路由 html5</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">博客首页</a></li>
+                
+                    <li><a href="/">文章页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-angular-fiveservice" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/01/angular-fiveservice/" class="article-date">
+      <time datetime="2016-06-01T06:53:19.000Z" itemprop="datePublished">2016-06-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      angular中的5种服务
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular-服务/">angular 服务</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="5种创建自定义服务的方式"><a href="#5种创建自定义服务的方式" class="headerlink" title="5种创建自定义服务的方式"></a>5种创建自定义服务的方式</h4><p>1.Provider 2.Factory 3.Service 4.value 5.constant,其中只有provider可以配置，factory是项目中最常用的。<br>服务的作用：提取公共内容，封装公有方法，并且服务是单例的。服务对应的是构造函数。服务名字的后面函数其实是一个服务的构造函数，单例相当于只能new一次创建一个实例，不能创建多个实例来使用。<br>service层主查写逻辑代码的，但在angularJS里也可以持久化数据（充当数据容器），以供不同的controller调用。<br>controller层：即控制层，在angularJS里就是写控制器的。控制器里尽量不要写那些不必要的逻辑，尽量写在service层里。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//定义构造函数</div><div class="line">var myServiceProvider = function()&#123;</div><div class="line">this.$get = function()&#123;</div><div class="line">return ....</div><div class="line">&#125;;</div><div class="line">&#125;;</div><div class="line">//在模块中登记</div><div class="line">angular.module(&quot;myModule&quot;,[])</div><div class="line">.provider(&quot;myService&quot;,myServiceProvider);</div></pre></td></tr></table></figure></p>
+<h4 id="1-provider"><a href="#1-provider" class="headerlink" title="1.provider"></a>1.provider</h4><p>provider 可配置  当注入后会默认调用$get方法   仅仅只有provider可配置.<br>只有provder是能传.config() 函数的服务。如果想在 service 对象启用之前，先进行模块范围的配置，那就应该选择 provider。需要注意的是：在config函数里注入provider时，名字应该是：providerName+Provider.<br>使用Provider的优点就是，你可以在Provider对象传递到应用程序的其他部分之前在app.config函数中对其进行修改。 当你使用Provider创建一个service时，唯一的可以在你的控制器中访问的属性和方法是通过$get()函数返回内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.provider(&apos;my&apos;,function () &#123;</div><div class="line">    //当我们使用这个服务的时候，会直接调用$get方法</div><div class="line">    this.$get = function () &#123;</div><div class="line">             return &#123;  &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h5 id="可配置的服务"><a href="#可配置的服务" class="headerlink" title="可配置的服务"></a>可配置的服务</h5><p> 有时我们希望服务在不同的场景下可以有不同的行为，这意味着服务可以进行配置。比如，我们希望小计算器可以根据不同的本地化区域，给计算结果追加货币符号前缀， 那么需要在这个服务创建之前，首先配置本地化区域的值，然后在具体的计算中， 根据这个值选择合适的货币符号。<br>      AngularJS使用模块的config()方法对服务进行配置，需要将实例化的服务提供者（而不是服务实例）注入到配置函数中：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">angular.module(&quot;myModule&quot;,[])</div><div class="line">.config([&quot;myServiceProvider&quot;,function(myServiceProvider)&#123;</div><div class="line">//do some configuration.</div><div class="line">&#125;]);</div></pre></td></tr></table></figure></p>
+<h4 id="2-factory"><a href="#2-factory" class="headerlink" title="2.factory"></a>2.factory</h4><p>factory方式创建的服务，作用就是返回一个有属性有方法的对象。相当于：var f = myFactory();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.factory(&apos;my&apos;,function () &#123;</div><div class="line">return  &#123;&#125;  //返回$get执行后的函数</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">注：使用provider服务时的执行顺序 先config &gt; run &gt; controller</div><div class="line">//需要注意的是：在配置provider时，名字应该是：providerName+Provider   </div><div class="line">    app.config(function(myProviderProvider)&#123;</div><div class="line">        myProviderProvider.setName(&quot;ywx&quot;);       </div><div class="line">    &#125;);</div><div class="line">    app.provider(&apos;myProvider&apos;, function() &#123;</div><div class="line">        var name=&quot;&quot;;</div><div class="line">        var test=&#123;&quot;a&quot;:1,&quot;b&quot;:2&#125;;</div><div class="line">        //注意的是，setter方法必须是(set+变量首字母大写)格式</div><div class="line">        this.setName = function(newName)&#123;</div><div class="line">            name = newName  </div><div class="line">        &#125;</div><div class="line"></div><div class="line">        this.$get =function($http,$q)&#123;</div><div class="line">            return &#123;</div><div class="line">                getData : function()&#123;</div><div class="line">                    var d = $q.defer();</div><div class="line">                    $http.get(&quot;url&quot;)//读取数据的函数。</div><div class="line">                        .success(function(response) &#123;</div><div class="line">                            d.resolve(response);</div><div class="line">                        &#125;)</div><div class="line">                        .error(function()&#123;</div><div class="line">                            d.reject(&quot;error&quot;);</div><div class="line">                        &#125;);</div><div class="line">                    return d.promise;</div><div class="line">                &#125;,</div><div class="line">                &quot;lastName&quot;:name,</div><div class="line">                &quot;test&quot;:test</div><div class="line">            &#125;   </div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;);</div><div class="line">    app.controller(&apos;myCtrl&apos;, function($scope,myProvider) &#123;</div><div class="line">        alert(myProvider.lastName);</div><div class="line">        alert(myProvider.test.a)</div><div class="line">        myProvider.getData().then(function(data)&#123;</div><div class="line">            //alert(data)</div><div class="line">        &#125;,function(data)&#123;</div><div class="line">            //alert(data)</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//通过工厂模式创建自定义服务</div><div class="line">    app.factory(&apos;myFactory&apos;, function() &#123;</div><div class="line">        var service = &#123;&#125;;//定义一个Object对象&apos;</div><div class="line">        service.name = &quot;张三&quot;;</div><div class="line">        var age;//定义一个私有化的变量</div><div class="line">        //对私有属性写getter和setter方法</div><div class="line">        service.setAge = function(newAge)&#123;</div><div class="line">            age = newAge;</div><div class="line">        &#125;</div><div class="line">        service.getAge = function()&#123;</div><div class="line">            return age; </div><div class="line">        &#125;</div><div class="line">        return service;//返回这个Object对象</div><div class="line">    &#125;);</div><div class="line">//创建控制器</div><div class="line">    app.controller(&apos;myCtrl&apos;, function($scope, myFactory) &#123;</div><div class="line">        myFactory.setAge(20);</div><div class="line">        $scope.r =myFactory.getAge();</div><div class="line">        alert(myFactory.name);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>注：在自定义服务里可以注入内置服务（例$http等），但不能注入$scope作用域对象。</p>
+<h4 id="3-service"><a href="#3-service" class="headerlink" title="3.service"></a>3.service</h4><p>通过service方式创建自定义服务，相当于new的一个对象：var s = new myService();，只要把属性和方法添加到this上才可以在controller里调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.service(&apos;myService&apos;,function () &#123;</div><div class="line">     此处为return出来的那个对象，对象的属性需要加上this，this[key]=val这种形式。</div><div class="line">     &#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">app.service(&apos;myService&apos;, function($http,$q) &#123;</div><div class="line">        this.name = &quot;service&quot;;</div><div class="line">        this.myFunc = function (x) &#123;</div><div class="line">            return x.toString(16);//转16进制</div><div class="line">        &#125;</div><div class="line">        this.getData = function()&#123;</div><div class="line">            var d = $q.defer();</div><div class="line">            $http.get(&quot;ursl&quot;)//读取数据的函数。</div><div class="line">                .success(function(response) &#123;</div><div class="line">                d.resolve(response);</div><div class="line">            &#125;)</div><div class="line">                .error(function()&#123;</div><div class="line">                alert(0)</div><div class="line">                d.reject(&quot;error&quot;);</div><div class="line">            &#125;);</div><div class="line">            return d.promise;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    app.controller(&apos;myCtrl&apos;, function($scope, myService) &#123;</div><div class="line">        $scope.r = myService.myFunc(255);</div><div class="line">        myService.getData().then(function(data)&#123;</div><div class="line">            console.log(data);//正确时走这儿</div><div class="line">        &#125;,function(data)&#123;</div><div class="line">            alert(data)//错误时走这儿</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h4 id="4-value"><a href="#4-value" class="headerlink" title="4.value"></a>4.value</h4><p>以 key与value的形式来写value服务。这个值就是服务实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.value(&apos;my&apos;,&#123;</div><div class="line">          此处为return出来的对象</div><div class="line">     &#125;);</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">有时我们需要在不同的组件之间共享一个变量，可以将这种情况视为一种服务： provider返回的总是变量的值。</div><div class="line">value方法提供了对这种情况的简化封装：</div><div class="line">angular.module(&quot;myModule&quot;,[])</div><div class="line">.value(&quot;myValueService&quot;,&quot;cx129800123&quot;);</div><div class="line"></div><div class="line">INSIDE：AngularJS会将value方法封装为provider，上面的示例 等同于：</div><div class="line">angular.module(&quot;myModule&quot;,[])</div><div class="line">.provider(&quot;myService&quot;,function()&#123;</div><div class="line">this.$get = function()&#123;</div><div class="line">return &quot;cx129800123&quot;;</div><div class="line">&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="5-constant"><a href="#5-constant" class="headerlink" title="5.constant"></a>5.constant</h4><p>用法同value，也是以 key ,value的形式，但是可以配置（不是真正意义上的配置），即可以增加属性。配置时不需要再名字后面加Provider。这个常量就是服务实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//配置constant</div><div class="line">   app.config(function (my) &#123;</div><div class="line">       my.currency = &apos;￡&apos;;//在当前属性上增加一个属性</div><div class="line">   &#125;);</div><div class="line">   app.controller(&apos;computed&apos;,function ($scope,my) &#123;</div><div class="line">       //my就是return这个对象,这样就可以使用return出来对象的属性了</div><div class="line">   &#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">有时我们需要在不同的组件之间共享一个常量，可以将这种情况视为一种服务： provider返回的总是常量的值。constant方法提供了对这种情况的简化封装：</div><div class="line">angular.module(&quot;myModule&quot;,[])</div><div class="line">.constant(&quot;myConstantService&quot;,&quot;Great Wall&quot;);</div><div class="line">和value方法不同，AngularJS并没有将constant方法封装成一个provider，而仅仅是在内部登记这个值。这使得常量在AngularJS的启动配置阶段就可以使用（创建任何 服务之前）：你可以将常量注入到模块的config()方法中。</div></pre></td></tr></table></figure>
+<h4 id="在过滤器中注入自定义服务"><a href="#在过滤器中注入自定义服务" class="headerlink" title="在过滤器中注入自定义服务"></a>在过滤器中注入自定义服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">&lt;div ng-app=&quot;myApp&quot;&gt;</div><div class="line">    在过滤器中使用服务:</div><div class="line">    &lt;h1&gt;&#123;&#123;255 | myFormat&#125;&#125;&lt;/h1&gt;</div><div class="line">    //若使用过滤器时需要传入参数，用：隔开，多个参数用多个：隔开。</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var app = angular.module(&apos;myApp&apos;, []);</div><div class="line">    app.service(&apos;hexafy&apos;, function() &#123;</div><div class="line">        this.myFunc = function (x) &#123;</div><div class="line">            return x.toString(16);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    app.filter(&apos;myFormat&apos;,[&apos;hexafy&apos;, function(hexafy) &#123;</div><div class="line">        return function(x) &#123;</div><div class="line">            return hexafy.myFunc(x);</div><div class="line">        &#125;;</div><div class="line">    &#125;]);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/06/01/angular-fiveservice/">angular中的5种服务</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2016年06月01日 - 14时53分</p>
+        <p><span>最后更新:</span>2016年12月26日 - 15时56分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/01/angular-fiveservice/" title="angular中的5种服务">http://yanwenxi.github.io/2016/06/01/angular-fiveservice/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/06/01/angular-fiveservice/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2016/06/13/dajianjiaoshoujia/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          教你从零开始搭建一款前端脚手架工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/26/defined-filter/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简述angular自定义过滤器在页面和控制器中的使用</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#5种创建自定义服务的方式"><span class="toc-number">1.</span> <span class="toc-text">5种创建自定义服务的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-provider"><span class="toc-number">2.</span> <span class="toc-text">1.provider</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#可配置的服务"><span class="toc-number">2.1.</span> <span class="toc-text">可配置的服务</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-factory"><span class="toc-number">3.</span> <span class="toc-text">2.factory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-service"><span class="toc-number">4.</span> <span class="toc-text">3.service</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-value"><span class="toc-number">5.</span> <span class="toc-text">4.value</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-constant"><span class="toc-number">6.</span> <span class="toc-text">5.constant</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在过滤器中注入自定义服务"><span class="toc-number">7.</span> <span class="toc-text">在过滤器中注入自定义服务</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/06/01/angular-fiveservice/" data-title="angular中的5种服务" data-url="http://yanwenxi.github.io/2016/06/01/angular-fiveservice/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/06/13/dajianjiaoshoujia/" title="上一篇: 教你从零开始搭建一款前端脚手架工具">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2016/05/26/defined-filter/" title="下一篇: 简述angular自定义过滤器在页面和控制器中的使用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/30/thanks-real/">谢谢，现实！-fatkan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/wumai/">雾霾引起的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/angular-router/">Angular 路由实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/mvp/">了解下框架模式 -MVP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/bubaoyuan/">致穷逼：不抱怨，就是干！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/js-modules-compare/">JS模块规范对比：AMD，CMD，CommonJS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/cross-app/">跨平台APP的构建方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/postMessage/">跨域之HTML5 postMessage</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/document-domain/">js设置document.domain实现跨域的相关注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/biantaiti/">你js这么牛比，你知道++[[]][+[]]+[+[]]的结果么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/blockchain/">基于区块链的web前端开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/angular-promise-two/">通过$q,angular可以实现两种形式的promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/h5bug/">H5项目常见问题汇总及解决方案(摘抄学习)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/window-back-disabled/">使浏览器后退按钮失效及HTML5-window.history</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/arraydeapply/">js 数组中自定义属性的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/10/react-ant-design/">react入门篇 ant-design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/angular-q-promise-http/">AngularJS中的$http、$q服务和promise对象的联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/life-yinian/">意念如何影响我们的身体，不可思议！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/30/iframe-video/">使用iframe嵌入优酷视频的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/h5api-router/">前端路由的两种实现原理及相关api介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/node-tips/">node一些小知识点积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/angualr-19-Karma/">Angular中的测试-Karma</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-decorator/">angular-decorator</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-guide16-xhr实践/">Angular中的异步请求-xhr</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/angular-study/">AngularJS基本知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/angular-guide17-angular中的promise/">Angular中如何使用promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/dajianjiaoshoujia/">教你从零开始搭建一款前端脚手架工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/angular-fiveservice/">angular中的5种服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/defined-filter/">简述angular自定义过滤器在页面和控制器中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/angular-guide8-9章/">Angular权威指南学习（第8到9章）指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/angular-guide6-7/">Angular权威指南学习(第6-7章)表达式和过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/angular-guide1-5章/">Angular权威指南学习（第1到5章）模块、控制器及一些基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/web-xingnengyouhua/">前端性能优化积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/ES6-promise/">ES6-promise学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/rap-loverujia/">爱你不是为了和你去如家-MV版</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/web-resource/">前端Web开发资源整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/angular-ui-router/">Angular路由之ui-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/Object.create/">一种新的对象创建方式——Object.create()</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/object-oriented-js/">面向对象的javascript及js中6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/27/zhaoji-life/">你的人生如此着急，你过好了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/02/test-makrdown/">markdown 语法入大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/30/jquery-gaoxiao/">高效的jQuery代码编写技巧总结(收藏转)</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://webywx.com/" target="_blank">webywx</a>  Theme <a href="https://yanwenxi.site" target="_blank">前端在路上</a> by Scorpio
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
