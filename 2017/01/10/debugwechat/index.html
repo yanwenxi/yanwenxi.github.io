@@ -3,18 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>基于Jenkins的持续集成CI | 闫文喜的个人博客</title>
+  <title>如何在本地进行微信公众号的开发调试 | 闫文喜的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CI（continuous integration）持续集成持续集成指的是，频繁地（一天多次）将代码集成到主干。持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。一次构建：可能包含编译，测试，审查和部署，以及其他一些事情，一次构建就是将源代码放在一起，并验证软件是否可以作为一个一致的单元运行的过程。可以理解为频繁的在多个团队的工作中集成，并且给与反馈的过程。团队开发成员经常集成它们的工作">
+  <meta name="description" content="在进行微信公众号开发时，以前必须要有外网域名才能收到微信服务器的推送，这给开发和调试带来很大的不便。
+现在方便了，QQ浏览器提供了微信公众号调试工具，开发者可以在自己的开发机上进行开发和调试，不再需要外网IP和域名。不仅可以直观看到已接收和已发送的消息内容和事件，方便开发和问题定位，还可以重复发送已接收的微信报文，避免调试时频繁操作手机
+原理如下图：
+    调试工具内置了一个server，监听你">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Jenkins的持续集成CI">
-<meta property="og:url" content="http://yanwenxi.github.io/2016/12/02/Jenkins-CI/index.html">
+<meta property="og:title" content="如何在本地进行微信公众号的开发调试">
+<meta property="og:url" content="http://yanwenxi.github.io/2017/01/10/debugwechat/index.html">
 <meta property="og:site_name" content="闫文喜的个人博客">
-<meta property="og:description" content="CI（continuous integration）持续集成持续集成指的是，频繁地（一天多次）将代码集成到主干。持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。一次构建：可能包含编译，测试，审查和部署，以及其他一些事情，一次构建就是将源代码放在一起，并验证软件是否可以作为一个一致的单元运行的过程。可以理解为频繁的在多个团队的工作中集成，并且给与反馈的过程。团队开发成员经常集成它们的工作">
-<meta property="og:updated_time" content="2016-12-22T05:54:19.234Z">
+<meta property="og:description" content="在进行微信公众号开发时，以前必须要有外网域名才能收到微信服务器的推送，这给开发和调试带来很大的不便。
+现在方便了，QQ浏览器提供了微信公众号调试工具，开发者可以在自己的开发机上进行开发和调试，不再需要外网IP和域名。不仅可以直观看到已接收和已发送的消息内容和事件，方便开发和问题定位，还可以重复发送已接收的微信报文，避免调试时频繁操作手机
+原理如下图：
+    调试工具内置了一个server，监听你">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/debugwechat.png-public">
+<meta property="og:updated_time" content="2017-01-10T09:51:02.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于Jenkins的持续集成CI">
-<meta name="twitter:description" content="CI（continuous integration）持续集成持续集成指的是，频繁地（一天多次）将代码集成到主干。持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。一次构建：可能包含编译，测试，审查和部署，以及其他一些事情，一次构建就是将源代码放在一起，并验证软件是否可以作为一个一致的单元运行的过程。可以理解为频繁的在多个团队的工作中集成，并且给与反馈的过程。团队开发成员经常集成它们的工作">
+<meta name="twitter:title" content="如何在本地进行微信公众号的开发调试">
+<meta name="twitter:description" content="在进行微信公众号开发时，以前必须要有外网域名才能收到微信服务器的推送，这给开发和调试带来很大的不便。
+现在方便了，QQ浏览器提供了微信公众号调试工具，开发者可以在自己的开发机上进行开发和调试，不再需要外网IP和域名。不仅可以直观看到已接收和已发送的消息内容和事件，方便开发和问题定位，还可以重复发送已接收的微信报文，避免调试时频繁操作手机
+原理如下图：
+    调试工具内置了一个server，监听你">
+<meta name="twitter:image" content="http://oi28tswuq.bkt.clouddn.com/images/debugwechat.png-public">
   
     <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
   
@@ -218,11 +229,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Jenkins-CI" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-debugwechat" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/02/Jenkins-CI/" class="article-date">
-      <time datetime="2016-12-02T05:29:54.000Z" itemprop="datePublished">2016-12-02</time>
+      <a href="/2017/01/10/debugwechat/" class="article-date">
+      <time datetime="2017-01-10T09:43:54.000Z" itemprop="datePublished">2017-01-10</time>
 </a>
     </div>
   
@@ -235,7 +246,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      基于Jenkins的持续集成CI
+      如何在本地进行微信公众号的开发调试
     </h1>
   
 
@@ -246,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jenkins-CI/">Jenkins CI</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wechat/">wechat</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -256,20 +267,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="CI（continuous-integration）持续集成"><a href="#CI（continuous-integration）持续集成" class="headerlink" title="CI（continuous integration）持续集成"></a>CI（continuous integration）持续集成</h4><p>持续集成指的是，频繁地（一天多次）将代码集成到主干。持续集成的目的，就是让产品可以快速迭代，同时还能保持高质量。<br>一次构建：可能包含编译，测试，审查和部署，以及其他一些事情，一次构建就是将源代码放在一起，并验证软件是否可以作为一个一致的单元运行的过程。可以理解为频繁的在多个团队的工作中集成，并且给与反馈的过程。团队开发成员经常集成它们的工作，每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。</p>
-<h4 id="CI场景如下："><a href="#CI场景如下：" class="headerlink" title="CI场景如下："></a>CI场景如下：</h4><p>（1）开发人员向版本控制库提交代码，同时，集成构建计算机上的CI服务器正在轮询检查版本控制库中的变更<br>（2）在提交发生之后，CI服务器检测到版本控制库中发生了变更，所以CI服务器会从库中取得最新的代码副本，执行构建脚本，该脚本将对软件进行集成<br>（3）CI服务器向指定的项目成员发成电子邮件，提供构建结果的反馈信息。<br>（4）CI服务器继续轮询版本控制库中的变更。</p>
-<h4 id="CI持续集成周期"><a href="#CI持续集成周期" class="headerlink" title="CI持续集成周期"></a>CI持续集成周期</h4><p>一个典型的持续集成周期包括以下几个步骤：<br>（1）持续集成服务器不断从版本控制服务器上检查代码状态，看代码是否有更新。<br>（2）如果发现代码有最新的提交，那么就从版本控制服务器下载最新的代码。<br>（3）等代码完全更新以后，调用自动化编译脚本，进行代码编译。<br>（4）运行所有的自动化测试。<br>（5）进行代码分析。<br>（6）产生可执行的软件，能够提供给测试人员进行测试。</p>
-<h4 id="CI系统"><a href="#CI系统" class="headerlink" title="CI系统"></a>CI系统</h4><p>在CI中您需要一个版本控制库，比如（GIT或者SVN）来执行CI。版本控制库，大家都知道git，可以方便的管理源代码，可以沿着时间轴取得不同同版本的代码。CI服务器在变更提交到版本库后执行的集成构建，他会每个一段时间去检查版本库中的变更，所以我们需要对CI服务器进行配置。CI服务器还需要提供一个方便的显示板来显示构建的结果。但是CI服务器并不是必须的，也<strong>可以通过执行构建脚本来执行构建</strong>。</p>
-<p>从上面我们知道CI的4个基本特征：与版本控制库链接，构建脚本，某种类型的反馈机制，集成源代码变更的过程。这也是CI系统的4个基本功能。一个好的CI系统的关键特征就是速度，这个系统的本质就及时向开发者和项目风险承担者提供反馈信息。</p>
-<p>既然CI这么好，但还是有些团队并没有选择使用，其实这是一个综合考虑的结果。使用CI会增加一些成本的，比如增加了维护CI系统的开销，变化太多尤其是对于老项目需要改变很多才能实现CI。失败的构建太多，如果在提交代码之前没有私有构建一次，就会造成在使用ci的时候变更变得频繁。存在额外的硬件和软件成本，使用ci就需要一台独立的集成服务器。</p>
-<h4 id="CI工具"><a href="#CI工具" class="headerlink" title="CI工具"></a>CI工具</h4><p>持续集成工具：jenkins、CruiseControl、Hudson、gauntlet<br>构建工具：Maven、Ant、groovy<br>CDBI：持续数据库集成，即每次项目的版本控制库中发生变更时，重建数据库和测试数据。</p>
-<h4 id="建议使用Jenkins"><a href="#建议使用Jenkins" class="headerlink" title="建议使用Jenkins"></a>建议使用Jenkins</h4><p>Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。Jenkins 还提供了非常丰富的插件支持，这使得 Jenkins 变得越来越强大。我们可以方便的安装各种第三方插件，从而方便快捷的集成第三方的应用。</p>
-<h4 id="基于Jenkins快速搭建CI环境"><a href="#基于Jenkins快速搭建CI环境" class="headerlink" title="基于Jenkins快速搭建CI环境"></a>基于Jenkins快速搭建CI环境</h4><p>首先要知道一个持续集成环境需要包括三个方面要素：代码存储库、构建过程和持续集成服务器。<br>​代码存储库一般使用GITlab;<br>1、开始新建一个 Jenkins 项目， 由于我们需要连接gitlab的代码仓库， 我们选择 Build a free-style software project。</p>
-<p>2、然后配置这个 JenkinsTest 项目了，根据实际的 gitlab服务器信息配置 Source Code Management，这能让 Jenkins 知道如何从哪里获取最新的代码。</p>
-<p>3、根据开发需要，隔一段时间需要重新构建一次。选择 Build periodically，在 Schedule 中填写 0 <em> </em> <em> </em>对应的构建时间。</p>
-<p>4、添加 build 的步骤了。Jenkins 提供了四个选项供我们选择，可以根据需要执行或调用外部命令和脚本，例如ant、shell、maven等等。这些脚本都是根据需要自己配置的。</p>
-<p>5、可以在 Jenkins 中观察构建的进度和最终的状态——成功或者失败。太阳代表之前的构建没有任何失败，蓝色的小球代表构建成功。也可以在JenkinsTest 查看单次构建的 Console 的输出结果。从中能看到构建的第一步是从 gitlab服务器上 check out 代码，然后在build。</p>
-<p>声明：文章部分内容参考来源于网络。</p>
+        <p>在进行微信公众号开发时，以前必须要有外网域名才能收到微信服务器的推送，这给开发和调试带来很大的不便。</p>
+<p>现在方便了，QQ浏览器提供了微信公众号调试工具，开发者可以在自己的开发机上进行开发和调试，不再需要外网IP和域名。不仅可以直观看到已接收和已发送的消息内容和事件，方便开发和问题定位，还可以重复发送已接收的微信报文，避免调试时频繁操作手机</p>
+<p>原理如下图：</p>
+<p><div align="center"><br>    <img src="http://oi28tswuq.bkt.clouddn.com/images/debugwechat.png-public" alt=""><br></div><br>调试工具内置了一个server，监听你本地运行的程序，并为你生成一个外网的url，你只需要在公众号的开发信息中配置上这个url，公众号收到消息后，就会通过这个url转发到调试工具上，调试工具再转给你的本地运行程序。</p>
+<h4 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h4><p>（1）在本机启动运行自己程序的server</p>
+<p>（2）打开qq浏览器，在应用中心中安装“微信调试工具”，安装完成后，选择“服务器端调试”</p>
+<p>（3）填写本地server的ip和端口号，调试工具会返回一个外部URL</p>
+<p>（4）到公众号后台开发者配置信息中填写这个URL</p>
+<p>（5）用微信向公众号发送消息测试</p>
+<p>注：QQ浏览器这种调试方式已经不更新了，推荐使用其他调试工具如下：<br><a href="http://blog.qqbrowser.cc/" target="_blank" rel="external">推荐工具</a><a href="http://blog.qqbrowser.cc/" target="_blank" rel="external">http://blog.qqbrowser.cc/</a></p>
 
       
     </div>
@@ -278,13 +285,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/10/debugwechat/">如何在本地进行微信公众号的开发调试</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
-        <p><span>发布时间:</span>2016年12月02日 - 13时29分</p>
-        <p><span>最后更新:</span>2016年12月22日 - 13时54分</p>
+        <p><span>发布时间:</span>2017年01月10日 - 17时43分</p>
+        <p><span>最后更新:</span>2017年01月10日 - 17时51分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/02/Jenkins-CI/" title="基于Jenkins的持续集成CI">http://yanwenxi.github.io/2016/12/02/Jenkins-CI/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2016/12/02/Jenkins-CI/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/10/debugwechat/" title="如何在本地进行微信公众号的开发调试">http://yanwenxi.github.io/2017/01/10/debugwechat/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2017/01/10/debugwechat/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -297,18 +304,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2016/12/04/docker/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          使用Docker快速发布nodejs应用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/01/blockchain/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于区块链的web前端开发</div>
+    <a href="/2017/01/10/wechat1-6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">写段代码实现加密认证逻辑</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -319,7 +317,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#CI（continuous-integration）持续集成"><span class="toc-number">1.</span> <span class="toc-text">CI（continuous integration）持续集成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CI场景如下："><span class="toc-number">2.</span> <span class="toc-text">CI场景如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CI持续集成周期"><span class="toc-number">3.</span> <span class="toc-text">CI持续集成周期</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CI系统"><span class="toc-number">4.</span> <span class="toc-text">CI系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CI工具"><span class="toc-number">5.</span> <span class="toc-text">CI工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建议使用Jenkins"><span class="toc-number">6.</span> <span class="toc-text">建议使用Jenkins</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于Jenkins快速搭建CI环境"><span class="toc-number">7.</span> <span class="toc-text">基于Jenkins快速搭建CI环境</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方法："><span class="toc-number">1.</span> <span class="toc-text">使用方法：</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -367,7 +365,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/12/02/Jenkins-CI/" data-title="基于Jenkins的持续集成CI" data-url="http://yanwenxi.github.io/2016/12/02/Jenkins-CI/"></div>
+    <div class="ds-thread" data-thread-key="2017/01/10/debugwechat/" data-title="如何在本地进行微信公众号的开发调试" data-url="http://yanwenxi.github.io/2017/01/10/debugwechat/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -390,13 +388,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/04/docker/" title="上一篇: 使用Docker快速发布nodejs应用">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2016/12/01/blockchain/" title="下一篇: 基于区块链的web前端开发">
+            <a href="/2017/01/10/wechat1-6/" title="下一篇: 写段代码实现加密认证逻辑">
                 <i class="fa fa-angle-right"></i>
             </a>
         
