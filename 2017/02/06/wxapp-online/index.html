@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>简易电商类小程序开发教程 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="电商类平台主要由首页、分类页、商品列表页、商品详情页、购物车、订单结算页和个人中心等几大模块组成。在开发过程中，也会穿插介绍一些常用简单内置组件的使用，最再后利用小程序的 template 模板，对自定义组件化开发的实现提供三种参考模式。
+1、准备开工先新建一个文件夹 wxapponline 作为项目目录，里面包含：   1.common 目录——用来放置项目公用的文件   2.pages 目录—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简易电商类小程序开发教程">
+<meta property="og:url" content="http://yanwenxi.github.io/2017/02/06/wxapp-online/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="电商类平台主要由首页、分类页、商品列表页、商品详情页、购物车、订单结算页和个人中心等几大模块组成。在开发过程中，也会穿插介绍一些常用简单内置组件的使用，最再后利用小程序的 template 模板，对自定义组件化开发的实现提供三种参考模式。
+1、准备开工先新建一个文件夹 wxapponline 作为项目目录，里面包含：   1.common 目录——用来放置项目公用的文件   2.pages 目录—">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/wxapponline2.jpg">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/wxapponline3.png-public">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/wxapponline1.jpg">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/wxapponline4.png-public">
+<meta property="og:image" content="http://oi28tswuq.bkt.clouddn.com/images/wxapponline5.png">
+<meta property="og:updated_time" content="2017-02-07T03:20:56.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简易电商类小程序开发教程">
+<meta name="twitter:description" content="电商类平台主要由首页、分类页、商品列表页、商品详情页、购物车、订单结算页和个人中心等几大模块组成。在开发过程中，也会穿插介绍一些常用简单内置组件的使用，最再后利用小程序的 template 模板，对自定义组件化开发的实现提供三种参考模式。
+1、准备开工先新建一个文件夹 wxapponline 作为项目目录，里面包含：   1.common 目录——用来放置项目公用的文件   2.pages 目录—">
+<meta name="twitter:image" content="http://oi28tswuq.bkt.clouddn.com/images/wxapponline2.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">我的小窝</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Benchmark-jsPerf/" style="font-size: 10px;">Benchmark jsPerf</a> <a href="/tags/ES6、promise/" style="font-size: 10px;">ES6、promise</a> <a href="/tags/H5-移动端优化/" style="font-size: 10px;">H5 移动端优化</a> <a href="/tags/H5、bug/" style="font-size: 10px;">H5、bug</a> <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/Jenkins-CI/" style="font-size: 10px;">Jenkins CI</a> <a href="/tags/Lodash/" style="font-size: 10px;">Lodash</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/angular-http-q-promise/" style="font-size: 10px;">angular $http $q promise</a> <a href="/tags/angular-q-promise/" style="font-size: 10px;">angular $q promise</a> <a href="/tags/angular-decorator/" style="font-size: 10px;">angular decorator</a> <a href="/tags/angular-filter/" style="font-size: 10px;">angular filter</a> <a href="/tags/angular-服务/" style="font-size: 10px;">angular 服务</a> <a href="/tags/angularjs/" style="font-size: 10px;">angularjs</a> <a href="/tags/angular、-http/" style="font-size: 10px;">angular、$http</a> <a href="/tags/angular、Karma/" style="font-size: 10px;">angular、Karma</a> <a href="/tags/angular、directive/" style="font-size: 10px;">angular、directive</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/angular、module、controller/" style="font-size: 10px;">angular、module、controller</a> <a href="/tags/angular、promise、-q、deferred/" style="font-size: 10px;">angular、promise、$q、deferred</a> <a href="/tags/angular、router/" style="font-size: 10px;">angular、router</a> <a href="/tags/angular、ui-router/" style="font-size: 10px;">angular、ui-router</a> <a href="/tags/angular、表达式、filter/" style="font-size: 10px;">angular、表达式、filter</a> <a href="/tags/app-跨平台/" style="font-size: 10px;">app,跨平台</a> <a href="/tags/aso/" style="font-size: 10px;">aso</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/debugger/" style="font-size: 10px;">debugger</a> <a href="/tags/es5-js/" style="font-size: 10px;">es5 js</a> <a href="/tags/fit/" style="font-size: 10px;">fit</a> <a href="/tags/flex-css3/" style="font-size: 10px;">flex css3</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/h5-webworkers/" style="font-size: 10px;">h5 webworkers</a> <a href="/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="/tags/javascript、object-oriented、继承/" style="font-size: 10px;">javascript、object-oriented、继承</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/js-Array/" style="font-size: 10px;">js Array</a> <a href="/tags/js-Higher-order-function/" style="font-size: 10px;">js Higher-order-function</a> <a href="/tags/js-closure/" style="font-size: 10px;">js closure</a> <a href="/tags/js-lodash/" style="font-size: 10px;">js lodash</a> <a href="/tags/js-object/" style="font-size: 10px;">js object</a> <a href="/tags/js-scope/" style="font-size: 10px;">js scope</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js-this/" style="font-size: 10px;">js this</a> <a href="/tags/js-性能调试-Benchmark-jsPerf/" style="font-size: 10px;">js 性能调试 Benchmark jsPerf</a> <a href="/tags/js-柯里化/" style="font-size: 10px;">js 柯里化</a> <a href="/tags/js-纯函数/" style="font-size: 10px;">js 纯函数</a> <a href="/tags/js、变态题/" style="font-size: 10px;">js、变态题</a> <a href="/tags/js、设计模式/" style="font-size: 10px;">js、设计模式</a> <a href="/tags/js、跨域、document-domain/" style="font-size: 10px;">js、跨域、document.domain</a> <a href="/tags/js模块化、AMD、CMD、CommonJs/" style="font-size: 10px;">js模块化、AMD、CMD、CommonJs</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/life、意念/" style="font-size: 10px;">life、意念</a> <a href="/tags/lodash-chain/" style="font-size: 10px;">lodash chain</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/node-debug/" style="font-size: 10px;">node debug</a> <a href="/tags/node-wechat/" style="font-size: 20px;">node wechat</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rap/" style="font-size: 17.5px;">rap</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-ant-design/" style="font-size: 10px;">react ant-design</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo-新闻源/" style="font-size: 10px;">seo 新闻源</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/web-交互/" style="font-size: 10px;">web 交互</a> <a href="/tags/web、前端/" style="font-size: 10px;">web、前端</a> <a href="/tags/web、性能优化/" style="font-size: 10px;">web、性能优化</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/wechat-webstorm/" style="font-size: 10px;">wechat webstorm</a> <a href="/tags/win10、linux/" style="font-size: 10px;">win10、linux</a> <a href="/tags/window-history-html5/" style="font-size: 10px;">window.history html5</a> <a href="/tags/wxapp/" style="font-size: 15px;">wxapp</a> <a href="/tags/yarn-npm/" style="font-size: 10px;">yarn npm</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/前端脚手架/" style="font-size: 10px;">前端脚手架</a> <a href="/tags/建站-seo/" style="font-size: 10px;">建站 seo</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/生活/" style="font-size: 20px;">生活</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a> <a href="/tags/跨域、postMessage、html5/" style="font-size: 10px;">跨域、postMessage、html5</a> <a href="/tags/路由-html5/" style="font-size: 10px;">路由 html5</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">我的小窝</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-wxapp-online" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/06/wxapp-online/" class="article-date">
+      <time datetime="2017-02-06T08:07:17.000Z" itemprop="datePublished">2017-02-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      简易电商类小程序开发教程
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wxapp/">wxapp</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>电商类平台主要由首页、分类页、商品列表页、商品详情页、购物车、订单结算页和个人中心等几大模块组成。<br>在开发过程中，也会穿插介绍一些常用简单内置组件的使用，最再后利用小程序的 template 模板，对自定义组件化开发的实现提供三种参考模式。</p>
+<h4 id="1、准备开工"><a href="#1、准备开工" class="headerlink" title="1、准备开工"></a>1、准备开工</h4><p>先新建一个文件夹 wxapponline 作为项目目录，里面包含：<br>   1.common 目录——用来放置项目公用的文件<br>   2.pages 目录——项目页面开发目录，里面的每个子目录代表一 个 独 立 页 面 ， 分 别 包 含 与 目 录 同 名 的 .wxml （ 必须）， .wxss， .js（ 必须）和 .json 文件<br>   3.templates 目录——用来放置自定义的组件<br>   4.utils 目录——用来放置工具类 js 文件<br>   5.app.js——小程序逻辑<br>   6.app.json——小程序公共设置<br>   7.app.wxss——小程序公共样式表</p>
+<h4 id="2、轮播banner样式定义"><a href="#2、轮播banner样式定义" class="headerlink" title="2、轮播banner样式定义"></a>2、轮播banner样式定义</h4><p>和大多数项目一样，最开始是首页的实现。<br>首 页 在 pages/index 目 录 下 ， 包 括 index.wxml 、index.wxss、 index.js 三个文件。</p>
+<font color="red">实现 banner 轮播图，来看代码：</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/*** index.wxml ***/</div><div class="line">&lt;swiper class=&quot;banner-swiper&quot;</div><div class="line">indicator-dots=&quot;&#123;&#123; indicatorDots &#125;&#125;&quot;</div><div class="line">autoplay=&quot;&#123;&#123; autoplay &#125;&#125;&quot; interval=&quot;&#123;&#123; interval &#125;&#125;&quot;</div><div class="line">duration=&quot;&#123;&#123; duration &#125;&#125;&quot;&gt;</div><div class="line">&lt;swiper-item class=&quot;swiper-item&quot;</div><div class="line">wx:for=&quot;&#123;&#123; banners &#125;&#125;&quot;&gt;</div><div class="line">&lt;navigator</div><div class="line">url=&quot;../detail/detail?id=&#123;&#123; item.productId &#125;&#125;&quot;&gt;</div><div class="line">&lt;image src=&quot;&#123;&#123; item.image &#125;&#125;&quot;</div><div class="line">class=&quot;slide-image&quot;&gt;&lt;/image&gt;</div><div class="line">&lt;/navigator&gt;</div><div class="line">&lt;/swiper-item&gt;</div><div class="line">&lt;/swiper&gt;</div></pre></td></tr></table></figure><br><br>值得注意的是， image 组件会有一个默认的样式.可以到官方文档中去查找images组件的默认样式。默认宽高可能在不同的版本中有不同的值。我们可以根据实际情况给它重新定义一个宽高值。单位：rpx;<br>友情提：大多数小程序内置组件都会有自己的默认样式，我们可以利用开发工具中的wxml panel，多了解一下这些组件的默认样式，可以避免很多由组件默认样式引起的问题。<br>另一个注意点是，不要将大图片放到项目目录中，因为小程序代码总大小不能超过 1 MB，而大图片会占用大量的空间，所以要尽量避免在项目目录中放置大图片。<br>如有需要，建议只在项目目录中放置少量 icon 类的小图片，其他大图片可以上传到自己的服务器或者网盘中，然后在 src 中设置图片的网络资源地址。<br>在手机测试或者正式上线之前，要注意是否有引用了本地大图片导致代码超出大小限制的问题。<br><br>#### 3.准备获取 banner    数据，并绑定到视图层<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/*** index.js ***/</div><div class="line">Page(&#123;</div><div class="line">data: &#123;</div><div class="line">banners: [], //初始化一个 banners 数组</div><div class="line">//以下四项设置 swiper 组件的参数值</div><div class="line">indicatorDots: true</div><div class="line">, autoplay: true, //开启自动切换</div><div class="line">interval: 5000, //自动切换时间间隔</div><div class="line">duration: 1000 //滑动动画时长&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure><br><br>在 Page 里的 data 会以 JSON 的形式由逻辑层传至视图层，然后在视图层中使用 Mustache 语法（双大括号）接收传入的数据，实现动态数据的数据绑定。经过绑定后的数据变动可以在视图中实时反应，也可以通过开发者工具中的 AppData Panel 中查看和编辑页面中的所有 data 数据。<br>友情提醒：当你不知道 data 数据是否被设置成功的时候，可以到 AppData Panel 来查看一下，免去了手动打 console.log 进行调试的麻烦。<br><br>实现动态数据绑定的另一个方式是使用 this.setData() 方法 ， this 在 这 里 代 表 的 是 Page ， 而 setData 是在PageX.prototype 中的方法，所以 this.setData() 实际上访问的是 Page.prototype.setData()。它可以用来新增和修改 this.data 里的值，同时还有一个重要的功能是将数据从逻辑层发送到视图层，从而实时改变页面的状态，保持逻辑层和视图层数据的一致性。需要注意的是，如果使用 this.data.property = value，同样可以设置 this.data 的值，但是它不会将数据发送到视图层，无法改变页面的状态。<br>注意： 一 定 要 避 免 使 用this.data.property = value 的方式设置数据。<br><br>#### 4.从服务器获取 banner数据<br>现在我们的目的是要得到一个 banners 数组，然后利 用 wx:for 将 banners 数 组 中 的 每 一 项 渲 染 到swiper-item 中。我们可以在页面加载（ onLoad） 时，使用 wx.request() 发<br>起一个 Ajax 请求，来获取到所需要的 banner 列表数据。先 来 看 一 下 wx.request(object) 的 使 用 方 法 。 首 先 是object 可以接受的参数值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1. url：设置发送请求的地址。</div><div class="line">2. method：请求方式，默认为 GET，有效值： OPTIONS， GET，HEAD， POST， PUT， DELETE， TRACE， CONNECT。注意，所有值都要使用大写。 经过测试，若使用小写，在安卓中会导致无法发起请求，而在开发者工具和 iOS 中则正常。</div><div class="line">3. data：设置请求的参数。如果 method 值为 GET，这个函数会将 data 转换成 query 字符串，拼接在 url 后面，若 url 本身带有同名的 query 参数，那么 data 中的参数会覆盖 url 中的 query 参数；小 程 序 执 行 wx.request(object) 发 送 请 求 并 收 到success（成功）的消息后，会自动执行请求成功返回的回调函数。回调函数执行时，会自动收到类似这样的回调参数：</div><div class="line">res = &#123;data: &apos;服务器返回的数据&apos;, errMsg: &apos;错误信息&apos;, statusCode: HTTP 状态码&#125;</div></pre></td></tr></table></figure><br><br>特别注意，在开发者工具和 iOS 中， res.statusCode 的类据类型是一个数值， 而在 Android 中的数据类型是一个字符串，所以在判断 res.statusCode 时不能直接使用 === 操作符，而应该用 == 操作符，或者是先对 res.statusCode 进行数据类型转换。现在，就可以在 onLoad 中调用 wx.request() 发起请求，访问获取 banner 列表的服务器 API。<br>我们将各服务器 API 的访问地址都保存在 API_URL 对象，保存在 utils/config.js 中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/*** config.js ***/</div><div class="line">const CONFIG = &#123;</div><div class="line">API_URL: &#123;</div><div class="line">BANNER_QUERY: http://ifanr.com/api/banner</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">module.exports = CONFIG;</div><div class="line">然 后 需 要 在 index.js 中 使 用 require 引 入utils/config.js 文件，引入路径为当前文件的相对路径：</div><div class="line">/*** index.js ***/</div><div class="line">var CONFIG = require(&apos;../../utils/config.js&apos;);</div><div class="line">于是，我们就知道了在小程序中 js 模块化的方法，模块通过module.exports 对外暴露接口，在需要使用这些模块的文件中，使用 require(path) 将公共代码引入。发起 wx.request 请求：</div><div class="line">/*** index.js ***/</div><div class="line">var CONFIG = require(&apos;../../utils/config.js&apos;);</div><div class="line">Page(&#123;</div><div class="line">data: &#123;...</div><div class="line">&#125;,</div><div class="line">onLoad: function () &#123;</div><div class="line">var _this = this;</div><div class="line">wx.request(&#123;</div><div class="line">url: CONFIG.API_URL.BANNER_QUERY,</div><div class="line">method: &apos;GET&apos;,</div><div class="line">data: &#123;</div><div class="line">limit: 6,</div><div class="line">img_size: &apos;small&apos;</div><div class="line">&#125;,</div><div class="line">success: function (res) &#123;</div><div class="line">if (res.statusCode == 200) &#123;</div><div class="line">_this.setData(&#123;</div><div class="line">banners: res.data.objects</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure><br><br>在 wx.request() 的回调函数中判断 res.statusCode 是否 为 200 ， 若 为 200 则 代 表 请 求 成 功 ， 接 着 将 数 据 保 存 到banners 数组中。我 们 在 success 回 调 函 数 中 使 用_this.setData({ banners: res.data.objects }); 设置banners 的值。<br>注意 ： 这 里 不 能 直 接 使 用this.setData() ，因为 success 回调函数是一个闭包，我们要先 在 闭 包 外 面 定 义 var _this = this; ， 再调用_this.setData()，以保证闭包内能到正确的 this 值。现在，在视图中我们就能看到完整的 banner 列表了。<br><br>## 如何做商品列表<br>#### 1.为布局而生的 Flex<br>传统的布局方式一般都是基于 div 盒子模型，利用 float，position， display 来进行布局。每个前端开发者对这些布局方式都非常熟悉。对一些特殊的布局来说，使用这些属性并不方便，由此还衍生出各种 hack 方案。直到CSS3 提出了专为布局而生的解决方案，就是 Flex 布局。但是，由于浏览器的兼容问题，大多数开发者都不敢将 Flex 布局直接应用到实际项目之中。在常规项目中，大量应用 Flex 布局还需要一个过程。<br><br>而对于 WeChat Only 的小程序来说，则完全不用担心有浏览器兼容的问题，它只要适配微信客户端即可。同时，由于小程序的布局不会非常复杂，所以，也不用过多地担心大量使用 Flex 引起的性能问题。我们可以放心地在小程序中使用 Flex 来处理布局。<br>#### 2.如何更方便地使用 rpx<br>rpx 的全称是 responsive pixel，它是小程序自己定义的一个尺寸单位，可以根据当前设备的屏幕宽度进行自适应。小程序中规定，所有的设备屏幕宽度都为 750rpx，根据设备屏<br>幕实际宽度的不同， 1rpx 所代表的实际像素值也不一样。<br><br>例如，在 iPhone 6 上，屏幕实际宽度为 375px，则 750rpx =375px， 1rpx = 0.5px；而在 iPhone 5 上，屏幕实际宽度为 320px，则 750rpx = 320px， 1rpx = 0.42px。<br>其实，我们并不必关心每种设备屏幕下 1rpx 到底代表多少个像素，只要抓住 「所有的设备屏幕宽度都为 750rpx」这个原则，就能很好地实现对任意设备屏幕大小的自适应布局。强烈建议用 iPhone 6 作为视觉稿的标准，即将视觉稿总宽度设成 750px。这样，开发者就能很方便地对相关的尺寸进行量取。比如，在总宽度为 750px 的 iPhone 6 视觉稿中，量取一个图片的宽度为 200px，那么，这个图片的宽度即可设置为 200rpx。<br><br>简单一句话解释：量取多少就设置多少。<br><br>#### 3.Flex配合rpx的使用案例<br>现在，我们就在小程序中使用 Flex 和 rpx 进行布局，体验一下这种解决方案的便利。<br>第一个例子：货架列表效果图：<br><div align="center"><br> <img src="http://oi28tswuq.bkt.clouddn.com/images/wxapponline2.jpg" alt=""><br></div><br><br>首先还是贴两段代码，以下是 WXML 的实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*** index.wxml ***/</div><div class="line">&lt;view class=&quot;shelf-nav&quot;&gt;</div><div class="line">&lt;view class=&quot;shelf-nav-item&quot;</div><div class="line">wx:for=&quot;&#123;&#123; shelfNavList &#125;&#125;&quot;&gt;</div><div class="line">&lt;navigator</div><div class="line">url=&quot;../list/list?id=&#123;&#123; item.id &#125;&#125;&quot;&gt;</div><div class="line">&lt;image src=&quot;&#123;&#123; item.cover_image &#125;&#125;&quot;</div><div class="line">class=&quot;shelf-nav-item__image&quot;&gt; &lt;/image&gt;</div><div class="line">&lt;text&gt;&#123;&#123; item.name &#125;&#125;&lt;/text&gt;</div><div class="line">&lt;/navigator&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure><br><br>然后 WXSS 的代码如下，在关键代码处已经给出简要注释：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">/*** index.wxss ***/</div><div class="line">.shelf-nav &#123;</div><div class="line">display: flex; // 设 置 display: flex; 将 它 变 为flex 布局的元素</div><div class="line">flex-wrap: wrap; //当子元素总宽度超过父元素宽度时换行显示</div><div class="line">padding: 30rpx;</div><div class="line">&#125;</div><div class="line">.shelf-nav-item &#123;</div><div class="line">width: 25%; //因为每行显示 4 个货架，所以宽度设置为25%;</div><div class="line">margin-bottom: 20rpx;</div><div class="line">text-align: center; //让它中间的图片和标题居中显示</div><div class="line">&#125;</div><div class="line">.shelf-nav-item__image &#123;</div><div class="line">width: 130rpx; //在视觉稿中量取图片宽高为 130px</div><div class="line">height: 130rpx; //于是设置 width 和 height 都设置为 130rpx;</div><div class="line">border-radius: 50%; //把图片设置成圆形</div><div class="line">border: 1px solid #d9d9d9; //加上外边框</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>简单几步就完成了货架列表的布局， 并且完美兼容各种大小的设备屏幕。<br><br>第二个例子：效果图如下：<br><div align="center"><br> <img src="http://oi28tswuq.bkt.clouddn.com/images/wxapponline3.png-public" alt=""><br></div><br><br>如上图所示， 需要做到的效果是标题居左，「查看更多」（即…）的图标居右并且垂直居中。<br>代码结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/*** index.wxml ***/</div><div class="line">&lt;view class=&quot;shelf-header&quot;&gt;</div><div class="line">&lt;view class=&quot;shelf-title&quot;&gt;</div><div class="line">&lt;text</div><div class="line">class=&quot;shelf-title-en&quot;&gt;&#123;&#123; shelf.english_name &#125;&#125;&lt;/</div><div class="line">text&gt;</div><div class="line">&lt;text</div><div class="line">class=&quot;shelf-title-cn&quot;&gt;&#123;&#123; shelf.name &#125;&#125;&lt;/text&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;view class=&quot;shelf-more&quot;&gt;</div><div class="line">&lt;navigator</div><div class="line">url=&quot;../list/list?id=&#123;&#123; shelf.id &#125;&#125;&quot;</div><div class="line">class=&quot;ifanrin-more-icon ifanrin&quot;&gt; &lt;/navigator&gt;&lt;/view&gt;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure><br><br>有经验的同学一眼就可以看出，要实现需求需要：<br>1/让 .shelf-title 向左浮动<br>2/让 .shelf-more 水平方向右对齐、垂直方向居中<br>3/最后还要给 .shelf-header clearfix 一下<br>那现在来看看 Flex 是怎么做的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*** index.wxss ***/</div><div class="line">.shelf-header &#123;</div><div class="line">display: flex; //设置为 flex 布局的元素</div><div class="line">justify-content: space-between; //均匀排列每个元</div><div class="line">素，首、末两元素分别位于起点和终点</div><div class="line">&#125;</div><div class="line">.shelf-more &#123;</div><div class="line">align-self: center; //设置居中</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>只要区区几行代码，就能轻松使用 Flex 调整排版。<br>接下来，发起一个请求获取数据，然后setData() 绑定数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/*** index.js ***/</div><div class="line">Page()&#123;</div><div class="line">...,</div><div class="line">onLoad: function () &#123;</div><div class="line">var that = this;</div><div class="line">wx.request(&#123;</div><div class="line">url: CONFIG.API_URL.SHELF_QUERY,</div><div class="line">method: &apos;GET&apos;,</div><div class="line">data: &#123;</div><div class="line">img_size: &apos;small&apos;</div><div class="line">&#125;,success: function (res) &#123;</div><div class="line">that.setData(&#123;</div><div class="line">shelfNavList: res.data.objects</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">&#125;,</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br>此时列表页就基本完成了。<br><br>#### 4、template模板的使用<br>效果图如下：<br><br><div align="center"><br> <img src="http://oi28tswuq.bkt.clouddn.com/images/wxapponline1.jpg" alt=""><br></div><br><br>不难发现，这两个页面的列表的样式是一模一样的。那么，我们就可以把每个商品视为一个模块，暂且把这个商品模块称为 product-card，我们可以将它用 template 封装起来，<br>在需要的地方就将它引入并进行调用。这里先要弄清楚一个概念， template 的主要功能更多的是在于定义一个 WXML 代码片段，然后在不同的地方调用。template 拥有自己的作用域， 而且只能使用 data 传入的数据。接下来看看template 到底如何使用。<br><br><font color="red">1.定义 template 模板</font>
+
+<p>为了方便代码组织，我们在 templates 目录下，新建一个productCard 文 件 夹 ， 并 在 product-card 文 件 夹 下 新 建productCard.wxml 和 productCard.wxss 文件。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;template name=&quot;productCard&quot;&gt;</div><div class="line">&lt;view class=&quot;product-card&quot;&gt;</div><div class="line">&lt;navigator</div><div class="line">url=&quot;../detail/detail?id=&#123;&#123; id &#125;&#125;&quot;&gt;</div><div class="line">&lt;view style=&quot;background-image:</div><div class="line">url(&#123;&#123; cover_image &#125;&#125;)&quot; class=&quot;product-cover&quot;&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;view&gt;</div><div class="line">&lt;text</div><div class="line">class=&quot;product-title&quot;&gt;&#123;&#123; title &#125;&#125;&lt;/text&gt;</div><div class="line">&lt;text class=&quot;product-price&quot;&gt;</div><div class="line">￥&#123;&#123; price &#125;&#125;&lt;/text&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;/navigator&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;/template&gt;</div></pre></td></tr></table></figure></p>
+<p>使用 name 属性，定义模板的名字，然后将代码片断保存在template 中。</p>
+<p><font color="red">2.引入 template 模板</font><br>以首页为例，当要使用到 productCard 模板时，我们只需要使用 import 引入模板。在需要显示的位置，外层用 wx:for 循环渲染列表， template为子项，使用 is 声明需要的使用的模板，用 data 传入数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/*** index.wxml ***/</div><div class="line">&lt;import</div><div class="line">src=&quot;../../templates/productCard/productCard.wxml</div><div class="line">&quot; /&gt;</div><div class="line">&lt;view class=&quot;product-list&quot;&gt;</div><div class="line">&lt;block wx:for=&quot;&#123;&#123; productNewList &#125;&#125;&quot; &lt;template</div><div class="line">is=&quot;productCard&quot; data=&quot;&#123;&#123; ...item &#125;&#125;&quot; /&gt; &lt;/block&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">留意 data=&quot;&#123;&#123; ...item &#125;&#125; 的写法， item 是 wx:for 中代表数组当前项的默认变量名，</div><div class="line"> item 前面的 ... 操作符相当于ES6 中的展开运算符，可用于需要解构赋值的地方.通 过 解 构 ，</div><div class="line">  template 中 就 可 以 直 接 写 成 &#123;&#123; id &#125;&#125; ，&#123;&#123; cover_image &#125;&#125; ， 而 不 用 写 &#123;&#123; item.id &#125;&#125; ，</div><div class="line">  &#123;&#123; item.cover_image &#125;&#125;。它的意义在于实现了 template 与 wx:for-item 之间的解耦，</div><div class="line">  比如这里设置了 wx:for-item=&quot;product&quot;，我们只要设改变data=&quot;&#123;&#123; ...product &#125;&#125;&quot; 就可以了。</div><div class="line">如果数据没有通过解构，就要将 template 的 &#123;&#123; item.id &#125;&#125;修改成 &#123;&#123; product.id &#125;&#125;，很不方便。</div><div class="line">接着，是 productCard.wxss 的引入，先在 productCard写好样式，这里就不贴代码了</div></pre></td></tr></table></figure></p>
+<h4 id="5-模板的-WXSS文件如何引入"><a href="#5-模板的-WXSS文件如何引入" class="headerlink" title="5.模板的 WXSS文件如何引入"></a>5.模板的 WXSS文件如何引入</h4><p>在哪里可以引入 WXSS 文件？一种方法是在用到 productCard 模板的页面里引入，在这里是在 list.wxss 中 import 进来。另一种方法是，直接在 app.wxss 中引入。相比较于上一种方法，这个方法只需要一次引入，而所有用到 productCard 模板的页面都不用再去引入 productCard.wxss 了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/*** app.wxss ***/</div><div class="line">@import &quot;./templates/productCard/productCard.wxss&quot;;</div></pre></td></tr></table></figure></p>
+<p>获取商品列表数据，渲染视图先通过 onLoad 的 options 取得 id：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/*** list.js ***/</div><div class="line">onLoad: function (options) &#123;</div><div class="line">var id = options.id;</div><div class="line">this.setData(&#123;</div><div class="line">shelfId: id</div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最 后 ， 调 用 wx:request() 获 取 商 品 列 表 数 据 ， 通 过setData() 设置 productNewList，即可在视图层渲染出完整的列表。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/*** list.js ***/</div><div class="line">onLoad: function (options) &#123;</div><div class="line">...</div><div class="line">wx.request(&#123;</div><div class="line">url: CONFIG.API_URL.PRODUCT_LIST,</div><div class="line">method: &apos;GET&apos;,</div><div class="line">data: &#123;</div><div class="line">shelf__id: this.data.shelfId</div><div class="line">&#125;,</div><div class="line">success: function (res) &#123;</div><div class="line">if (res.status == 200) &#123;</div><div class="line">that.setData(&#123;</div><div class="line">productNewList: res.data.objects</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如上面的代码所示，现在小程序会一次性将所有商品列表查询并渲染至页面中。现实中，这种做法显然是不科学的。我们还需要一个「加载更多」的功能。这个功能要求我们做到：用户访问时，页面首次加载 20 个商品，点击列表底部的「查看更多」按钮可再多加载 10 个商品。</p>
+<h2 id="数据加载和图文排版"><a href="#数据加载和图文排版" class="headerlink" title="数据加载和图文排版"></a>数据加载和图文排版</h2><h4 id="1-「查看更多」功能"><a href="#1-「查看更多」功能" class="headerlink" title="1.「查看更多」功能"></a>1.「查看更多」功能</h4><p>效果图如下：</p>
+<div align="center"><br> <img src="http://oi28tswuq.bkt.clouddn.com/images/wxapponline4.png-public" alt=""><br></div>
+
+<p>一、 调用 Toast 提示<br>通过调用 wx.showToast() ，可以实现上图中部的 Toast 提示（加载中）。微信提供的 Toast 组件有 success 和 loading 两种状态（旧版本的 loading 组件已经被废弃）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/***list.js***/</div><div class="line">wx.showToast(&#123;</div><div class="line">title: &apos;成功&apos;, //提示的文字信息icon: &apos;success&apos;, //图标，只支持&quot;success&quot;、 &quot;loading&quot;</div><div class="line">duration: 2000, //提示的延迟时间(毫秒)，最大为 10000</div><div class="line">success: function() &#123;&#125;, //调用成功的回调函数</div><div class="line">fail: function() &#123;&#125;, //调用失败的回调函数</div><div class="line">//接口调用结束的回调函数（调用成功、失败都会执行）</div><div class="line">complete: function() &#123;&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>需要注意的是， 当 showToast 执行时，整个页面是不可点击的。所以，不用考虑用户意外触发多次「查看更多」的问题。调用 wx.hideToast() 即可隐藏 Toast 提示框。现 在 ， 我 们 来 思 考 一 个 问 题 。 上 面 说到 wx.showToast 的 duration 最大值为 10000 毫秒，也就意味着当请求时间大于 10 秒，若没有返回数据时， loading 提示框会自动消失。</p>
+<p>当然这会带来一些问题：<br>1.「查看更多」按钮重新变回可点击状态，可能造成请求的重复提交。<br>2.加载提示消失与数据成功加载之间出现时间差。<br>如何解决这个问题呢？其实不难！！！<br>先给 loading 设置 10000 毫秒延迟时间，超过 10000 毫秒后，即使请求成功，也不保存任何数据。同时，将按钮文字改回「查看更多」即可。<br>我 们 初 始 化 一 个 timeoutFlag 的 对 象 ， 使 用 timer =setTimeout() 设 置 9800 毫 秒 延 时 。 9800 毫 秒 后 ，以 timer 为 key 设置一个对象 { isTimeout: true }，每次发起请求时都会有一个 timer 作为标识。</p>
+<p>若请求成功时 timeoutFlag.timer 的值为 { isTimeout:true }，则不处理请求成功后的数据。为什么要设置 9800 毫秒而不是 10000 毫秒呢？<br>那是因为 setTimeout 的计时并不准确，我们给出 200 毫秒的提前量，以防止代码出错。下面就来封装一个 _setTimeoutFlag 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/***list.js***/</div><div class="line">_setTimeoutFlag: function () &#123;</div><div class="line">var that = this;</div><div class="line">var timer = null;</div><div class="line">timer = setTimeout(function () &#123;</div><div class="line">that.setData(&#123;</div><div class="line">tipText: &apos;查看更多&apos;</div><div class="line">&#125;);</div><div class="line">timeoutFlag.timer = &#123; isTimeout: true &#125;;</div><div class="line">&#125;, 9800);</div><div class="line">timeoutFlag.timer = &#123; isTimeout: false &#125;;</div><div class="line">return timer;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>二、 构建与实现 loadMore 函数<br>我们需要一个 loadMore 函数，来做到数据的分页查询。一般，都是通过设置两个查询参数来控制，分别是每次请求条数 limit 和每次请求起始数 offset（即从第几条获取数据）。以我们的需求为例：<br>1.第一次获取 20 条： limit=20 &amp; offset=0<br>2.第二次再新增 10 条： limit=10 0&amp; offset=20<br>3.第三次再新增 10 条： limit=10 &amp; offset=30<br>当然，根据各自不同的分页实现， limit 和 offset 的命名也不相同，我们只要了解原理即可。</p>
+<p>根据以上逻辑，当用户点击「查看更多」按钮后，小程序在不同情况下应该给出相应的反应：<br>1.按钮文字变为「正在加载…」，页面弹出「加载中…」的loading 提示框，设置 offset + 10 并发起请求；<br>2.有新数据加载时，按钮文字变回「查看更多」，关闭 loading提示框，保存当前 offset；<br>3.无新数据加载时，按钮文字变为「没有更多啦」，关闭loading 提示框。<br>4.请求失败时，按钮文字变为「查看更多」，关闭 loading 提示框</p>
+<p>先在 list.wxml 中设置按钮，并绑定点击事件 loadMore;。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/***list.wxml***/</div><div class="line">&lt;view class=&quot;btn-load-more&quot; bindtap=&quot;loadMore&quot;&gt;</div><div class="line">&#123;&#123; tipText &#125;&#125;</div><div class="line">&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<p>根 据 上 面 的 流 程 ， 封 装 一下 _getProductList 和 loadMore 方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">/***list.js***/</div><div class="line">loadMore: function () &#123;var that = this;</div><div class="line">this.setData(&#123;</div><div class="line">tipText: &apos;正在加载...&apos;</div><div class="line">&#125;);</div><div class="line">wx.showToast(&#123;</div><div class="line">title: &apos;加载中...&apos;,</div><div class="line">icon: &apos;loading&apos;,</div><div class="line">duration: 10000</div><div class="line">&#125;);</div><div class="line">var timer = that._setTimeoutFlag();</div><div class="line">this._getMoreProductList(timer);</div><div class="line">&#125;,</div><div class="line">_getMoreProductList: function (timer) &#123;</div><div class="line">var that = this;</div><div class="line">wx.request(&#123;</div><div class="line">url: CONFIG.API_URL.PRODUCT_LIST +</div><div class="line">this.data.orderBy,</div><div class="line">method: &apos;GET&apos;,</div><div class="line">data: &#123;</div><div class="line">limit: 10,</div><div class="line">offset: this.data.offset + 10,</div><div class="line">shelf__id: this.data.shelfId,</div><div class="line">img_size: &apos;small&apos;</div><div class="line">&#125;,</div><div class="line">success: function (data) &#123;</div><div class="line">if (!timeoutFlag.timer.isTimeout) &#123;</div><div class="line">if (data.data.objects.length &gt; 1) &#123;</div><div class="line">var objects = that.data.productList</div><div class="line">.concat(data.data.objects);</div><div class="line">that.setData(&#123;</div><div class="line">productList: objects,</div><div class="line">offset: that.data.offset + 10,</div><div class="line">tipText: &apos;查看更多&apos;&#125;);</div><div class="line">&#125; else &#123;</div><div class="line">that.setData(&#123;</div><div class="line">tipText: &apos;没有更多啦&apos;</div><div class="line">&#125;);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">clearTimeout(timer);</div><div class="line">wx.hideToast();</div><div class="line">&#125;,</div><div class="line">fail: function () &#123;</div><div class="line">that.setData(&#123;</div><div class="line">tipText: &apos;查看更多&apos;</div><div class="line">&#125;);</div><div class="line">wx.hideToast();</div><div class="line">&#125;</div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>至此，已经完整实现了商品列表页的开发，接下来进入商品详情页.</p>
+<h4 id="2-商品详情页与图文排版实现"><a href="#2-商品详情页与图文排版实现" class="headerlink" title="2.商品详情页与图文排版实现"></a>2.商品详情页与图文排版实现</h4><p>效果图如下：</p>
+<p><div align="center"><br> <img src="http://oi28tswuq.bkt.clouddn.com/images/wxapponline5.png" alt=""><br></div><br>目前商品详情的图文介绍，一般都是通过后台的富文本编辑器来排版创建的，数据都是以 HTML 代码的形式保存下来，然后在页面上直接渲染出来。但是对于小程序来说， HTML形式的数据不能直接拿来使用，因为小程序根本不能解析 HTML 代码。此时，我们需要处理由富文本编辑器所创建的数据，将其转换为JSON 格式的数据，以便于在小程序里使用。<br>现在有两种思路去解决这个问题：<br>1.由前端去解析 HTML 格式的数据，用正则匹配 HTML 标签，然后转换成 JSON 数据；<br>2.交由后端去解析，同时新增一个专用的 API，返回解析过的 JSON数据。<br>这里选用的是第二种方案，获取到的 JSON 数据格式如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;description&quot;: [</div><div class="line">&#123;</div><div class="line">&quot;content&quot;: &quot;xxx.jpg&quot;,</div><div class="line">&quot;type&quot;: &quot;image&quot;</div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line">&quot;content&quot;: &quot;商品᧿述文字&quot;,</div><div class="line">&quot;type&quot;: &quot;text&quot;</div><div class="line">&#125;</div><div class="line">]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我 们 只 要 将 获 取 的 数 据 用 wx:for 渲 染 出 来 ， 渲 染 时 判断 type 选择对应的 text 或 image 组件即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/***detail.wxml***/</div><div class="line">&lt;block wx:for=&quot;&#123;&#123; description &#125;&#125;&quot;&gt;</div><div class="line">&lt;view</div><div class="line">class=&quot;description-img&quot;</div><div class="line">wx:if=&quot;&#123;&#123; item.type == &apos;image&apos; &#125;&#125;&quot;&gt;</div><div class="line">&lt;image</div><div class="line">class=&quot;description-img-content&quot;</div><div class="line">src=&quot;&#123;&#123; item.content &#125;&#125;&quot;&gt;</div><div class="line">&lt;/image&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;view</div><div class="line">class=&quot;description-text&quot;</div><div class="line">wx:elif=&quot;&#123;&#123; item.type == &apos;text&apos; &#125;&#125;&quot;&gt;</div><div class="line">&lt;text class=&quot;description-text-content&quot;&gt;</div><div class="line">&#123;&#123; item.content &#125;&#125;</div><div class="line">&lt;/text&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;/block&gt;</div></pre></td></tr></table></figure></p>
+<p>仔细观察一下，可以发现，每一张图片的宽高都发生了不同程度的裁剪、拉伸或压缩。这是由于 image 组件的默认宽高导致的，这个问题在上面也说过，要特别留意小程序内置组件的默认样式，它们很可能会引起各种各样的问题。我们的期望是，图片能够按照原有的宽高比例进行显示，并且每一张图片的宽度都能撑满整个内容区域。这应该如何处理呢？这里就需要用到 image 组件的 load 事件，使用 bindload 属性将事件绑定在 image 组件中。我 们 可 以 用 event.detail = {height:’ 图 片 高 度 px’,width:’图片宽度 px’} 的方式调整图片宽高尺寸。<br>我们定义一个 imageLoad 函数，作为 image 组件的 load 事件的处理函数，用 data-index 保存当前 wx:for 的 index 值作当前图片的索引值。detail.wxml 改写 image 组件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;image</div><div class="line">class=&quot;description-img-content&quot;</div><div class="line">src=&quot;&#123;&#123; item.content &#125;&#125;&quot;</div><div class="line">bindload=&quot;imageLoad&quot;</div><div class="line">data-index=&quot;&#123;&#123; index &#125;&#125;&quot;&gt;</div><div class="line">&lt;/image&gt;</div><div class="line">detail.js 定义 imageLoad 函数如下：</div><div class="line">data: &#123;</div><div class="line">images: &#123;&#125;</div><div class="line">&#125;,</div><div class="line">imageLoad: function (e) &#123;</div><div class="line">var realityWidth = e.detail.width; //获取图片实际宽度</div><div class="line">var realityHeight = e.detail.height; //获取图片实际高度//获取图片的实际宽高比例</div><div class="line">var proportion = realityWidth / realityHeight;//设置图片的渲染宽度， 750rpx - (2 * 40rpx) = 670rpx;</div><div class="line">//父元素的左右 padding 都是 40rpx</div><div class="line">var viewWidth = 670;//按比例计算出图片的渲染高度</div><div class="line">var viewHeight = 670 / proportion;</div><div class="line">var images = this.data.images;//将图片的 data-index 值作为 images 对象的 key</div><div class="line">//用来储存该图片的计算后的渲染宽高</div><div class="line">images[e.currentTarget.dataset.index] = &#123;</div><div class="line">width: viewWidth,</div><div class="line">height: viewHeight</div><div class="line">&#125;;</div><div class="line">this.setData(&#123;</div><div class="line">images: images</div><div class="line">&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此 时 ，就 可 以 在 image 组 件 中 获 取到 images[index].width 和 images[index].height，并通过设置行内的 style 给每一个图片设置宽高了。<br>detail.wxml 改写 image 组件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;image class=&quot;description-img-content&quot;</div><div class="line">src=&quot;&#123;&#123; item.content &#125;&#125;&quot; bindload=&quot;imageLoad&quot;</div><div class="line">data-index=&quot;&#123;&#123; index &#125;&#125;&quot;</div><div class="line">style=&quot;width:&#123;&#123; images[index].width &#125;&#125;rpx;</div><div class="line">height:&#123;&#123; images[index].height &#125;&#125;rpx&quot;&gt;</div><div class="line">&lt;/image&gt;</div></pre></td></tr></table></figure></p>
+<p>此时在预览页面时，你会发现图片等就会正常显示了。</p>
+<h4 id="内容总结提示"><a href="#内容总结提示" class="headerlink" title="内容总结提示"></a>内容总结提示</h4><ul>
+<li><p>Toast 提示：<br>1.Toast 提 示 可 以 使 用 wx.showToast() 来 调 用 ， 使用 wx.hideToast() 隐藏。l 开发者可以自定义 Toast 展示时间、展示文案等。<br>2.Toast 最长展示时间不能超过 10000 毫秒，开发者需要做好超时处理工作。</p>
+</li>
+<li><p>图文排版：<br>1.如果服务器中的数据是 HTML 数据，需要转换为 JSON，小程序才能解析。<br>2.直接将图片进行排版，图片宽高会出现问题。开发者需要处理好图片的宽高问题。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/06/wxapp-online/">简易电商类小程序开发教程</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2017年02月06日 - 16时07分</p>
+        <p><span>最后更新:</span>2017年02月07日 - 11时20分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/06/wxapp-online/" title="简易电商类小程序开发教程">http://yanwenxi.github.io/2017/02/06/wxapp-online/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2017/02/06/wxapp-online/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/06/deepclosure/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          深入理解闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/06/wxapp1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">微信小程序之开发文档解读</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、准备开工"><span class="toc-number">1.</span> <span class="toc-text">1、准备开工</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、轮播banner样式定义"><span class="toc-number">2.</span> <span class="toc-text">2、轮播banner样式定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-模板的-WXSS文件如何引入"><span class="toc-number">3.</span> <span class="toc-text">5.模板的 WXSS文件如何引入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据加载和图文排版"><span class="toc-number"></span> <span class="toc-text">数据加载和图文排版</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-「查看更多」功能"><span class="toc-number">1.</span> <span class="toc-text">1.「查看更多」功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-商品详情页与图文排版实现"><span class="toc-number">2.</span> <span class="toc-text">2.商品详情页与图文排版实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内容总结提示"><span class="toc-number">3.</span> <span class="toc-text">内容总结提示</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/02/06/wxapp-online/" data-title="简易电商类小程序开发教程" data-url="http://yanwenxi.github.io/2017/02/06/wxapp-online/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/06/deepclosure/" title="上一篇: 深入理解闭包">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/06/wxapp1/" title="下一篇: 微信小程序之开发文档解读">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/flexintroduction/">学习flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/rengemianju/">人格面具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/lovestart/">爱的开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/web-workers/">程序性能之HTML5 Web Workers</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/deepthis/">关于this那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/deepclosure/">深入理解闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp-online/">简易电商类小程序开发教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp1/">微信小程序之开发文档解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxappintroduction/">微信小程序简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/codetest/">使用Benchmark.js和jsPerf分析代码性能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/performancetest/">性能测试与调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/wsdevwechat/">webstorm开发微信小程序代码提醒</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/yarn-introduction/">YARN, 一个可能取代npm的javascript包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/node-interview/">Node.js 面试问题及答案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-api/">Lodash的学习笔记-一些常用的API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-chain/">Lodash 学习笔记 - Chain 方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodashjieshao/">JavaScript工具库之Lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/debugwechat/">如何在本地进行微信公众号的开发调试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-6/">写段代码实现加密认证逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-5/">配置、接入微信公众号</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-4/">域名服务器及ngrok环境配置。</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-2/">微信号分类与功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-1/">nodejs开发微信公众号介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/node-debug/">debug模块介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/gaojiefunction/">js中的高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/curryfunction/">浅析JavaScript中的柯里化函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/pure-function/">JavaScript 中的“纯函数”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/thanks-real/">谢谢，现实！-fatkan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/2016zongjie/">我的2016个人总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/h5optimization/">移动H5前端性能优化指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/wumai/">雾霾引起的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/angular-router/">Angular 路由实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/mvp/">了解下框架模式 -MVP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/bubaoyuan/">致穷逼：不抱怨，就是干！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/js-modules-compare/">JS模块规范对比：AMD，CMD，CommonJS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/cross-app/">跨平台APP的构建方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/postMessage/">跨域之HTML5 postMessage</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/document-domain/">js设置document.domain实现跨域的相关注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/biantaiti/">你js这么牛比，你知道++[[]][+[]]+[+[]]的结果么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/blockchain/">基于区块链的web前端开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/angular-promise-two/">通过$q,angular可以实现两种形式的promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/h5bug/">H5项目常见问题汇总及解决方案(摘抄学习)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/window-back-disabled/">使浏览器后退按钮失效及HTML5-window.history</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/arraydeapply/">js 数组中自定义属性的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/10/react-ant-design/">react入门篇 ant-design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/angular-q-promise-http/">AngularJS中的$http、$q服务和promise对象的联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/life-yinian/">意念如何影响我们的身体，不可思议！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/30/iframe-video/">使用iframe嵌入优酷视频的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/h5api-router/">前端路由的两种实现原理及相关api介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/node-tips/">node一些小知识点积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/angualr-19-Karma/">Angular中的测试-Karma</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-decorator/">angular-decorator</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-guide16-xhr实践/">Angular中的异步请求-xhr</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/angular-study/">AngularJS基本知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/yahuyouhua/">雅虎网站性能优化的 14 条规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/angular-guide17-angular中的promise/">Angular中如何使用promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/dajianjiaoshoujia/">教你从零开始搭建一款前端脚手架工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/05/filternull/">AngularJS使用ng-repeat和ng-if实现数据的筛选显示，多适用于表单数据的显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/angular-fiveservice/">angular中的5种服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/30/raps/">rap集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/defined-filter/">简述angular自定义过滤器在页面和控制器中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/angular-guide8-9章/">Angular权威指南学习（第8到9章）指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/angular-guide6-7/">Angular权威指南学习(第6-7章)表达式和过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/angular-guide1-5章/">Angular权威指南学习（第1到5章）模块、控制器及一些基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/09/jsobject/">js中的对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/chrome-debugger/">chrome 控制台调试angularjs代码逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/jianfei21/">21天减肥攻略</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/web-xingnengyouhua/">前端性能优化积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/ES6-promise/">ES6-promise学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/rap-strong/">坚强-一首即将消失在网络上的rap</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/rap-loverujia/">爱你不是为了和你去如家-MV版</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/webjiaohuxijie/">前端中交互设计应注意的细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/web-resource/">前端Web开发资源整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/angular-ui-router/">Angular路由之ui-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/Object.create/">一种新的对象创建方式——Object.create()</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/29/qianduanxijie/">前端人员应注意的几点细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/object-oriented-js/">面向对象的javascript及js中6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/16/aso/">APP推广第一步:五大ASO优化方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/27/zhaoji-life/">你的人生如此着急，你过好了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/09/jstype/">js中的类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/08/scope/">作用域预编译及引发异常问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/02/test-makrdown/">markdown 语法入大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/20/siteseo5/">网站SEO优化常见问题汇总5</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo4/">网站SEO优化常见问题汇总4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo3/">网站SEO优化常见问题汇总3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/17/siteseo2/">网站SEO优化常见问题汇总2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/16/siteseo1/">网站SEO优化常见问题汇总1</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/30/jquery-gaoxiao/">高效的jQuery代码编写技巧总结(收藏转)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/16/sitepeise/">网站色彩该怎样搭配才能更吸引客户的眼球</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/16/newsyuanseo/">怎么利用新闻源让关键词有好的排名</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://webywx.com/" target="_blank">webywx</a>  Theme <a href="https://yanwenxi.site" target="_blank">前端在路上</a> by Scorpio
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

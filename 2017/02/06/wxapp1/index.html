@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>微信小程序之开发文档解读 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="页面构建1. 基本逻辑WXML 和 WXSS 两种文件是小程序界面元素声明及样式描述文件。 WXML 最大的特点是以视图（ view）的方式串联界面元素，并通过程序逻辑（ AppService），将信息更新实时传递至视图层。view 类似于 HTML 中的 div 元素。在构建的时候， view 可以被多级嵌套， view 内可以放置任意视觉元素。需要注意的是，元素一旦超出屏幕之外，用户是无法再看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序之开发文档解读">
+<meta property="og:url" content="http://yanwenxi.github.io/2017/02/06/wxapp1/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="页面构建1. 基本逻辑WXML 和 WXSS 两种文件是小程序界面元素声明及样式描述文件。 WXML 最大的特点是以视图（ view）的方式串联界面元素，并通过程序逻辑（ AppService），将信息更新实时传递至视图层。view 类似于 HTML 中的 div 元素。在构建的时候， view 可以被多级嵌套， view 内可以放置任意视觉元素。需要注意的是，元素一旦超出屏幕之外，用户是无法再看">
+<meta property="og:updated_time" content="2017-02-06T08:03:53.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序之开发文档解读">
+<meta name="twitter:description" content="页面构建1. 基本逻辑WXML 和 WXSS 两种文件是小程序界面元素声明及样式描述文件。 WXML 最大的特点是以视图（ view）的方式串联界面元素，并通过程序逻辑（ AppService），将信息更新实时传递至视图层。view 类似于 HTML 中的 div 元素。在构建的时候， view 可以被多级嵌套， view 内可以放置任意视觉元素。需要注意的是，元素一旦超出屏幕之外，用户是无法再看">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">我的小窝</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Benchmark-jsPerf/" style="font-size: 10px;">Benchmark jsPerf</a> <a href="/tags/ES6、promise/" style="font-size: 10px;">ES6、promise</a> <a href="/tags/H5-移动端优化/" style="font-size: 10px;">H5 移动端优化</a> <a href="/tags/H5、bug/" style="font-size: 10px;">H5、bug</a> <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/Jenkins-CI/" style="font-size: 10px;">Jenkins CI</a> <a href="/tags/Lodash/" style="font-size: 10px;">Lodash</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/angular-http-q-promise/" style="font-size: 10px;">angular $http $q promise</a> <a href="/tags/angular-q-promise/" style="font-size: 10px;">angular $q promise</a> <a href="/tags/angular-decorator/" style="font-size: 10px;">angular decorator</a> <a href="/tags/angular-filter/" style="font-size: 10px;">angular filter</a> <a href="/tags/angular-服务/" style="font-size: 10px;">angular 服务</a> <a href="/tags/angularjs/" style="font-size: 10px;">angularjs</a> <a href="/tags/angular、-http/" style="font-size: 10px;">angular、$http</a> <a href="/tags/angular、Karma/" style="font-size: 10px;">angular、Karma</a> <a href="/tags/angular、directive/" style="font-size: 10px;">angular、directive</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/angular、module、controller/" style="font-size: 10px;">angular、module、controller</a> <a href="/tags/angular、promise、-q、deferred/" style="font-size: 10px;">angular、promise、$q、deferred</a> <a href="/tags/angular、router/" style="font-size: 10px;">angular、router</a> <a href="/tags/angular、ui-router/" style="font-size: 10px;">angular、ui-router</a> <a href="/tags/angular、表达式、filter/" style="font-size: 10px;">angular、表达式、filter</a> <a href="/tags/app-跨平台/" style="font-size: 10px;">app,跨平台</a> <a href="/tags/aso/" style="font-size: 10px;">aso</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/debugger/" style="font-size: 10px;">debugger</a> <a href="/tags/es5-js/" style="font-size: 10px;">es5 js</a> <a href="/tags/fit/" style="font-size: 10px;">fit</a> <a href="/tags/flex-css3/" style="font-size: 10px;">flex css3</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/h5-webworkers/" style="font-size: 10px;">h5 webworkers</a> <a href="/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="/tags/javascript、object-oriented、继承/" style="font-size: 10px;">javascript、object-oriented、继承</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/js-Array/" style="font-size: 10px;">js Array</a> <a href="/tags/js-Higher-order-function/" style="font-size: 10px;">js Higher-order-function</a> <a href="/tags/js-closure/" style="font-size: 10px;">js closure</a> <a href="/tags/js-lodash/" style="font-size: 10px;">js lodash</a> <a href="/tags/js-object/" style="font-size: 10px;">js object</a> <a href="/tags/js-scope/" style="font-size: 10px;">js scope</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js-this/" style="font-size: 10px;">js this</a> <a href="/tags/js-性能调试-Benchmark-jsPerf/" style="font-size: 10px;">js 性能调试 Benchmark jsPerf</a> <a href="/tags/js-柯里化/" style="font-size: 10px;">js 柯里化</a> <a href="/tags/js-纯函数/" style="font-size: 10px;">js 纯函数</a> <a href="/tags/js、变态题/" style="font-size: 10px;">js、变态题</a> <a href="/tags/js、设计模式/" style="font-size: 10px;">js、设计模式</a> <a href="/tags/js、跨域、document-domain/" style="font-size: 10px;">js、跨域、document.domain</a> <a href="/tags/js模块化、AMD、CMD、CommonJs/" style="font-size: 10px;">js模块化、AMD、CMD、CommonJs</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/life、意念/" style="font-size: 10px;">life、意念</a> <a href="/tags/lodash-chain/" style="font-size: 10px;">lodash chain</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/node-debug/" style="font-size: 10px;">node debug</a> <a href="/tags/node-wechat/" style="font-size: 20px;">node wechat</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rap/" style="font-size: 17.5px;">rap</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-ant-design/" style="font-size: 10px;">react ant-design</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo-新闻源/" style="font-size: 10px;">seo 新闻源</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/web-交互/" style="font-size: 10px;">web 交互</a> <a href="/tags/web、前端/" style="font-size: 10px;">web、前端</a> <a href="/tags/web、性能优化/" style="font-size: 10px;">web、性能优化</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/wechat-webstorm/" style="font-size: 10px;">wechat webstorm</a> <a href="/tags/win10、linux/" style="font-size: 10px;">win10、linux</a> <a href="/tags/window-history-html5/" style="font-size: 10px;">window.history html5</a> <a href="/tags/wxapp/" style="font-size: 15px;">wxapp</a> <a href="/tags/yarn-npm/" style="font-size: 10px;">yarn npm</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/前端脚手架/" style="font-size: 10px;">前端脚手架</a> <a href="/tags/建站-seo/" style="font-size: 10px;">建站 seo</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/生活/" style="font-size: 20px;">生活</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a> <a href="/tags/跨域、postMessage、html5/" style="font-size: 10px;">跨域、postMessage、html5</a> <a href="/tags/路由-html5/" style="font-size: 10px;">路由 html5</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">我的小窝</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-wxapp1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/06/wxapp1/" class="article-date">
+      <time datetime="2017-02-06T07:43:11.000Z" itemprop="datePublished">2017-02-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      微信小程序之开发文档解读
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wxapp/">wxapp</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="页面构建"><a href="#页面构建" class="headerlink" title="页面构建"></a>页面构建</h2><h4 id="1-基本逻辑"><a href="#1-基本逻辑" class="headerlink" title="1. 基本逻辑"></a>1. 基本逻辑</h4><p>WXML 和 WXSS 两种文件是小程序界面元素声明及样式描述文件。 WXML 最大的特点是以视图（ view）的方式串联界面元素，并通过程序逻辑（ AppService），将信息更新实时传递至视图层。<br>view 类似于 HTML 中的 div 元素。在构建的时候， view 可以被多级嵌套， view 内可以放置任意视觉元素。需要注意的是，元素一旦超出屏幕之外，用户是无法再看到的，这与 HTML 有较大不同。举一个例子，将手机屏幕想像成一个舞台，在舞台之外的演员是无法被观众看到的。</p>
+<p>小程序有专门用于滚动的视图，如果希望界面是一个可以自由滚动的界面（例如列表等），可以使用 scroll-view 视图，在 WXSS中将其大小调整为整个屏幕，并设置 scroll-y（上下滚动）或<br>scroll-x（左右滚动）为 true。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;scroll-view scroll-y=&quot;true&quot;&gt;</div><div class="line">    &lt;view&gt;Hello World&lt;/view&gt;</div><div class="line">&lt;/scroll-view&gt;</div></pre></td></tr></table></figure></p>
+<p>小程序中不能直接使用 DOM 控制 WXML 元素。如果需要进行数据更新，需要使用 WXML 提供的数据绑定及元素渲染方法。还有一点需要注意的是：小程序的栅格排版系统使用的是 Flex<br>布局，它是 W3C 在 2009 年提出的一种排版标准。</p>
+<h4 id="2-绑定数据"><a href="#2-绑定数据" class="headerlink" title="2. 绑定数据"></a>2. 绑定数据</h4><p>对于单个字段，开发者可以使用数据绑定的方法进行信息更新。绑定的数据除了在加载的时候可以更新，也可以在 JS 主程序中以函数形式进行更新，更新同样可以反映到界面上被绑定的数据中。</p>
+<h4 id="3-条件渲染与列表（循环）渲染"><a href="#3-条件渲染与列表（循环）渲染" class="headerlink" title="3. 条件渲染与列表（循环）渲染"></a>3. 条件渲染与列表（循环）渲染</h4><p>条件渲染适合带有意外情况提示的页面（如无法加载列表或详情时做出提示等等）。它的渲染带有触发条件，即符合条件时渲染这个页面，否则忽略或渲染另一段代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;view wx:if=&quot;&#123;&#123; boyname == &apos;Tom&apos; &#125;&#125;&quot;&gt;Hello,</div><div class="line">Tom!&lt;/view&gt;</div><div class="line">&lt;view wx:elif=&quot;&#123;&#123; girlname == &apos;Anna&apos; &#125;&#125;&quot;&gt;Hello,</div><div class="line">Anna!&lt;/view&gt;</div><div class="line">&lt;view wx:else&gt;You neither Tom nor Anna.&lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<p>两个花括号所包含的判断条件中的变量于主程序 JS 代码中的data 中声明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Page(&#123;</div><div class="line">data: &#123;</div><div class="line">boyname: &apos;Tom&apos;,</div><div class="line">girlname: &apos;Anna&apos;</div><div class="line">&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>若需要在界面中构建一个列表，可以使用 WXML 中的循环渲染，将同一元素渲染代码进行集合。循环的数据可以通过数组的方式写入data 中供 WXML 访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;view wx:for=&quot;&#123;&#123;array&#125;&#125;&quot;&gt;</div><div class="line">&#123;&#123;index&#125;&#125;: &#123;&#123;item.message&#125;&#125;</div><div class="line">&lt;/view&gt;</div><div class="line">Page(&#123;</div><div class="line">data: &#123;</div><div class="line">array: [&#123;</div><div class="line">message: &apos;foo&apos;,</div><div class="line">&#125;, &#123;</div><div class="line">message: &apos;bar&apos;</div><div class="line">&#125;]</div><div class="line">&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>渲染完毕后，渲染判断条件的变动可以影响界面变动。</p>
+<h4 id="4-模板与引用"><a href="#4-模板与引用" class="headerlink" title="4. 模板与引用"></a>4. 模板与引用</h4><p>WXML 支持使用模板与引用减少代码体积。模板是在 WXML 代码中对相同的代码进行复用的方式。可以将多个模板写入至同一文件，并使用 import 在其他文件中进行引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;template name=&quot;grettings&quot;&gt;</div><div class="line">&lt;view&gt;</div><div class="line">&lt;text&gt;Hello, &#123;&#123;name&#125;&#125;&lt;/text&gt;</div><div class="line">&lt;/view&gt;</div><div class="line">&lt;/template&gt;//some other codes</div><div class="line">&lt;template is=&quot;grettings&quot; data=&quot;&#123;&#123;...name&#125;&#125;&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>如果需要整个页面引用，需要使用到 include。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;include src=&quot;header.wxml&quot;/&gt;</div><div class="line">&lt;view&gt; body &lt;/view&gt;</div><div class="line">&lt;include src=&quot;footer.wxml&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="5-样式"><a href="#5-样式" class="headerlink" title="5. 样式"></a>5. 样式</h4><p>通过 WXSS 样式表，开发者可以定义 WXML 中的元素样式。WXSS 与 CSS 代码一样，可以直接使用选择器选择元素。在 WXML中也可以直接定义元素的 id 和 class 以便于在 WXSS 文件中进<br>行样式定义。</p>
+<h4 id="6-用户操作与事件响应"><a href="#6-用户操作与事件响应" class="headerlink" title="6. 用户操作与事件响应"></a>6. 用户操作与事件响应</h4><p>由于微信使用的不是 HTML，所以也不能通过添加超链接（ a 元素）的方式来监测用户的点击事件。对于需要监听点击事件的元素，应该在 WXML 中使用 bindtap 属性或 catchtap 属性进行绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;view bindtap=&quot;tapName&quot;&gt; Click me! &lt;/view&gt;</div></pre></td></tr></table></figure></p>
+<p>除了点击一次，微信也提供按住、开始触摸、松手等事件响应在 WXML 中绑定好一个事件之后，就能在主程序 JS 中使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Page(&#123;</div><div class="line">tapName: function(someThingHere)&#123;</div><div class="line">// 执行这部分代码</div><div class="line">&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>其他 API 中也有其他相应的事件，这些事件可以在微信小程序的官方文档中查阅到。当 需 要 在 小 程 序 的 页 面 间 进 行 跳 转 时 ， 应 该 使 用wx.navigateTo() 方式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tapName: function() &#123;</div><div class="line">wx.navigateTo(&#123;</div><div class="line">url: &apos;../logs/logs&apos;</div><div class="line">&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>需要注意的是，有关于页面层级跳转，微信将层级跳转限制到了五层。在开发时需要注意是否超过了相应限制。</p>
+<h2 id="网络访问"><a href="#网络访问" class="headerlink" title="网络访问"></a>网络访问</h2><p>小程序支持三种请求方式。一种是直接的 HTTP 连接请求，请求后直接返回结果，连接结束。另一种是 Socket 持续性连接，当一方主动关闭连接时，连接结束。除了以上两种收发纯文本的连接方式，微信还提供了一个文件收发接口。小程序中录制的语音以及选择的照片都需要这个方式来进行上传。通过小程序访问网络需要服务器端必须支持 HTTPS 安全连接，且端口号必须为 443。同时，小程序只能访问开发者在登记小程序时所设定的服务器地址。</p>
+<h2 id="多媒体与存储"><a href="#多媒体与存储" class="headerlink" title="多媒体与存储"></a>多媒体与存储</h2><p>若需在小程序中播放多媒体（包括音视频）或进行数据存储，不能使用 HTML 5 中所提供的标准，必须使用微信提供的小程序多媒体播放控制接口及存储接口等。<br>有关于声音的接口有音频播放与音乐播放两种接口。音频播放提供了播放、暂停和停止播放三种接口，不提供跳转至某个播放时间点的功能，也不能获取目前的播放进度。音乐播放接口提供除以上的基础播放控制外的音乐状态检查和监听等功能。小程序提供照片和视频数据交换接口。通过这个接口，小程序可以访问用户选定或拍摄的照片与视频。通过音频录制和视频照片接口获得的多媒体信息是临时的，需要通过小程序存储文件接口对文件进行永久保存。对于文本数据，小程序也提供了存储这类数据的接口。从诸如Android 或其他 app 平台转向的开发者需要注意的是，小程序不提供数据库式的本地数据保存形式，而是通过 「字段 - 值」的一对一形式进行保存。</p>
+<h2 id="硬件相关"><a href="#硬件相关" class="headerlink" title="硬件相关"></a>硬件相关</h2><p>小程序依托于微信，提供许多与硬件有关的 API。以下数据，小程序可以通过 API 获取到。<br>1.系统相关信息（包括网络状态、设备型号、窗口尺寸等）<br>2.重力感应数据<br>3.罗盘数据<br>通过以上 API，应该可以轻松写出「摇一摇」等互动性页面。但需要注意：由于这些数据只能主动获取，而不能通过这些数值变化的回调实时获取。</p>
+<h2 id="推送服务"><a href="#推送服务" class="headerlink" title="推送服务"></a>推送服务</h2><p>小程序提供有推送服务，可以随时向用户发送必要的通知。但请注意，推送服务只能用于通知提醒，不能用于群发。小程序中，推送服务叫做「模板消息」（之前有开发过服务号的开发者应该比较熟悉）。开发者需要在微信小程序后台登记新的模板推送消息（比如：购买成功通知等）并审核通过后，才能在小程序中使用模板消息推送服务，具体审核标准建议参考相应文档。模板消息审核通过后，开发者需要先向微信服务器获取 Access Token，随后将该值、模板编号和模板中的动态变量（比如：订单号、价格等）提交给微信，由微信向用户推送通知。</p>
+<h2 id="用户信息与微信支付"><a href="#用户信息与微信支付" class="headerlink" title="用户信息与微信支付"></a>用户信息与微信支付</h2><p>小程序可以在用户同意的前提下获取到用户的信息。小程序首先要通过微信登录的接口，让用户授权登录。之后，小程序就可以展示并使用用户信息。使用微信登录的时候需要注意，消息需要经过签名确认其完整性之后，方能保证数据未经篡改。小程序中也可以使用微信支付。需要注意的是在发送支付请求时，需要在发送的消息中添加签名，以确认消息完整性。</p>
+<p>如果开发过程中遇到问题，最好的办法还是查阅微信官方的小程序开发文档，相信在文档中，你能找到绝大部分问题的解决办法。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/06/wxapp1/">微信小程序之开发文档解读</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2017年02月06日 - 15时43分</p>
+        <p><span>最后更新:</span>2017年02月06日 - 16时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/06/wxapp1/" title="微信小程序之开发文档解读">http://yanwenxi.github.io/2017/02/06/wxapp1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2017/02/06/wxapp1/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/06/wxapp-online/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          简易电商类小程序开发教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/06/wxappintroduction/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">微信小程序简单介绍</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#页面构建"><span class="toc-number">1.</span> <span class="toc-text">页面构建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-基本逻辑"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 基本逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-绑定数据"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. 绑定数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-条件渲染与列表（循环）渲染"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 条件渲染与列表（循环）渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-模板与引用"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. 模板与引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-样式"><span class="toc-number">1.0.5.</span> <span class="toc-text">5. 样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-用户操作与事件响应"><span class="toc-number">1.0.6.</span> <span class="toc-text">6. 用户操作与事件响应</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络访问"><span class="toc-number">2.</span> <span class="toc-text">网络访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多媒体与存储"><span class="toc-number">3.</span> <span class="toc-text">多媒体与存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件相关"><span class="toc-number">4.</span> <span class="toc-text">硬件相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推送服务"><span class="toc-number">5.</span> <span class="toc-text">推送服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用户信息与微信支付"><span class="toc-number">6.</span> <span class="toc-text">用户信息与微信支付</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/02/06/wxapp1/" data-title="微信小程序之开发文档解读" data-url="http://yanwenxi.github.io/2017/02/06/wxapp1/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/06/wxapp-online/" title="上一篇: 简易电商类小程序开发教程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/06/wxappintroduction/" title="下一篇: 微信小程序简单介绍">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/flexintroduction/">学习flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/rengemianju/">人格面具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/lovestart/">爱的开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/web-workers/">程序性能之HTML5 Web Workers</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/deepthis/">关于this那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/deepclosure/">深入理解闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp-online/">简易电商类小程序开发教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp1/">微信小程序之开发文档解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxappintroduction/">微信小程序简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/codetest/">使用Benchmark.js和jsPerf分析代码性能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/performancetest/">性能测试与调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/wsdevwechat/">webstorm开发微信小程序代码提醒</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/yarn-introduction/">YARN, 一个可能取代npm的javascript包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/node-interview/">Node.js 面试问题及答案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-api/">Lodash的学习笔记-一些常用的API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-chain/">Lodash 学习笔记 - Chain 方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodashjieshao/">JavaScript工具库之Lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/debugwechat/">如何在本地进行微信公众号的开发调试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-6/">写段代码实现加密认证逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-5/">配置、接入微信公众号</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-4/">域名服务器及ngrok环境配置。</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-2/">微信号分类与功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-1/">nodejs开发微信公众号介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/node-debug/">debug模块介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/gaojiefunction/">js中的高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/curryfunction/">浅析JavaScript中的柯里化函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/pure-function/">JavaScript 中的“纯函数”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/thanks-real/">谢谢，现实！-fatkan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/2016zongjie/">我的2016个人总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/h5optimization/">移动H5前端性能优化指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/wumai/">雾霾引起的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/angular-router/">Angular 路由实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/mvp/">了解下框架模式 -MVP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/bubaoyuan/">致穷逼：不抱怨，就是干！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/js-modules-compare/">JS模块规范对比：AMD，CMD，CommonJS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/cross-app/">跨平台APP的构建方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/postMessage/">跨域之HTML5 postMessage</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/document-domain/">js设置document.domain实现跨域的相关注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/biantaiti/">你js这么牛比，你知道++[[]][+[]]+[+[]]的结果么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/blockchain/">基于区块链的web前端开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/angular-promise-two/">通过$q,angular可以实现两种形式的promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/h5bug/">H5项目常见问题汇总及解决方案(摘抄学习)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/window-back-disabled/">使浏览器后退按钮失效及HTML5-window.history</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/arraydeapply/">js 数组中自定义属性的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/10/react-ant-design/">react入门篇 ant-design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/angular-q-promise-http/">AngularJS中的$http、$q服务和promise对象的联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/life-yinian/">意念如何影响我们的身体，不可思议！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/30/iframe-video/">使用iframe嵌入优酷视频的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/h5api-router/">前端路由的两种实现原理及相关api介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/node-tips/">node一些小知识点积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/angualr-19-Karma/">Angular中的测试-Karma</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-decorator/">angular-decorator</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-guide16-xhr实践/">Angular中的异步请求-xhr</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/angular-study/">AngularJS基本知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/yahuyouhua/">雅虎网站性能优化的 14 条规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/angular-guide17-angular中的promise/">Angular中如何使用promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/dajianjiaoshoujia/">教你从零开始搭建一款前端脚手架工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/05/filternull/">AngularJS使用ng-repeat和ng-if实现数据的筛选显示，多适用于表单数据的显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/angular-fiveservice/">angular中的5种服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/30/raps/">rap集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/defined-filter/">简述angular自定义过滤器在页面和控制器中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/angular-guide8-9章/">Angular权威指南学习（第8到9章）指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/angular-guide6-7/">Angular权威指南学习(第6-7章)表达式和过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/angular-guide1-5章/">Angular权威指南学习（第1到5章）模块、控制器及一些基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/09/jsobject/">js中的对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/chrome-debugger/">chrome 控制台调试angularjs代码逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/jianfei21/">21天减肥攻略</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/web-xingnengyouhua/">前端性能优化积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/ES6-promise/">ES6-promise学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/rap-strong/">坚强-一首即将消失在网络上的rap</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/rap-loverujia/">爱你不是为了和你去如家-MV版</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/webjiaohuxijie/">前端中交互设计应注意的细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/web-resource/">前端Web开发资源整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/angular-ui-router/">Angular路由之ui-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/Object.create/">一种新的对象创建方式——Object.create()</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/29/qianduanxijie/">前端人员应注意的几点细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/object-oriented-js/">面向对象的javascript及js中6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/16/aso/">APP推广第一步:五大ASO优化方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/27/zhaoji-life/">你的人生如此着急，你过好了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/09/jstype/">js中的类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/08/scope/">作用域预编译及引发异常问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/02/test-makrdown/">markdown 语法入大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/20/siteseo5/">网站SEO优化常见问题汇总5</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo4/">网站SEO优化常见问题汇总4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo3/">网站SEO优化常见问题汇总3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/17/siteseo2/">网站SEO优化常见问题汇总2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/16/siteseo1/">网站SEO优化常见问题汇总1</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/30/jquery-gaoxiao/">高效的jQuery代码编写技巧总结(收藏转)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/16/sitepeise/">网站色彩该怎样搭配才能更吸引客户的眼球</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/16/newsyuanseo/">怎么利用新闻源让关键词有好的排名</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://webywx.com/" target="_blank">webywx</a>  Theme <a href="https://yanwenxi.site" target="_blank">前端在路上</a> by Scorpio
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
