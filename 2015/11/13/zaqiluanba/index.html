@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>杂七乱八小知识点 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、io.jsio.js 是基于 V8 引擎的较新版本构建的。通过持续跟进最新版的 V8 引擎，我们可以保证及时地为开发者带来最新的 JavaScript ECMA规范 中的语言特性，同时也能得到性能和稳定性的提升。  干掉 –harmony(第一种方式) node koa-app.js –harmy   可以安装iojs,  用iojs koa-app.js   这样就不用写–harmy注：–h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杂七乱八小知识点">
+<meta property="og:url" content="http://yanwenxi.github.io/2015/11/13/zaqiluanba/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="1、io.jsio.js 是基于 V8 引擎的较新版本构建的。通过持续跟进最新版的 V8 引擎，我们可以保证及时地为开发者带来最新的 JavaScript ECMA规范 中的语言特性，同时也能得到性能和稳定性的提升。  干掉 –harmony(第一种方式) node koa-app.js –harmy   可以安装iojs,  用iojs koa-app.js   这样就不用写–harmy注：–h">
+<meta property="og:locale" content="中文">
+<meta property="og:updated_time" content="2017-01-03T03:50:45.719Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="杂七乱八小知识点">
+<meta name="twitter:description" content="1、io.jsio.js 是基于 V8 引擎的较新版本构建的。通过持续跟进最新版的 V8 引擎，我们可以保证及时地为开发者带来最新的 JavaScript ECMA规范 中的语言特性，同时也能得到性能和稳定性的提升。  干掉 –harmony(第一种方式) node koa-app.js –harmy   可以安装iojs,  用iojs koa-app.js   这样就不用写–harmy注：–h">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">我的小窝</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Benchmark-jsPerf/" style="font-size: 10px;">Benchmark jsPerf</a> <a href="/tags/ES6、promise/" style="font-size: 10px;">ES6、promise</a> <a href="/tags/H5-移动端优化/" style="font-size: 10px;">H5 移动端优化</a> <a href="/tags/H5、bug/" style="font-size: 10px;">H5、bug</a> <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/Jenkins-CI/" style="font-size: 10px;">Jenkins CI</a> <a href="/tags/Lodash/" style="font-size: 10px;">Lodash</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/angular-http-q-promise/" style="font-size: 10px;">angular $http $q promise</a> <a href="/tags/angular-q-promise/" style="font-size: 10px;">angular $q promise</a> <a href="/tags/angular-decorator/" style="font-size: 10px;">angular decorator</a> <a href="/tags/angular-filter/" style="font-size: 10px;">angular filter</a> <a href="/tags/angular-服务/" style="font-size: 10px;">angular 服务</a> <a href="/tags/angularjs/" style="font-size: 10px;">angularjs</a> <a href="/tags/angular、-http/" style="font-size: 10px;">angular、$http</a> <a href="/tags/angular、Karma/" style="font-size: 10px;">angular、Karma</a> <a href="/tags/angular、directive/" style="font-size: 10px;">angular、directive</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/angular、module、controller/" style="font-size: 10px;">angular、module、controller</a> <a href="/tags/angular、promise、-q、deferred/" style="font-size: 10px;">angular、promise、$q、deferred</a> <a href="/tags/angular、router/" style="font-size: 10px;">angular、router</a> <a href="/tags/angular、ui-router/" style="font-size: 10px;">angular、ui-router</a> <a href="/tags/angular、表达式、filter/" style="font-size: 10px;">angular、表达式、filter</a> <a href="/tags/app-跨平台/" style="font-size: 10px;">app,跨平台</a> <a href="/tags/aso/" style="font-size: 10px;">aso</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/css-前端开发/" style="font-size: 10px;">css 前端开发</a> <a href="/tags/debugger/" style="font-size: 10px;">debugger</a> <a href="/tags/es5-js/" style="font-size: 10px;">es5 js</a> <a href="/tags/fit/" style="font-size: 10px;">fit</a> <a href="/tags/flex-css3/" style="font-size: 10px;">flex css3</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/h5-webworkers/" style="font-size: 10px;">h5 webworkers</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="/tags/javascript、object-oriented、继承/" style="font-size: 10px;">javascript、object-oriented、继承</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/js-Array/" style="font-size: 10px;">js Array</a> <a href="/tags/js-Higher-order-function/" style="font-size: 10px;">js Higher-order-function</a> <a href="/tags/js-closure/" style="font-size: 10px;">js closure</a> <a href="/tags/js-lodash/" style="font-size: 10px;">js lodash</a> <a href="/tags/js-object/" style="font-size: 10px;">js object</a> <a href="/tags/js-scope/" style="font-size: 10px;">js scope</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js-this/" style="font-size: 10px;">js this</a> <a href="/tags/js-性能调试-Benchmark-jsPerf/" style="font-size: 10px;">js 性能调试 Benchmark jsPerf</a> <a href="/tags/js-柯里化/" style="font-size: 10px;">js 柯里化</a> <a href="/tags/js-纯函数/" style="font-size: 10px;">js 纯函数</a> <a href="/tags/js、变态题/" style="font-size: 10px;">js、变态题</a> <a href="/tags/js、设计模式/" style="font-size: 10px;">js、设计模式</a> <a href="/tags/js、跨域、document-domain/" style="font-size: 10px;">js、跨域、document.domain</a> <a href="/tags/js模块化、AMD、CMD、CommonJs/" style="font-size: 10px;">js模块化、AMD、CMD、CommonJs</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/life、意念/" style="font-size: 10px;">life、意念</a> <a href="/tags/lodash-chain/" style="font-size: 10px;">lodash chain</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/nginx/" style="font-size: 12.5px;">nginx</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/node-debug/" style="font-size: 10px;">node debug</a> <a href="/tags/node-wechat/" style="font-size: 20px;">node wechat</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rap/" style="font-size: 17.5px;">rap</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-ant-design/" style="font-size: 10px;">react ant-design</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo-新闻源/" style="font-size: 10px;">seo 新闻源</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/web-交互/" style="font-size: 10px;">web 交互</a> <a href="/tags/web、前端/" style="font-size: 10px;">web、前端</a> <a href="/tags/web、性能优化/" style="font-size: 10px;">web、性能优化</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/wechat-webstorm/" style="font-size: 10px;">wechat webstorm</a> <a href="/tags/win10、linux/" style="font-size: 10px;">win10、linux</a> <a href="/tags/window-history-html5/" style="font-size: 10px;">window.history html5</a> <a href="/tags/wxapp/" style="font-size: 15px;">wxapp</a> <a href="/tags/yarn-npm/" style="font-size: 10px;">yarn npm</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/前端工程-构建工具-前端开发/" style="font-size: 10px;">前端工程 构建工具 前端开发</a> <a href="/tags/前端脚手架/" style="font-size: 10px;">前端脚手架</a> <a href="/tags/建站-seo/" style="font-size: 10px;">建站 seo</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/我是点位的以后改/" style="font-size: 10px;">我是点位的以后改</a> <a href="/tags/生活/" style="font-size: 20px;">生活</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a> <a href="/tags/跨域、postMessage、html5/" style="font-size: 10px;">跨域、postMessage、html5</a> <a href="/tags/路由-html5/" style="font-size: 10px;">路由 html5</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">我的小窝</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-zaqiluanba" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/13/zaqiluanba/" class="article-date">
+      <time datetime="2015-11-13T08:01:03.000Z" itemprop="datePublished">2015-11-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      杂七乱八小知识点
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="1、io-js"><a href="#1、io-js" class="headerlink" title="1、io.js"></a>1、io.js</h3><p>io.js 是基于 V8 引擎的较新版本构建的。通过持续跟进最新版的 V8 引擎，我们可以保证及时地为开发者带来最新的 JavaScript ECMA规范 中的语言特性，同时也能得到性能和稳定性的提升。</p>
+<ul>
+<li>干掉 –harmony(第一种方式)<br> node koa-app.js –harmy   可以安装iojs,  用iojs koa-app.js   这样就不用写–harmy<br>注：–harmy为和谐模式，意思是让node程序启动时兼容ECMA的新特性。</li>
+<li>第二种方式<br>alias node=’node –harmony’   alias：别名，化名<br>在chrome中使用该特性需要先打开chrome://flags/, 搜索harmony, enable之, 重启chrome即可<h3 id="2、npm-ls"><a href="#2、npm-ls" class="headerlink" title="2、npm ls"></a>2、npm ls</h3>在当前项目下可以查看项目下哪些模块没有安装成功。 npm ls -g  查看全局安装了哪些模块，同理 bower ls可以查看bower管理的包哪些安装成功与否！<h3 id="经过测试IE6-7-8-9均不支持严格模式（”use-strict”）。ie10在内的主流浏览器才支持"><a href="#经过测试IE6-7-8-9均不支持严格模式（”use-strict”）。ie10在内的主流浏览器才支持" class="headerlink" title="经过测试IE6,7,8,9均不支持严格模式（”use strict”）。ie10在内的主流浏览器才支持."></a>经过测试IE6,7,8,9均不支持严格模式（”use strict”）。ie10在内的主流浏览器才支持.</h3><h3 id="同构JavaScript应用"><a href="#同构JavaScript应用" class="headerlink" title="同构JavaScript应用"></a>同构JavaScript应用</h3>指的是用JavaScript编写的应用，能够同时运行于客户端和服务器。这也让在客户端和服务器之间共享代码变成一种更普遍自然的选择。<h3 id="屏幕扩展，多屏开发"><a href="#屏幕扩展，多屏开发" class="headerlink" title="屏幕扩展，多屏开发"></a>屏幕扩展，多屏开发</h3><h3 id="伪类与伪元素"><a href="#伪类与伪元素" class="headerlink" title="伪类与伪元素"></a>伪类与伪元素</h3>伪类，就类似class这样，表示一些元素的状态的，但是无须标识的分类。例：a:hover;</li>
+</ul>
+<p>伪元素，就是一个元素，类似p标签元素，等等，逻辑上存在，但是实际并不存在在文档树中。</p>
+<p>伪类前面是一个冒号，伪元素前面是两个冒号。E:first-child 伪类，E::first-line为元素。<br>::before 和 ::after 伪元素，before 和after是在元素前面和后面添加一些元素，因此是伪元素，为了区分伪类，CSS3选择器中已经将其前面变为两个冒号了。伪元素因为不在DOM里存在，也不会在调试工具里显示，所以不太好调试<br><em>在a标签hover状态下加一个小三角</em>，可用伪元素实现.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a:hover::after&#123;&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="软件应用版本代号"><a href="#软件应用版本代号" class="headerlink" title="软件应用版本代号"></a>软件应用版本代号</h3><ul>
+<li><p>alpha版：内部测试版。α是希腊字母的第一个，表示最早的版本，一般用户不要下载这个版本，这个版本包含很多BUG，功能也不全，主要是给开发人员和 测试人员测试和找BUG用的。</p>
+</li>
+<li><p>beta版：公开测试版。β是希腊字母的第二个，顾名思义，这个版本比alpha版发布得晚一些，主要是给“部落”用户和忠实用户测试用的，该版本任然存 在很多BUG，但是相对alpha版要稳定一些。这个阶段版本的软件还会不断增加新功能。如果你是发烧友，可以下载这个版本。</p>
+</li>
+<li><p>rc版：全写：Release Candidate（候选版本），该版本又较beta版更进一步了，该版本功能不再增加，和最终发布版功能一样。这个版本有点像最终发行版之前的一个类似 预览版，这个的发布就标明离最终发行版不远了。作为普通用户，如果你很急着用这个软件的话，也可以下载这个版本。</p>
+</li>
+<li><p>stable版：稳定版。在开源软件中，都有stable版，这个就是开源软件的最终发行版，用户可以放心大胆的用了。</p>
+<h3 id="将类数组对象转换成数组"><a href="#将类数组对象转换成数组" class="headerlink" title="将类数组对象转换成数组"></a>将类数组对象转换成数组</h3><p>扩展运算符可以将一个类数组对象中索引范围在[0,length)之间的所有属性的值添加到一个数组中,这样就可以得到一个真正的数组:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var nodeList = document.querySelectorAll(&apos;div&apos;);</div><div class="line">var array = [...nodeList];</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当然也可以用es6的新方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var array=Array.from(nodeList);</div></pre></td></tr></table></figure></p>
+<h3 id="assert断言库与钩子函数"><a href="#assert断言库与钩子函数" class="headerlink" title="assert断言库与钩子函数"></a>assert断言库与钩子函数</h3><p>assert断言用于在开发阶段监测BUG，进行调试。其存在的意义在于检测代码在开发过程中是否出现了问题。<br><em>钩子函数</em>：hook function  钩子的本质是一段用以处理系统消息的程序，通过系统调用，把它挂入系统。<br>React中可以指定在组件的生命周期的不同阶段执行的函数，这些函数就是钩子函数。例：componentDidMount、shouldComponentUpdate等等</p>
+<h3 id="github-pull-request-贡献代码"><a href="#github-pull-request-贡献代码" class="headerlink" title="github pull request 贡献代码"></a>github pull request 贡献代码</h3><p>假设有一个仓库，叫Repo A。你如果要往里贡献代码，首先要Fork这个Repo，于是在你的Github账号下有了一个Repo A2,。然后你在这个A2下工作，Commit，push等。然后你希望原始仓库Repo A合并你的工作，你可以在Github上发起一个Pull Request，意思是请求Repo A的所有者从你的A2合并分支。如果被审核通过并正式合并，这样你就为项目A做贡献了<br>Github pull request 简写github pr 就是『请求代码合并』。</p>
+<h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><p>lodash 是一个具有一致接口、模块化、高性能等特性的 JavaScript 工具库。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">_.assign(&#123; &apos;a&apos;: 1 &#125;, &#123; &apos;b&apos;: 2 &#125;, &#123; &apos;c&apos;: 3 &#125;);</div><div class="line">// → &#123; &apos;a&apos;: 1, &apos;b&apos;: 2, &apos;c&apos;: 3 &#125;</div><div class="line">_.map([1, 2, 3], function(n) &#123; return n * 3; &#125;);</div><div class="line">// → [3, 6, 9]</div></pre></td></tr></table></figure></p>
+<h3 id="箭头函数的使用注意点："><a href="#箭头函数的使用注意点：" class="headerlink" title="箭头函数的使用注意点："></a>箭头函数的使用注意点：</h3><ol>
+<li><p>函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
+</li>
+<li><p>不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。</p>
+</li>
+<li><p>不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用Rest参数代替。</p>
+</li>
+<li><p>不可以使用yield命令，因此箭头函数不能用作Generator函数。</p>
+</li>
+</ol>
+<p>上面四点中，第一点尤其值得注意。this对象的指向是可变的，但是在箭头函数中，它是固定的。</p>
+<h3 id="判断一个函数是否是generatorFunction的方法"><a href="#判断一个函数是否是generatorFunction的方法" class="headerlink" title="判断一个函数是否是generatorFunction的方法"></a>判断一个函数是否是generatorFunction的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function isGeneratorFunction(obj) &#123;</div><div class="line">  return obj &amp;&amp; obj.constructor &amp;&amp; &apos;GeneratorFunction&apos; === obj.constructor.name</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="ES7语法-async-await"><a href="#ES7语法-async-await" class="headerlink" title="ES7语法(async,await)"></a>ES7语法(async,await)</h3><p>koa用generator这种处理异步方式估计会被es7里的async function 取代， 转义ES7语法(async,await)， 需要stage-3规则，stage-3规则是ES7的stage 0~3的第3阶段规则。 node现在还不支持es7。</p>
+<h3 id="函数绑定（-）"><a href="#函数绑定（-）" class="headerlink" title="函数绑定（::）"></a>函数绑定（::）</h3><p>　　箭头函数可以绑定this对象，大大减少了显式绑定this对象的写法（call、apply、bind）。但是，箭头函数并不适用于所有场合，所以ES7提出了“函数绑定”（function bind）运算符，用来取代call、apply、bind调用。虽然该语法还是ES7的一个提案，但是Babel转码器已经支持。</p>
+<p>　　函数绑定运算符是并排的两个双冒号（::），双冒号左边是一个对象，右边是一个函数。该运算符会自动将左边的对象，作为上下文环境（即this对象），绑定到右边的函数上面。</p>
+<h3 id="jq中的回调"><a href="#jq中的回调" class="headerlink" title="jq中的回调"></a>jq中的回调</h3><p>　　$.ajax()操作完成后，如果使用的是低于1.5.0版本的jQuery，返回的是XHR对象，你没法进行链式操作；如果高于1.5.0版本，返回的是deferred对象，可以进行链式操作。deferred对象就是jQuery的回调函数解决方案</p>
+<h3 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h3><p>　　TypeScript 是 JavaScript 的超集，扩展了 JavaScript 的语法，因此现有的 JavaScript 代码可与 TypeScript 一起工作无需任何修改，<em>TypeScript 通过类型注解提供编译时的静态类型检查</em>。TypeScript 可处理已有的 JavaScript 代码，并只对其中的 TypeScript 代码进行编译。</p>
+<h3 id="prcoess"><a href="#prcoess" class="headerlink" title="prcoess"></a>prcoess</h3><p>  代码中用此取值：prcoess.env.PORT         控制台设置：set PORT=8080<br>  prcoess.env.NODE_ENV    set NODE_ENV=production</p>
+<h3 id="hostAdmin"><a href="#hostAdmin" class="headerlink" title="hostAdmin"></a>hostAdmin</h3><p>   若C:\Windows\System32\drivers\etc正常访问能找到hosts文件，用hostAdmin访问不到etc这个文件夹，说明hostadmin没有权限访问，此时etc右击属性-共享里设置，将此文件的访问权限授权给everyone.这样就hostadmin能访问此文件夹了.</p>
+<h3 id="AngularJS-项目中如何实现按需加载js文件"><a href="#AngularJS-项目中如何实现按需加载js文件" class="headerlink" title="AngularJS 项目中如何实现按需加载js文件"></a>AngularJS 项目中如何实现按需加载js文件</h3><p>requirejs实现angular js文件按需加载,RequireJS + AngularJS实施.</p>
+<h4 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ABC.prototype.add=function()&#123;</div><div class="line">....//some code</div><div class="line">return this; //实现链式调用的原理</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2015年11月13日 - 16时01分</p>
+        <p><span>最后更新:</span>2017年01月03日 - 11时50分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/11/13/zaqiluanba/" title="杂七乱八小知识点">http://yanwenxi.github.io/2015/11/13/zaqiluanba/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2015/11/13/zaqiluanba/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2015/12/05/angular-ui-router/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Angular路由之ui-router
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/23/Object.create/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一种新的对象创建方式——Object.create()</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、io-js"><span class="toc-number">1.</span> <span class="toc-text">1、io.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、npm-ls"><span class="toc-number">2.</span> <span class="toc-text">2、npm ls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#经过测试IE6-7-8-9均不支持严格模式（”use-strict”）。ie10在内的主流浏览器才支持"><span class="toc-number">3.</span> <span class="toc-text">经过测试IE6,7,8,9均不支持严格模式（”use strict”）。ie10在内的主流浏览器才支持.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同构JavaScript应用"><span class="toc-number">4.</span> <span class="toc-text">同构JavaScript应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#屏幕扩展，多屏开发"><span class="toc-number">5.</span> <span class="toc-text">屏幕扩展，多屏开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪类与伪元素"><span class="toc-number">6.</span> <span class="toc-text">伪类与伪元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软件应用版本代号"><span class="toc-number">7.</span> <span class="toc-text">软件应用版本代号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将类数组对象转换成数组"><span class="toc-number">8.</span> <span class="toc-text">将类数组对象转换成数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#assert断言库与钩子函数"><span class="toc-number">9.</span> <span class="toc-text">assert断言库与钩子函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github-pull-request-贡献代码"><span class="toc-number">10.</span> <span class="toc-text">github pull request 贡献代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lodash"><span class="toc-number">11.</span> <span class="toc-text">lodash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#箭头函数的使用注意点："><span class="toc-number">12.</span> <span class="toc-text">箭头函数的使用注意点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断一个函数是否是generatorFunction的方法"><span class="toc-number">13.</span> <span class="toc-text">判断一个函数是否是generatorFunction的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES7语法-async-await"><span class="toc-number">14.</span> <span class="toc-text">ES7语法(async,await)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数绑定（-）"><span class="toc-number">15.</span> <span class="toc-text">函数绑定（::）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jq中的回调"><span class="toc-number">16.</span> <span class="toc-text">jq中的回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TypeScript"><span class="toc-number">17.</span> <span class="toc-text">TypeScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prcoess"><span class="toc-number">18.</span> <span class="toc-text">prcoess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hostAdmin"><span class="toc-number">19.</span> <span class="toc-text">hostAdmin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AngularJS-项目中如何实现按需加载js文件"><span class="toc-number">20.</span> <span class="toc-text">AngularJS 项目中如何实现按需加载js文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#链式调用"><span class="toc-number">20.1.</span> <span class="toc-text">链式调用</span></a></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2015/11/13/zaqiluanba/" data-title="杂七乱八小知识点" data-url="http://yanwenxi.github.io/2015/11/13/zaqiluanba/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/12/05/angular-ui-router/" title="上一篇: Angular路由之ui-router">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2015/10/23/Object.create/" title="下一篇: 一种新的对象创建方式——Object.create()">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/15/111测试的/">我是测试的先占的以后改</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/nginx-windows/">Windows下Nginx的启动、停止等命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/nginx-configuration-start/">Nginx 配置简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/interview-css/">前端笔试面试中的常用到的CSS知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/flexintroduction/">学习flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/rengemianju/">人格面具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/lovestart/">爱的开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/web-workers/">程序性能之HTML5 Web Workers</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/deepthis/">关于this那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/deepclosure/">深入理解闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp-online/">简易电商类小程序开发教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp1/">微信小程序之开发文档解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxappintroduction/">微信小程序简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/codetest/">使用Benchmark.js和jsPerf分析代码性能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/performancetest/">性能测试与调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/wsdevwechat/">webstorm开发微信小程序代码提醒</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/yarn-introduction/">YARN, 一个可能取代npm的javascript包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/node-interview/">Node.js 面试问题及答案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-api/">Lodash的学习笔记-一些常用的API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-chain/">Lodash 学习笔记 - Chain 方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodashjieshao/">JavaScript工具库之Lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/debugwechat/">如何在本地进行微信公众号的开发调试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-6/">写段代码实现加密认证逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-5/">配置、接入微信公众号</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-4/">域名服务器及ngrok环境配置。</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-2/">微信号分类与功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-1/">nodejs开发微信公众号介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/node-debug/">debug模块介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/gaojiefunction/">js中的高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/curryfunction/">浅析JavaScript中的柯里化函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/pure-function/">JavaScript 中的“纯函数”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/thanks-real/">谢谢，现实！-fatkan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/2016zongjie/">我的2016个人总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/h5optimization/">移动H5前端性能优化指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/wumai/">雾霾引起的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/angular-router/">Angular 路由实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/mvp/">了解下框架模式 -MVP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/bubaoyuan/">致穷逼：不抱怨，就是干！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/js-modules-compare/">JS模块规范对比：AMD，CMD，CommonJS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/cross-app/">跨平台APP的构建方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/postMessage/">跨域之HTML5 postMessage</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/document-domain/">js设置document.domain实现跨域的相关注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/biantaiti/">你js这么牛比，你知道++[[]][+[]]+[+[]]的结果么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/blockchain/">基于区块链的web前端开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/angular-promise-two/">通过$q,angular可以实现两种形式的promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/h5bug/">H5项目常见问题汇总及解决方案(摘抄学习)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/window-back-disabled/">使浏览器后退按钮失效及HTML5-window.history</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/arraydeapply/">js 数组中自定义属性的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/10/react-ant-design/">react入门篇 ant-design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/angular-q-promise-http/">AngularJS中的$http、$q服务和promise对象的联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/life-yinian/">意念如何影响我们的身体，不可思议！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/30/iframe-video/">使用iframe嵌入优酷视频的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/h5api-router/">前端路由的两种实现原理及相关api介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/node-tips/">node一些小知识点积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/angualr-19-Karma/">Angular中的测试-Karma</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-decorator/">angular-decorator</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-guide16-xhr实践/">Angular中的异步请求-xhr</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/angular-study/">AngularJS基本知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/yahuyouhua/">雅虎网站性能优化的 14 条规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/angular-guide17-angular中的promise/">Angular中如何使用promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/dajianjiaoshoujia/">教你从零开始搭建一款前端脚手架工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/05/filternull/">AngularJS使用ng-repeat和ng-if实现数据的筛选显示，多适用于表单数据的显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/angular-fiveservice/">angular中的5种服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/30/raps/">rap集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/webpackstudy1/">Webpack学习(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/defined-filter/">简述angular自定义过滤器在页面和控制器中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/angular-guide8-9章/">Angular权威指南学习（第8到9章）指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/angular-guide6-7/">Angular权威指南学习(第6-7章)表达式和过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/angular-guide1-5章/">Angular权威指南学习（第1到5章）模块、控制器及一些基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/09/jsobject/">js中的对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/chrome-debugger/">chrome 控制台调试angularjs代码逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/jianfei21/">21天减肥攻略</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/web-xingnengyouhua/">前端性能优化积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/ES6-promise/">ES6-promise学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/rap-strong/">坚强-一首即将消失在网络上的rap</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/rap-loverujia/">爱你不是为了和你去如家-MV版</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/webjiaohuxijie/">前端中交互设计应注意的细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/web-resource/">前端Web开发资源整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/angular-ui-router/">Angular路由之ui-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/Object.create/">一种新的对象创建方式——Object.create()</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/29/qianduanxijie/">前端人员应注意的几点细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/object-oriented-js/">面向对象的javascript及js中6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/16/aso/">APP推广第一步:五大ASO优化方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/26/i18n/">什么是i18n？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/27/zhaoji-life/">你的人生如此着急，你过好了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/09/jstype/">js中的类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/08/scope/">作用域预编译及引发异常问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/02/test-makrdown/">markdown 语法入大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/20/siteseo5/">网站SEO优化常见问题汇总5</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo4/">网站SEO优化常见问题汇总4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo3/">网站SEO优化常见问题汇总3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/17/siteseo2/">网站SEO优化常见问题汇总2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/16/siteseo1/">网站SEO优化常见问题汇总1</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/30/jquery-gaoxiao/">高效的jQuery代码编写技巧总结(收藏转)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/16/sitepeise/">网站色彩该怎样搭配才能更吸引客户的眼球</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/16/newsyuanseo/">怎么利用新闻源让关键词有好的排名</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://webywx.com/" target="_blank">webywx</a>  Theme <a href="https://yanwenxi.site" target="_blank">前端在路上</a> by Scorpio
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

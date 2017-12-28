@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>性能测试与调优 | 闫文喜的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="性能测试在日常开发中，一般被问到如何测试某个运算的速度（ 执行时间） ， 绝大多数 JavaScript 开发人员都会从类似下面的代码开始：1234var start = (new Date()).getTime(); // 或者Date.now()// 进行一些操作var end = (new Date()).getTime();console.log( &amp;quot;Duration:&amp;quot">
+<meta name="keywords" content="js 性能调试 Benchmark jsPerf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能测试与调优">
+<meta property="og:url" content="http://yanwenxi.github.io/2017/02/05/performancetest/index.html">
+<meta property="og:site_name" content="闫文喜的个人博客">
+<meta property="og:description" content="性能测试在日常开发中，一般被问到如何测试某个运算的速度（ 执行时间） ， 绝大多数 JavaScript 开发人员都会从类似下面的代码开始：1234var start = (new Date()).getTime(); // 或者Date.now()// 进行一些操作var end = (new Date()).getTime();console.log( &amp;quot;Duration:&amp;quot">
+<meta property="og:locale" content="中文">
+<meta property="og:updated_time" content="2017-02-10T02:44:21.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="性能测试与调优">
+<meta name="twitter:description" content="性能测试在日常开发中，一般被问到如何测试某个运算的速度（ 执行时间） ， 绝大多数 JavaScript 开发人员都会从类似下面的代码开始：1234var start = (new Date()).getTime(); // 或者Date.now()// 进行一些操作var end = (new Date()).getTime();console.log( &amp;quot;Duration:&amp;quot">
+  
+    <link rel="alternative" href="/atom.xml" title="闫文喜的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">Wenxi Yan</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/Home">我的小窝</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                            
+                                <a class="fl wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Benchmark-jsPerf/" style="font-size: 10px;">Benchmark jsPerf</a> <a href="/tags/ES6、promise/" style="font-size: 10px;">ES6、promise</a> <a href="/tags/H5-移动端优化/" style="font-size: 10px;">H5 移动端优化</a> <a href="/tags/H5、bug/" style="font-size: 10px;">H5、bug</a> <a href="/tags/JS设计模式-设计模式/" style="font-size: 10px;">JS设计模式 设计模式</a> <a href="/tags/Jenkins-CI/" style="font-size: 10px;">Jenkins CI</a> <a href="/tags/Lodash/" style="font-size: 10px;">Lodash</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/angular-http-q-promise/" style="font-size: 10px;">angular $http $q promise</a> <a href="/tags/angular-q-promise/" style="font-size: 10px;">angular $q promise</a> <a href="/tags/angular-decorator/" style="font-size: 10px;">angular decorator</a> <a href="/tags/angular-filter/" style="font-size: 10px;">angular filter</a> <a href="/tags/angular-服务/" style="font-size: 10px;">angular 服务</a> <a href="/tags/angularjs/" style="font-size: 10px;">angularjs</a> <a href="/tags/angular、-http/" style="font-size: 10px;">angular、$http</a> <a href="/tags/angular、Karma/" style="font-size: 10px;">angular、Karma</a> <a href="/tags/angular、directive/" style="font-size: 10px;">angular、directive</a> <a href="/tags/angular、html5/" style="font-size: 10px;">angular、html5</a> <a href="/tags/angular、module、controller/" style="font-size: 10px;">angular、module、controller</a> <a href="/tags/angular、promise、-q、deferred/" style="font-size: 10px;">angular、promise、$q、deferred</a> <a href="/tags/angular、router/" style="font-size: 10px;">angular、router</a> <a href="/tags/angular、ui-router/" style="font-size: 10px;">angular、ui-router</a> <a href="/tags/angular、表达式、filter/" style="font-size: 10px;">angular、表达式、filter</a> <a href="/tags/app-跨平台/" style="font-size: 10px;">app,跨平台</a> <a href="/tags/aso/" style="font-size: 10px;">aso</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/css-前端开发/" style="font-size: 10px;">css 前端开发</a> <a href="/tags/debugger/" style="font-size: 10px;">debugger</a> <a href="/tags/es5-js/" style="font-size: 10px;">es5 js</a> <a href="/tags/fit/" style="font-size: 10px;">fit</a> <a href="/tags/flex-css3/" style="font-size: 10px;">flex css3</a> <a href="/tags/git-github/" style="font-size: 10px;">git github</a> <a href="/tags/h5-webworkers/" style="font-size: 10px;">h5 webworkers</a> <a href="/tags/i18n/" style="font-size: 10px;">i18n</a> <a href="/tags/iframe/" style="font-size: 10px;">iframe</a> <a href="/tags/javascript、object-oriented、继承/" style="font-size: 10px;">javascript、object-oriented、继承</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/js-Array/" style="font-size: 10px;">js Array</a> <a href="/tags/js-Higher-order-function/" style="font-size: 10px;">js Higher-order-function</a> <a href="/tags/js-closure/" style="font-size: 10px;">js closure</a> <a href="/tags/js-lodash/" style="font-size: 10px;">js lodash</a> <a href="/tags/js-object/" style="font-size: 10px;">js object</a> <a href="/tags/js-scope/" style="font-size: 10px;">js scope</a> <a href="/tags/js-sea-js-模块化/" style="font-size: 10px;">js sea.js 模块化</a> <a href="/tags/js-this/" style="font-size: 10px;">js this</a> <a href="/tags/js-性能调试-Benchmark-jsPerf/" style="font-size: 10px;">js 性能调试 Benchmark jsPerf</a> <a href="/tags/js-柯里化/" style="font-size: 10px;">js 柯里化</a> <a href="/tags/js-纯函数/" style="font-size: 10px;">js 纯函数</a> <a href="/tags/js、变态题/" style="font-size: 10px;">js、变态题</a> <a href="/tags/js、设计模式/" style="font-size: 10px;">js、设计模式</a> <a href="/tags/js、跨域、document-domain/" style="font-size: 10px;">js、跨域、document.domain</a> <a href="/tags/js模块化、AMD、CMD、CommonJs/" style="font-size: 10px;">js模块化、AMD、CMD、CommonJs</a> <a href="/tags/js继承/" style="font-size: 10px;">js继承</a> <a href="/tags/life、意念/" style="font-size: 10px;">life、意念</a> <a href="/tags/lodash-chain/" style="font-size: 10px;">lodash chain</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mongoDB-数据库/" style="font-size: 10px;">mongoDB 数据库</a> <a href="/tags/mvp/" style="font-size: 10px;">mvp</a> <a href="/tags/nginx/" style="font-size: 12.5px;">nginx</a> <a href="/tags/node/" style="font-size: 12.5px;">node</a> <a href="/tags/node-debug/" style="font-size: 10px;">node debug</a> <a href="/tags/node-wechat/" style="font-size: 20px;">node wechat</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rap/" style="font-size: 17.5px;">rap</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/react-ant-design/" style="font-size: 10px;">react ant-design</a> <a href="/tags/seo/" style="font-size: 20px;">seo</a> <a href="/tags/seo-新闻源/" style="font-size: 10px;">seo 新闻源</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/web-交互/" style="font-size: 10px;">web 交互</a> <a href="/tags/web、前端/" style="font-size: 10px;">web、前端</a> <a href="/tags/web、性能优化/" style="font-size: 10px;">web、性能优化</a> <a href="/tags/wechat/" style="font-size: 10px;">wechat</a> <a href="/tags/wechat-webstorm/" style="font-size: 10px;">wechat webstorm</a> <a href="/tags/win10、linux/" style="font-size: 10px;">win10、linux</a> <a href="/tags/window-history-html5/" style="font-size: 10px;">window.history html5</a> <a href="/tags/wxapp/" style="font-size: 15px;">wxapp</a> <a href="/tags/yarn-npm/" style="font-size: 10px;">yarn npm</a> <a href="/tags/人生/" style="font-size: 10px;">人生</a> <a href="/tags/前后端分享/" style="font-size: 10px;">前后端分享</a> <a href="/tags/前端工程-构建工具-前端开发/" style="font-size: 10px;">前端工程 构建工具 前端开发</a> <a href="/tags/前端脚手架/" style="font-size: 10px;">前端脚手架</a> <a href="/tags/建站-seo/" style="font-size: 10px;">建站 seo</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/我是点位的以后改/" style="font-size: 10px;">我是点位的以后改</a> <a href="/tags/生活/" style="font-size: 20px;">生活</a> <a href="/tags/移动端、fixed/" style="font-size: 10px;">移动端、fixed</a> <a href="/tags/解构赋值-es6/" style="font-size: 10px;">解构赋值 es6</a> <a href="/tags/跨域、postMessage、html5/" style="font-size: 10px;">跨域、postMessage、html5</a> <a href="/tags/路由-html5/" style="font-size: 10px;">路由 html5</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.webywx.com">前端小站</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://ywxi.github.io/">web博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">运动健身、网络营销、web前端、喜欢接触新鲜事物、迎接新的挑战</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Wenxi Yan</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Wenxi Yan</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/Home">我的小窝</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yanwenxi" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://www.webywx.com" title="QQ">QQ</a>
+                    
+                        <a class="wechat" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=ywx_software@foxmail.com" title="wechat">wechat</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-performancetest" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/05/performancetest/" class="article-date">
+      <time datetime="2017-02-05T01:37:46.000Z" itemprop="datePublished">2017-02-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      性能测试与调优
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-性能调试-Benchmark-jsPerf/">js 性能调试 Benchmark jsPerf</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h4><p>在日常开发中，一般被问到如何测试某个运算的速度（ 执行时间） ， 绝大多数 JavaScript 开发人员都会从类似下面的代码开始：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var start = (new Date()).getTime(); // 或者Date.now()</div><div class="line">// 进行一些操作</div><div class="line">var end = (new Date()).getTime();</div><div class="line">console.log( &quot;Duration:&quot;, (end - start) );</div></pre></td></tr></table></figure></p>
+<p>上面这段代码也是我首先能想到的，其实这种方案有很多错误，别担心，下面会介绍正确的测试方法。<br>如果报告的时间是 0 ， 可能你会认为它的执行时间小于 1ms。 但是， 这并不十分精确。 有些平台的精度并没有达到 1ms， 而是以更大的递增间隔更新定时器。 比如， Windows（ 也就是 IE） 的早期版本上的精度只有 15ms， 这就意味着这个运算的运行时间至少需要这么长才不会被报告为 0 ！</p>
+<p>还有， 不管报告的时长是多少， 你能知道的唯一一点就是， 这个运算的这次特定的运行消耗了大概这么长时间。 而它是不是总是以这样的速度运行， 你基本上一无所知。你不知道引擎或系统在这个时候有没有受到什么影响， 以及其他时候这个运算会不会运行得更快。</p>
+<p>如果时长报告是 4 呢？ 你能更加确定它的运行需要大概 4ms 吗？ 不能。 它消耗的时间可能要短一些， 而且在获得 start 或end 时间戳之间也可能有其他一些延误。</p>
+<p>更麻烦的是， 你也不知道这个运算测试的环境是否过度优化了。 有可能 JavaScript 引擎找到了什么方法来优化你这个独立的测试用例， 但在更真实的程序中是无法进行这样的优化的，那么这个运算就会比测试时跑得慢。所以这样低置信度的测试几乎无力支持你的任何决策。 这个性能测试基本上是无用的。 更坏的是， 它是危险的， 因为它可能提供了错误的置信度，不仅是对你，还有那些没有深入思考带来测试结果的条件的人员。</p>
+<p><font color="red">重复</font><br>“也许， ”你现在会说， “那就用一个循环把它包起来， 这样整个测试的运行时间就会更长一些了。 ”如果重复一个运算 100 次，然后整个循环报告共消耗了 137ms， 那你就可以把它除以 100， 得到每次运算的平均用时为 1.37ms， 是这样吗？并不完全是这样。简单的数学平均值绝对不足以对你要外推到整个应用范围的性能作出判断。 迭代 100 次， 即使只有几个（ 过高或过低的） 的异常值也可以影响整个平均值， 然后在重复应用这个结论的时候， 你还会扩散这个误差， 产生更大的欺骗性。</p>
+<p><font color="red">Benchmark.js</font><br>任何有意义且可靠的性能测试都应该基于统计学上合理的实践。在这里介绍一个统计学上有效的性能测试工具，名为Benchmark.js. 官网地址：<a href="http://benchmarkjs.com/" target="_blank" rel="external">http://benchmarkjs.com/</a><br>Benchmark.js当然可以用在浏览器中测试 JavaScript ， 它也可以在非浏览器环境中运行（ Node.js等）。<br>为了简单展示一下， 下面介绍应该如何使用 Benchmark.js来运行一个快速的性能测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function foo() &#123;</div><div class="line">// 要测试的运算</div><div class="line">&#125; v</div><div class="line">ar bench = new Benchmark(</div><div class="line">&quot;foo test&quot;, // 测试名称</div><div class="line">foo, // 要测试的函数（也即内容）</div><div class="line">&#123;</div><div class="line">// .. // 可选的额外选项（参见文档）</div><div class="line">&#125;</div><div class="line">);</div><div class="line">bench.hz; // 每秒运算数</div><div class="line">bench.stats.moe; // 出错边界</div><div class="line">bench.stats.variance; // 样本方差</div></pre></td></tr></table></figure></p>
+<p>在上面的代码片段中， 其实忽略了“额外选项”<code>{ .. }</code> 对象。 这里有两个选项是我们应该知道的： setup 和 teardown 。这两个选项使你可以定义在每个测试之前和之后调用的函数。<br>提示：一定要理解， setup 和 teardown 代码不会在每个测试迭代都运行。 最好的理解方法是， 想像有一个外层循环（一轮一轮循环） 还有一个内层循环（一个测试一个测试循环） 。 setup 和 teardown 在每次外层循环（轮） 的开始和结束处运行， 而不是在内层循环中。关于 Benchmark.js的使用还有很多要学的，可以自行谷歌或者度娘。</p>
+<h4 id="jsPerf-com"><a href="#jsPerf-com" class="headerlink" title="jsPerf.com"></a>jsPerf.com</h4><p>尽管在所有的 JavaScript 运行环境下， Benchmark.js 都可用于测试代码的性能， 但有一点一定要强调， 如果你想要得到可靠的测试结论的话， 就需要在很多不同的环境（ 桌面浏览器、 移动设备， 等等） 中测试汇集测试结果。</p>
+<p>比如， 针对同样的测试高端桌面机器的性能很可能和智能手机上 Chrome 移动设备完全不同。 而电量充足的智能手机上的结果可能也和同一个智能手机但电量只有 2% 时完全不同，因为这时候设备将会开始关闭无线模块和处理器。如果想要在不止一个环境下得出像“X 比 Y 快”这样的有意义的结论成立， 那你需要在尽可能多的真实环境下进行实际测试。 仅仅因为在 Chrome 上某个 X 运算比 Y 快并不意味着这在所有的浏览器中都成立。 当然你可能还想要交叉引用多个浏览器上的测试运行结果， 并有用户的图形展示。</p>
+<p>有一个很棒的网站正是因这样的需求而诞生的， 名为 jsPerf（<a href="http://jsperf.com）" target="_blank" rel="external">http://jsperf.com）</a> 。 它使用前面介绍的 Benchmark.js 库来运行统计上精确可靠的测试， 并把测试结果放在一个公开可得的 URL上， 你可以把这个 URL转发给别人。每次测试运行的时候， 测试结果就会被收集并持久化， 累积的测试结果会被图形化， 并展示到一个页面上以供查看。更多学习请参照官网。</p>
+<h4 id="尾调用优化"><a href="#尾调用优化" class="headerlink" title="尾调用优化"></a>尾调用优化</h4><p>ES6 包含了一个性能领域的特殊要求。 这与一个涉及函数调用的特定优化形式相关： 尾调用优化 （ TailCall Optimization， TCO） 。<br>简单地说， 尾调用就是一个出现在另一个函数“结尾”处的函数调用。 这个调用结束后就没有其余事情要做了（ 除了可能要返回结果值） 。<br>以下是一个非递归的尾调用的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function foo(x) &#123;</div><div class="line">return x;</div><div class="line">&#125; f</div><div class="line">unction bar(y) &#123;</div><div class="line">return foo( y + 1 ); // 尾调用</div><div class="line">&#125;function baz() &#123;</div><div class="line">return 1 + bar( 40 ); // 非尾调用</div><div class="line">&#125; b</div><div class="line">az(); // 42</div></pre></td></tr></table></figure></p>
+<p>foo(y+1) 是 bar(..) 中的尾调用， 因为在 foo(..) 完成后， bar(..) 也完成了， 并且只需要返回 foo(..) 调用的结果。 然而， bar(40) 不是尾调用， 因为在它完成后， 它的结果需要加上 1 才能由 baz() 返回。<br>调用一个新的函数需要额外的一块预留内存来管理调用栈， 称为栈帧 。 所以前面的代码一般会同时需要为每个 baz() 、 bar(..) 和 foo(..) 保留一个栈帧。<br>然而， 如果支持 TCO 的引擎能够意识到 foo(y+1) 调用位于尾部 ， 这意味着 bar(..) 基本上已经完成了， 那么在调用foo(..) 时， 它就不需要创建一个新的栈帧， 而是可以重用已有的 bar(..) 的栈帧。 这样不仅速度更快， 也更节省内存。<br>ES6 确保了 JavaScript 开发者从现在开始可以在所有符合 ES6+ 的浏览器中依赖这个优化。 这对 JavaScript 性能来说是一个胜利。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>对一段代码进行有效的性能测试， 特别是与同样代码的另外一个选择对比来看看哪种方案更快， 需要认真注意细节。与其打造你自己的统计有效的性能测试逻辑， 不如直接使用 Benchmark.js 库， 它已经为你实现了这些。 但是， 编写测试要小心， 因为我们很容易就会构造一个看似有效实际却有缺陷的测试， 即使是微小的差异也可能扭曲结果， 使其完全不可靠。</p>
+<p>从尽可能多的环境中得到尽可能多的测试结果以消除硬件 / 设备的偏差， 这一点很重要。 jsPerf.com是很好的网站， 用于众包性能测试运行。</p>
+<p>尾调用优化是 ES6 要求的一种优化方法。 它使 JavaScript 中原本不可能的一些递归模式变得实际。 TCO 允许一个函数在结尾处调用另外一个函数来执行， 不需要任何额外资源。 这意味着， 对递归算法来说， 引擎不再需要限制栈深度。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/05/performancetest/">性能测试与调优</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 Wenxi Yan 的个人博客">Wenxi Yan</a></p>
+        <p><span>发布时间:</span>2017年02月05日 - 09时37分</p>
+        <p><span>最后更新:</span>2017年02月10日 - 10时44分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/05/performancetest/" title="性能测试与调优">http://yanwenxi.github.io/2017/02/05/performancetest/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yanwenxi.github.io/2017/02/05/performancetest/　　作者: Wenxi Yan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/05/codetest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用Benchmark.js和jsPerf分析代码性能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/04/wsdevwechat/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webstorm开发微信小程序代码提醒</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#性能测试"><span class="toc-number">1.</span> <span class="toc-text">性能测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jsPerf-com"><span class="toc-number">2.</span> <span class="toc-text">jsPerf.com</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#尾调用优化"><span class="toc-number">3.</span> <span class="toc-text">尾调用优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/02/05/performancetest/" data-title="性能测试与调优" data-url="http://yanwenxi.github.io/2017/02/05/performancetest/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/05/codetest/" title="上一篇: 使用Benchmark.js和jsPerf分析代码性能">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/04/wsdevwechat/" title="下一篇: webstorm开发微信小程序代码提醒">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/10/15/111测试的/">我是测试的先占的以后改</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/28/nginx-windows/">Windows下Nginx的启动、停止等命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/nginx-configuration-start/">Nginx 配置简述</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/interview-css/">前端笔试面试中的常用到的CSS知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/20/flexintroduction/">学习flex布局</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/19/rengemianju/">人格面具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/lovestart/">爱的开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/10/web-workers/">程序性能之HTML5 Web Workers</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/deepthis/">关于this那些事</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/deepclosure/">深入理解闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp-online/">简易电商类小程序开发教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxapp1/">微信小程序之开发文档解读</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/06/wxappintroduction/">微信小程序简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/codetest/">使用Benchmark.js和jsPerf分析代码性能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/05/performancetest/">性能测试与调优</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/04/wsdevwechat/">webstorm开发微信小程序代码提醒</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/yarn-introduction/">YARN, 一个可能取代npm的javascript包管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/node-interview/">Node.js 面试问题及答案</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-api/">Lodash的学习笔记-一些常用的API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodash-chain/">Lodash 学习笔记 - Chain 方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/lodashjieshao/">JavaScript工具库之Lodash</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/debugwechat/">如何在本地进行微信公众号的开发调试</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-6/">写段代码实现加密认证逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-5/">配置、接入微信公众号</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-4/">域名服务器及ngrok环境配置。</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-2/">微信号分类与功能</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/wechat1-1/">nodejs开发微信公众号介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/node-debug/">debug模块介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/gaojiefunction/">js中的高阶函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/curryfunction/">浅析JavaScript中的柯里化函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/pure-function/">JavaScript 中的“纯函数”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/thanks-real/">谢谢，现实！-fatkan</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/31/2016zongjie/">我的2016个人总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/h5optimization/">移动H5前端性能优化指南</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/wumai/">雾霾引起的思考</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/angular-router/">Angular 路由实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/win10-ubuntu/">激活Win10内置版Linux （ubuntu）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/mvp/">了解下框架模式 -MVP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/16/bubaoyuan/">致穷逼：不抱怨，就是干！！！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/js-modules-compare/">JS模块规范对比：AMD，CMD，CommonJS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/cross-app/">跨平台APP的构建方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/postMessage/">跨域之HTML5 postMessage</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/13/document-domain/">js设置document.domain实现跨域的相关注意事项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/biantaiti/">你js这么牛比，你知道++[[]][+[]]+[+[]]的结果么？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/angular-html5/">让AngularJS指令符合html5规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/data-compare/">非关系型数据库和关系型数据库比较</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/04/docker/">使用Docker快速发布nodejs应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/02/Jenkins-CI/">基于Jenkins的持续集成CI</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/blockchain/">基于区块链的web前端开发</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/angular-promise-two/">通过$q,angular可以实现两种形式的promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/h5bug/">H5项目常见问题汇总及解决方案(摘抄学习)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/window-back-disabled/">使浏览器后退按钮失效及HTML5-window.history</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/13/arraydeapply/">js 数组中自定义属性的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/10/react-ant-design/">react入门篇 ant-design</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/nodekeng/">node 中的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/shejimoshi/">你应了解的4种JS设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/23/angular-q-promise-http/">AngularJS中的$http、$q服务和promise对象的联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/life-yinian/">意念如何影响我们的身体，不可思议！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/30/iframe-video/">使用iframe嵌入优酷视频的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/16/h5api-router/">前端路由的两种实现原理及相关api介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/node-tips/">node一些小知识点积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/react1/">react入门学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/guanchazhemoshi/">JS之发布订-阅模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/angualr-19-Karma/">Angular中的测试-Karma</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-decorator/">angular-decorator</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/angular-guide16-xhr实践/">Angular中的异步请求-xhr</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/16/qianhouduanfenli/">前后端分离，是为了彼此更好</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/angular-study/">AngularJS基本知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/yahuyouhua/">雅虎网站性能优化的 14 条规则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/29/angular-guide17-angular中的promise/">Angular中如何使用promise</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/13/dajianjiaoshoujia/">教你从零开始搭建一款前端脚手架工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/05/filternull/">AngularJS使用ng-repeat和ng-if实现数据的筛选显示，多适用于表单数据的显示</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/01/angular-fiveservice/">angular中的5种服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/30/raps/">rap集合</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/webpackstudy1/">Webpack学习(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/defined-filter/">简述angular自定义过滤器在页面和控制器中的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/angular-guide8-9章/">Angular权威指南学习（第8到9章）指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/angular-guide6-7/">Angular权威指南学习(第6-7章)表达式和过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/04/angular-guide1-5章/">Angular权威指南学习（第1到5章）模块、控制器及一些基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/gitsinglefile/">如何在github上下载单个文件夹？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/10/jigou/">ES6学习-变量的解构赋值用途</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/09/jsobject/">js中的对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/25/chrome-debugger/">chrome 控制台调试angularjs代码逻辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/jianfei21/">21天减肥攻略</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/web-xingnengyouhua/">前端性能优化积累</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/ES6-promise/">ES6-promise学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/30/rap-strong/">坚强-一首即将消失在网络上的rap</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/26/rap-loverujia/">爱你不是为了和你去如家-MV版</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/iscroll/">移动端遇到的坑-fixed不兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/16/webjiaohuxijie/">前端中交互设计应注意的细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/13/web-resource/">前端Web开发资源整理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/12/js-seajs/">js模块化开发-sea.js(基础)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/05/angular-ui-router/">Angular路由之ui-router</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/11/13/zaqiluanba/">杂七乱八小知识点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/23/Object.create/">一种新的对象创建方式——Object.create()</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/10/15/6jicheng/">js学习--6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/29/qianduanxijie/">前端人员应注意的几点细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/23/object-oriented-js/">面向对象的javascript及js中6种继承方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/16/aso/">APP推广第一步:五大ASO优化方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/26/i18n/">什么是i18n？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/27/zhaoji-life/">你的人生如此着急，你过好了吗？</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/09/jstype/">js中的类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/08/scope/">作用域预编译及引发异常问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/02/02/test-makrdown/">markdown 语法入大门</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/20/siteseo5/">网站SEO优化常见问题汇总5</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo4/">网站SEO优化常见问题汇总4</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/18/siteseo3/">网站SEO优化常见问题汇总3</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/17/siteseo2/">网站SEO优化常见问题汇总2</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/01/16/siteseo1/">网站SEO优化常见问题汇总1</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/30/jquery-gaoxiao/">高效的jQuery代码编写技巧总结(收藏转)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/16/sitepeise/">网站色彩该怎样搭配才能更吸引客户的眼球</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/16/newsyuanseo/">怎么利用新闻源让关键词有好的排名</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 Wenxi Yan
+            </div>
+            <div class="footer-right">
+                <a href="http://webywx.com/" target="_blank">webywx</a>  Theme <a href="https://yanwenxi.site" target="_blank">前端在路上</a> by Scorpio
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >用户到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
